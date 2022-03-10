@@ -9,7 +9,7 @@ const url='https://www.ptt.cc/bbs/fastfood/M.1526277935.A.DA0.html';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.get("/surfD", async (req, res)=>{
+app.post("/surfD", async (req, res)=>{
 	let time={};
 
 	let now=new Date();
