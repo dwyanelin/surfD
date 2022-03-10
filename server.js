@@ -1,10 +1,10 @@
-const express=require("express");
+/*const express=require("express");
 const bodyParser=require("body-parser");
 const app=express();
 
 const rp=require('request-promise');
 const $=require('cheerio');
-const url='https://www.ptt.cc/bbs/fastfood/M.1526277935.A.DA0.html';
+const url='https://www.ptt.cc/bbs/fastfood/M.1526277935.A.DA0.html';*/
 
 // 引用linebot SDK
 var linebot=require('linebot');
@@ -34,7 +34,7 @@ bot.listen('/linewebhook', 3000, function () {
 	console.log('[BOT已準備就緒]');
 });
 
-app.use(bodyParser.json());
+/*app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.post("/surfD", async (req, res)=>{
@@ -341,4 +341,4 @@ if (process.env.NODE_ENV==='production'){
 
 const port=process.env.PORT||5000;
 
-app.listen(port, ()=>console.log(`LISTENING ON PORT ${port}`));
+app.listen(port, ()=>console.log(`LISTENING ON PORT ${port}`));*/
