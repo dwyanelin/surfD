@@ -42,8 +42,10 @@ function handleEvent(event){
 		keyword: event.message.text,
 	})
 	.then(res => {
+		console.log("===========================");
 		console.log(typeof res);
 		console.log(res);
+		console.log("===========================");
 		res=JSON.parse(res);
 		if(res.cht.length>0){
 			//將不重複的中文串起來
