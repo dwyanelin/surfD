@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 // index.js
 const line=require('@line/bot-sdk');
 var express=require('express');
