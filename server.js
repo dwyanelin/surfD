@@ -41,7 +41,6 @@ function handleEvent(event){
 	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
 		keyword: event.message.text,
 	})
-	.then(res=>{console.log(res);return res.json()})
 	.then(res => {
 		console.log(res);
 		if(res.cht.length>0){
