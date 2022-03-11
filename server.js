@@ -42,7 +42,9 @@ function handleEvent(event){
 		keyword: event.message.text,
 	})
 	.then(res => {
+		console.log(typeof res);
 		console.log(res);
+		res=JSON.parse(res);
 		if(res.cht.length>0){
 			//將不重複的中文串起來
 			return res.cht.join(", ");
