@@ -43,11 +43,10 @@ function handleEvent(event){
 	})
 	.then(res => {
 		console.log("===========================");
-		console.log(typeof res);
-		console.log(res);
+		console.log(typeof res.data);
+		console.log(res.data);
 		console.log("===========================");
-		res=JSON.parse(res);
-		if(res.cht.length>0){
+		if(res.data.cht.length>0){
 			//將不重複的中文串起來
 			return res.cht.join(", ");
 		}
