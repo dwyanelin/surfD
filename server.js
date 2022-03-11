@@ -41,10 +41,12 @@ function handleEvent(event){
 	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
 		keyword: event.message.text,
 	})
-	.then(response => {
-		if(response.cht.length>0){
+	.then(res=>res.json())
+	.then(res => {
+		console.log(res);
+		if(res.cht.length>0){
 			//將不重複的中文串起來
-			return response.cht.join(", ");
+			return res.cht.join(", ");
 		}
 		else{
 			return "";
@@ -62,12 +64,12 @@ function handleEvent(event){
 		})
 	}).then(res=>res.json())
 	.catch(error=>console.error('Error:', error))
-	.then(response=>{
-		//console.log('Success:', response);
+	.then(res=>{
+		//console.log('Success:', res);
 		//秀cht或縮寫或全寫cht
-		if(response.cht.length>0){
+		if(res.cht.length>0){
 			//將不重複的中文串起來
-			return response.cht.join(", ");
+			return res.cht.join(", ");
 		}
 		else{
 			return "";
