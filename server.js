@@ -29,7 +29,7 @@ app.post('/callback', line.middleware(config), (req, res)=>{
 });
 
 // event handler
-function handleEvent(event){
+async function handleEvent(event){
 	if(event.type!=='message'||event.message.type!=='text'){
 		// ignore non-text-message event
 		return Promise.resolve(null);
@@ -37,7 +37,7 @@ function handleEvent(event){
 
 	// create a echoing text message
 	//const echo={type: 'text', text: event.message.text};
-	let echo=axios
+	let echo=await axios
 	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
 		keyword: event.message.text,
 	})
@@ -57,26 +57,6 @@ function handleEvent(event){
 	.catch(error => {
 		console.error(error)
 	});
-
-	/*let echo=fetch('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
-		method:'POST', //or 'PUT'
-		body:JSON.stringify({keyword:event.message.text}), //data can be `string` or {object}!
-		headers:new Headers({
-			'Content-Type':'application/json'
-		})
-	}).then(res=>res.json())
-	.catch(error=>console.error('Error:', error))
-	.then(res=>{
-		//console.log('Success:', res);
-		//秀cht或縮寫或全寫cht
-		if(res.cht.length>0){
-			//將不重複的中文串起來
-			return res.cht.join(", ");
-		}
-		else{
-			return "";
-		}
-	});*/
 
 	// use reply API
 	if(echo!==""){
