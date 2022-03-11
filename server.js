@@ -48,10 +48,10 @@ async function handleEvent(event){
 		console.log("===========================");
 		if(res.data.cht.length>0){
 			//將不重複的中文串起來
-			return res.data.cht.join(", ");
+			return {type: 'text', text: res.data.cht.join(", ")};
 		}
 		else{
-			return "";
+			return {type: 'text', text: ""};
 		}
 	})
 	.catch(error => {
@@ -64,7 +64,7 @@ async function handleEvent(event){
 	console.log("===========================");
 
 	// use reply API
-	if(echo!==""){
+	if(echo.text!==""){
 		return client.replyMessage(event.replyToken, echo);
 	}
 }
