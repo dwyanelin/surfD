@@ -39,7 +39,7 @@ function handleEvent(event){
 	//const echo={type: 'text', text: event.message.text};
 	let echo=fetch('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
 		method:'POST', //or 'PUT'
-		body:JSON.stringify(data), //data can be `string` or {object}!
+		body:JSON.stringify({keyword:event.message.text}), //data can be `string` or {object}!
 		headers:new Headers({
 			'Content-Type':'application/json'
 		})
