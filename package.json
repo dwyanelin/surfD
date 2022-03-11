@@ -1,6 +1,7 @@
 {
   "name": "surfD",
   "version": "0.0.1",
+  "type": "module",
   "description": "surfInformation, kfcCoupons, ForeseenDictionary fetched by lineBot.",
   "main": "server.js",
   "scripts": {
