@@ -58,6 +58,11 @@ async function handleEvent(event){
 		console.error(error)
 	});
 
+	console.log("===========================");
+	console.log(typeof echo);
+	console.log(echo);
+	console.log("===========================");
+
 	// use reply API
 	if(echo!==""){
 		return client.replyMessage(event.replyToken, echo);
