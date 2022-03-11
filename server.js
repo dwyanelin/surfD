@@ -35,11 +35,18 @@ async function handleEvent(event){
 		return Promise.resolve(null);
 	}
 
+	let keyword;
+	if(!event.message.text.includes("===")){
+		return Promise.resolve(null);
+	}
+	else{
+		keyword=event.message.text.replace("===", "");
+	}
+
 	// create a echoing text message
-	//const echo={type: 'text', text: event.message.text};
 	let echo=await axios
 	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
-		keyword: event.message.text,
+		keyword,
 	})
 	.then(res => {
 		console.log("===========================");
