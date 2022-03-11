@@ -48,7 +48,7 @@ function handleEvent(event){
 		console.log("===========================");
 		if(res.data.cht.length>0){
 			//將不重複的中文串起來
-			return res.cht.join(", ");
+			return res.data.cht.join(", ");
 		}
 		else{
 			return "";
