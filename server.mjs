@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const axios = require('axios');
 
 // index.js
 const line=require('@line/bot-sdk');
@@ -37,7 +37,24 @@ function handleEvent(event){
 
 	// create a echoing text message
 	//const echo={type: 'text', text: event.message.text};
-	let echo=fetch('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
+	let echo=axios
+	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
+		keyword: event.message.text,
+	})
+	.then(response => {
+		if(response.cht.length>0){
+			//將不重複的中文串起來
+			return response.cht.join(", ");
+		}
+		else{
+			return "";
+		}
+	})
+	.catch(error => {
+		console.error(error)
+	});
+
+	/*let echo=fetch('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
 		method:'POST', //or 'PUT'
 		body:JSON.stringify({keyword:event.message.text}), //data can be `string` or {object}!
 		headers:new Headers({
@@ -55,7 +72,7 @@ function handleEvent(event){
 		else{
 			return "";
 		}
-	});
+	});*/
 
 	// use reply API
 	if(echo!==""){
