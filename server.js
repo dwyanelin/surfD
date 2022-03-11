@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+const fetch=require("node-fetch");
 
 // index.js
 const line=require('@line/bot-sdk');
