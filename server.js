@@ -87,6 +87,7 @@ async function handleEvent(event){
     	path: "./screenshot.png",
     });
 		console.log("===========================");
+		console.log(__dirname);
     console.log(image);
 		console.log("===========================");
     await browser.close();
