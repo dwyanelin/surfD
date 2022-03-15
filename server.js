@@ -84,17 +84,17 @@ async function handleEvent(event){
     const image = await page.screenshot({
     	fullPage : true,
     	type:"png",
-    	path: "./screenshot.png",
+    	path: __dirname+"/screenshot.png",
     });
 		console.log("===========================");
-		console.log(__dirname);
+		console.log(__dirname+"/screenshot.png");
     console.log(image);
 		console.log("===========================");
     await browser.close();
     echo={
     	type: 'image',
-    	originalContentUrl: "https://image.shutterstock.com/image-vector/image-windy-day-trees-cloud-260nw-1030329250.jpg",
-      previewImageUrl: "https://image.shutterstock.com/image-vector/image-windy-day-trees-cloud-260nw-1030329250.jpg",
+    	originalContentUrl: "https://surfd.herokuapp.com/app/screenshot.png",
+      previewImageUrl: "https://surfd.herokuapp.com/app/screenshot.png",
     };
     /*response.set('Content-Type', 'image/png');
     response.send(image);*/
