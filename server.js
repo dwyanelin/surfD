@@ -92,8 +92,8 @@ async function handleEvent(event){
     await browser.close();
     echo={
     	type: 'image',
-    	originalContentUrl: image,
-      previewImageUrl: image,
+    	originalContentUrl: "./screenshot.png",
+      previewImageUrl: "./screenshot.png",
     };
     /*response.set('Content-Type', 'image/png');
     response.send(image);*/
