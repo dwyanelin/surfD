@@ -76,8 +76,8 @@ async function handleEvent(event){
 		keyword=event.message.text.replace("~預報", "");
 		keyword=event.message.text.replace("~WINDY", "");
 		const browser = await puppeteer.launch({
-			headless:false,
-      args: ['--no-sandbox'],
+			headless: true,
+      args: ['--no-sandbox','--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
     await page.goto("https://www.windy.com/");
