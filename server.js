@@ -81,7 +81,10 @@ async function handleEvent(event){
     });
     const page = await browser.newPage();
     await page.goto("https://www.windy.com/");
-    const image = await page.screenshot({fullPage : true});
+    const image = await page.screenshot({
+    	fullPage : true,
+    	type:"png"
+    });
 		console.log("===========================");
     console.log(image);
 		console.log("===========================");
