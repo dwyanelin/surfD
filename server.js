@@ -84,7 +84,7 @@ async function handleEvent(event){
     const image = await page.screenshot({
     	fullPage : true,
     	type:"png",
-    	path: "./screenshot.png",
+    	path: "https://surfd.herokuapp.com/screenshot.png",
     });
 		console.log("===========================");
     console.log(image);
@@ -92,8 +92,8 @@ async function handleEvent(event){
     await browser.close();
     echo={
     	type: 'image',
-    	originalContentUrl: "./screenshot.png",
-      previewImageUrl: "./screenshot.png",
+    	originalContentUrl: "https://surfd.herokuapp.com/screenshot.png",
+      previewImageUrl: "https://surfd.herokuapp.com/screenshot.png",
     };
     /*response.set('Content-Type', 'image/png');
     response.send(image);*/
