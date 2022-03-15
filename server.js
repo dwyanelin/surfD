@@ -14,6 +14,7 @@ const client=new line.Client(config);
 // create Express app
 // about Express itself: <https://expressjs.com/>
 const app=express();
+const puppeteer = require('puppeteer');
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
@@ -36,34 +37,73 @@ async function handleEvent(event){
 	}
 
 	let keyword;
-	if(!event.message.text.includes("===")){
+	let echo;
+	if(event.message.text.includes("===")){//查辭典
+		keyword=event.message.text.replace("===", "");
+		// create a echoing text message
+		echo=await axios
+		.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
+			keyword,
+		})
+		.then(res => {
+			console.log("===========================");
+			console.log(typeof res.data);
+			console.log(res.data);
+			console.log("===========================");
+			if(res.data.cht.length>0){
+				//將不重複的中文串起來
+				return {type: 'text', text: res.data.cht.join(", ")};
+			}
+			else{
+				return {type: 'text', text: ""};
+			}
+		})
+		.catch(error => {
+			console.error(error)
+		});
+	}
+	else if(event.message.text.includes("+++")){//查icd
+		//4
+		keyword=event.message.text.replace("+++", "");
+	}
+	else if(event.message.text.includes("~潮汐")||event.message.text.toUpperCase().includes("~TIDE")){//查潮汐（tide）+浪點名，預設雙獅
+		//3
+		keyword=event.message.text.replace("~潮汐", "");
+		keyword=event.message.text.replace("~TIDE", "");
+	}
+	else if(event.message.text.includes("~預報")||event.message.text.toUpperCase().includes("~WINDY")){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
+		//1
+		keyword=event.message.text.replace("~預報", "");
+		keyword=event.message.text.replace("~WINDY", "");
+		const browser = await puppeteer.launch({
+      args: ['--no-sandbox']
+    });
+    const page = await browser.newPage();
+    await page.goto("https://www.windy.com/");
+    const image = await page.screenshot({fullPage : true});
+		console.log("===========================");
+    console.log(image);
+		console.log("===========================");
+    await browser.close();
+    echo={
+    	type: 'image',
+    	originalContentUrl: image,
+      previewImageUrl: image,
+    };
+    /*response.set('Content-Type', 'image/png');
+    response.send(image);*/
+	}
+	else if(event.message.text.includes("~店家")){//連結店家官網、FB、IG
+		keyword=event.message.text.replace("~店家", "");
 		return Promise.resolve(null);
 	}
-	else{
-		keyword=event.message.text.replace("===", "");
+	else if(event.message.text.includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
+		//2
+		keyword=event.message.text.replace("~KFC", "");
 	}
-
-	// create a echoing text message
-	let echo=await axios
-	.post('https://www.feature-mw.com/consult/searchExactFromChromeExtension2', {
-		keyword,
-	})
-	.then(res => {
-		console.log("===========================");
-		console.log(typeof res.data);
-		console.log(res.data);
-		console.log("===========================");
-		if(res.data.cht.length>0){
-			//將不重複的中文串起來
-			return {type: 'text', text: res.data.cht.join(", ")};
-		}
-		else{
-			return {type: 'text', text: ""};
-		}
-	})
-	.catch(error => {
-		console.error(error)
-	});
+	else{
+		return Promise.resolve(null);
+	}
 
 	console.log("===========================");
 	console.log(typeof echo);
@@ -71,7 +111,7 @@ async function handleEvent(event){
 	console.log("===========================");
 
 	// use reply API
-	if(echo.text!==""){
+	if(echo.text!==""||echo.type==="image"){
 		return client.replyMessage(event.replyToken, echo);
 	}
 }
