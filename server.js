@@ -134,21 +134,9 @@ async function handleEvent(event){
 			//date
 
 			return {
-				type: "box",
-					layout: "horizontal",
-					contents: [{
-						type: "text",
-						text: keyword,
-						weight: "bold",
-					},
-					{
-						type: "text",
-						text: " ",
-					},
-					{
-						type: "text",
-						text: price,
-					}],
+				type: 'image',
+				originalContentUrl: image,
+				previewImageUrl: image,
 			};
 			/*return {
 				type: "bubble",
@@ -201,7 +189,7 @@ async function handleEvent(event){
 	console.log("===========================");
 
 	// use reply API
-	if(echo.text!==""||echo.type==="image"||echo.type==="bubble"){
+	if((echo.type==="text"&&echo.text!=="")||echo.type==="image"||echo.type==="bubble"){
 		console.log("===========================");
 		console.log("有進到reply");
 		console.log("===========================");
