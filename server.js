@@ -2,10 +2,10 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const options = {
-  headers: {
-    'accept-language': ' zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-    'user-agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
-  }
+	headers: {
+		'accept-language': ' zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+		'user-agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+	}
 }
 
 // index.js
@@ -27,7 +27,7 @@ const puppeteer = require('puppeteer');
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res)=>{
-	console.log(req, res);
+	//console.log(req, res);
 	Promise
 	.all(req.body.events.map(handleEvent))
 	.then((result)=>res.json(result))
@@ -85,27 +85,27 @@ async function handleEvent(event){
 		keyword=event.message.text.replace("~WINDY", "");
 		const browser = await puppeteer.launch({
 			headless: true,
-      args: ['--no-sandbox','--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    await page.goto("https://www.windy.com/");
-    const image = await page.screenshot({
-    	fullPage : true,
-    	type:"png",
-    	path: __dirname+"/screenshot.png",
-    });
+			args: ['--no-sandbox','--disable-setuid-sandbox']
+		});
+		const page = await browser.newPage();
+		await page.goto("https://www.windy.com/");
+		const image = await page.screenshot({
+			fullPage : true,
+			type:"png",
+			path: __dirname+"/screenshot.png",
+		});
 		console.log("===========================");
 		console.log(__dirname+"/screenshot.png");
-    console.log(image);
+		console.log(image);
 		console.log("===========================");
-    await browser.close();
-    echo={
-    	type: 'image',
-    	originalContentUrl: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg",
-      previewImageUrl: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg",
-    };
-    /*response.set('Content-Type', 'image/png');
-    response.send(image);*/
+		await browser.close();
+		echo={
+			type: 'image',
+			originalContentUrl: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg",
+			previewImageUrl: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg",
+		};
+		/*response.set('Content-Type', 'image/png');
+		response.send(image);*/
 	}
 	else if(event.message.text.includes("~店家")){//連結店家官網、FB、IG
 		keyword=event.message.text.replace("~店家", "");
@@ -115,78 +115,75 @@ async function handleEvent(event){
 		//2
 		keyword=event.message.text.toUpperCase().replace("~KFC", "");
 		console.log("===========================");
-    console.log(keyword);
+		console.log(keyword);
 		console.log("===========================");
 		echo=await axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
-	  .then((res) => {
-	    //內容、價格、日期跟圖片
-	    const $ = cheerio.load(res.data);
-	    let content=$(".card-text")[0].children[0].data.trim();
-	    let price=$(".mx-2")[0].children[0].data.trim();
-	    let date=$(".text-muted")[0].children[0].data.trim();
-	    let image=$(".card-img-bottom")[0].attribs["data-src"];
+		.then((res) => {
+			//內容、價格、日期跟圖片
+			const $ = cheerio.load(res.data);
+			let content=$(".card-text")[0].children[0].data.trim();
+			let price=$(".mx-2")[0].children[0].data.trim();
+			let date=$(".text-muted")[0].children[0].data.trim();
+			let image=$(".card-img-bottom")[0].attribs["data-src"];
 			console.log("===========================");
-	    console.log({content, price, date, image});
+			console.log({content, price, date, image});
 			console.log("===========================");
-	    //title=keyword(編號, bold)+price
-	    //image
-	    //content
-	    //date
-	    return {
-			  type: "bubble",
-			  /*"styles": {
-			    "header": {
-			      "backgroundColor": "#ffaaaa"
-			    },
-			    "body": {
-			      "backgroundColor": "#aaffaa"
-			    },
-			    "footer": {
-			      "backgroundColor": "#aaaaff"
-			    }
-			  },*/
-			  header: {
-			    type: "box",
-			    layout: "horizontal",
-			    contents: [
-			      {
-			        type: "text",
-			        text: keyword,
-            	weight: "bold",
-			      },
-			      {
-			        type: "text",
-			        text: " ",
-			      },
-			      {
-			        type: "text",
-			        text: price,
-			      }
-			    ]
-			  },
-			  /*hero: {
-			    type: "image",
-			    url: image,
-			    size: "full",
-			    aspectRatio: "2:1",
-			  },*/
-			  body: {
-			    type: "box",
-			    layout: "vertical",
-			    contents: [
-			      {
-			        type: "text",
-			        text: content,
-			      },
-			      {
-			        type: "text",
-			        text: date,
-			      }
-			    ]
-			  },
-			};
-	  })
-	  .catch(err => console.log(err));
+			//title=keyword(編號, bold)+price
+			//image
+			//content
+			//date
+			return {
+  "type": "bubble",
+  "styles": {
+    "header": {
+      "backgroundColor": "#ffaaaa"
+    },
+    "body": {
+      "backgroundColor": "#aaffaa"
+    },
+    "footer": {
+      "backgroundColor": "#aaaaff"
+    }
+  },
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "header"
+      }
+    ]
+  },
+  "hero": {
+    "type": "image",
+    "url": "https://example.com/flex/images/image.jpg",
+    "size": "full",
+    "aspectRatio": "2:1"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "body"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "footer"
+      }
+    ]
+  }
+};
+		})
+		.catch(err => console.log(err));
 	}
 	else{
 		return Promise.resolve(null);
@@ -209,5 +206,5 @@ async function handleEvent(event){
 // listen on port
 const port=process.env.PORT||3000;
 app.listen(port, ()=>{
-	console.log(`listening on ${port}`);
+	//console.log(`listening on ${port}`);
 });
