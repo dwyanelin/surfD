@@ -134,9 +134,21 @@ async function handleEvent(event){
 			//date
 
 			return {
-				type: 'image',
-				originalContentUrl: image,
-				previewImageUrl: image,
+				type: "box",
+					layout: "horizontal",
+					contents: [{
+						type: "text",
+						text: keyword,
+						weight: "bold",
+					},
+					{
+						type: "text",
+						text: " ",
+					},
+					{
+						type: "text",
+						text: price,
+					}],
 			};
 			/*return {
 				type: "bubble",
