@@ -133,6 +133,10 @@ async function handleEvent(event){
 	    //content
 	    //date
 	    return ({
+    	type: 'image',
+    	originalContentUrl: "https://surfd.herokuapp.com/app/screenshot.png",
+      previewImageUrl: "https://surfd.herokuapp.com/app/screenshot.png",
+    }/*{
 	    	"type": "flex",
 			  "altText": "this is a flex message",
 			  "contents": {
@@ -148,7 +152,7 @@ async function handleEvent(event){
 				      "backgroundColor": "#aaaaff"
 				    }
 				  },*/
-				  "header": {
+				  /*"header": {
 				    "type": "box",
 				    "layout": "horizontal",
 				    "contents": [
@@ -188,7 +192,7 @@ async function handleEvent(event){
 				    ]
 				  },
 				}
-			});
+			}*/);
 	  })
 	  .catch(err => console.log(err));
 	}
