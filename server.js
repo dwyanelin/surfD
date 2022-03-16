@@ -133,10 +133,10 @@ async function handleEvent(event){
 			//content
 			//date
 			return ({
-				type: "bubble",
-				hero: {
-					type: "image",
-					url: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg"
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg"
 				}
 			});
 		})
