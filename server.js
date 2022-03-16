@@ -132,56 +132,50 @@ async function handleEvent(event){
 			//image
 			//content
 			//date
+
 			return {
-  "type": "bubble",
-  "styles": {
-    "header": {
-      "backgroundColor": "#ffaaaa"
-    },
-    "body": {
-      "backgroundColor": "#aaffaa"
-    },
-    "footer": {
-      "backgroundColor": "#aaaaff"
-    }
-  },
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "header"
-      }
-    ]
-  },
-  "hero": {
-    "type": "image",
-    "url": "https://example.com/flex/images/image.jpg",
-    "size": "full",
-    "aspectRatio": "2:1"
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "body"
-      }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "footer"
-      }
-    ]
-  }
-};
+				type: 'image',
+				originalContentUrl: image,
+				previewImageUrl: image,
+			};
+			/*return {
+				type: "bubble",
+				header: {
+					type: "box",
+					layout: "horizontal",
+					contents: [{
+						type: "text",
+						text: keyword,
+						weight: "bold",
+					},
+					{
+						type: "text",
+						text: " ",
+					},
+					{
+						type: "text",
+						text: price,
+					}],
+				},
+				hero: {
+					type: "image",
+					url: image,
+					size: "full",
+					aspectRatio: "2:1",
+				},
+				body: {
+					type: "box",
+					layout: "vertical",
+					contents: [{
+						type: "text",
+						text: content,
+					},
+					{
+						type: "text",
+						text: date,
+					}],
+				},
+			};*/
 		})
 		.catch(err => console.log(err));
 	}
