@@ -133,9 +133,13 @@ async function handleEvent(event){
 			//content
 			//date
 			return {
-				type: 'image',
-				originalContentUrl: "https://surfd.herokuapp.com/app/screenshot.png",
-				previewImageUrl: "https://surfd.herokuapp.com/app/screenshot.png",
+				type: "bubble",
+				hero: {
+					type: "image",
+					url: "https://surfd.herokuapp.com/app/screenshot.png",
+					size: "full",
+					aspectRatio: "2:1"
+				}
 			};
 		})
 		.catch(err => console.log(err));
