@@ -113,7 +113,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text.toUpperCase().includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
 		//2
-		keyword=event.message.text.replace("~KFC", "");
+		keyword=event.message.text.toUpperCase().replace("~KFC", "");
 		console.log("===========================");
     console.log(keyword);
 		console.log("===========================");
