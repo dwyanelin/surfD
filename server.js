@@ -1,4 +1,12 @@
 const axios = require('axios');
+const cheerio = require('cheerio');
+
+const options = {
+  headers: {
+    'accept-language': ' zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+    'user-agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  }
+}
 
 // index.js
 const line=require('@line/bot-sdk');
@@ -106,6 +114,73 @@ async function handleEvent(event){
 	else if(event.message.text.includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
 		//2
 		keyword=event.message.text.replace("~KFC", "");
+		axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
+	  .then((res) => {
+	    //內容、價格、日期跟圖片
+	    const $ = cheerio.load(res.data);
+	    let content=$(".card-text")[0].children[0].data.trim();
+	    let price=$(".mx-2")[0].children[0].data.trim();
+	    let date=$(".text-muted")[0].children[0].data.trim();
+	    let image=$(".card-img-bottom")[0].attribs["data-src"];
+	    //title=keyword(編號, bold)+price
+	    //image
+	    //content
+	    //date
+	    echo={
+			  "type": "bubble",
+			  /*"styles": {
+			    "header": {
+			      "backgroundColor": "#ffaaaa"
+			    },
+			    "body": {
+			      "backgroundColor": "#aaffaa"
+			    },
+			    "footer": {
+			      "backgroundColor": "#aaaaff"
+			    }
+			  },*/
+			  "header": {
+			    "type": "box",
+			    "layout": "horizontal",
+			    "contents": [
+			      {
+			        "type": "span",
+			        "text": keyword,
+            	"weight": "bold",
+			      },
+			      {
+			        "type": "span",
+			        "text": " "
+			      },
+			      {
+			        "type": "span",
+			        "text": price
+			      }
+			    ]
+			  },
+			  "hero": {
+			    "type": "image",
+			    "url": image,
+			    "size": "full",
+			    "aspectRatio": "2:1"
+			  },
+			  "body": {
+			    "type": "box",
+			    "layout": "vertical",
+			    "contents": [
+			      {
+			        "type": "span",
+			        "text": content,
+			      },
+			      {
+			        "type": "span",
+			        "text": date
+			      }
+			    ]
+			  },
+			}
+	  })
+	  .catch(err => console.log(err));
 	}
 	else{
 		return Promise.resolve(null);
