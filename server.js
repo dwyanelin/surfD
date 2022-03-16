@@ -132,11 +132,11 @@ async function handleEvent(event){
 			//image
 			//content
 			//date
-			return ({
-				"type": "bubble",
-				"hero": {
-					"type": "image",
-					"url": "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg"
+			return JSON.stringify({
+				type: "bubble",
+				hero: {
+					type: "image",
+					url: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg"
 				}
 			});
 		})
