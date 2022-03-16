@@ -134,33 +134,13 @@ async function handleEvent(event){
 	    //date
 	    return {
 			  type: "bubble",
-			  /*"styles": {
-			    "header": {
-			      "backgroundColor": "#ffaaaa"
-			    },
-			    "body": {
-			      "backgroundColor": "#aaffaa"
-			    },
-			    "footer": {
-			      "backgroundColor": "#aaaaff"
-			    }
-			  },*/
 			  header: {
 			    type: "box",
 			    layout: "horizontal",
 			    contents: [
 			      {
 			        type: "text",
-			        text: keyword,
-            	weight: "bold"
-			      },
-			      {
-			        type: "text",
-			        text: " "
-			      },
-			      {
-			        type: "text",
-			        text: price
+			        text: "asdf"
 			      }
 			    ]
 			  },
@@ -176,11 +156,7 @@ async function handleEvent(event){
 			    contents: [
 			      {
 			        type: "text",
-			        text: content
-			      },
-			      {
-			        type: "text",
-			        text: date
+			        text: "content"
 			      }
 			    ]
 			  }
