@@ -132,8 +132,8 @@ async function handleEvent(event){
 	    //image
 	    //content
 	    //date
-	    return ({
-			  "type": "bubble",
+	    return {
+			  type: "bubble",
 			  /*"styles": {
 			    "header": {
 			      "backgroundColor": "#ffaaaa"
@@ -145,46 +145,46 @@ async function handleEvent(event){
 			      "backgroundColor": "#aaaaff"
 			    }
 			  },*/
-			  "header": {
-			    "type": "box",
-			    "layout": "horizontal",
-			    "contents": [
+			  header: {
+			    type: "box",
+			    layout: "horizontal",
+			    contents: [
 			      {
-			        "type": "span",
-			        "text": keyword,
-            	"weight": "bold"
+			        type: "span",
+			        text: keyword,
+            	weight: "bold"
 			      },
 			      {
-			        "type": "span",
-			        "text": " "
+			        type: "span",
+			        text: " "
 			      },
 			      {
-			        "type": "span",
-			        "text": price
+			        type: "span",
+			        text: price
 			      }
 			    ]
 			  },
-			  "hero": {
-			    "type": "image",
-			    "url": image,
-			    "size": "full",
-			    "aspectRatio": "2:1"
+			  hero: {
+			    type: "image",
+			    url: image,
+			    size: "full",
+			    aspectRatio: "2:1"
 			  },
-			  "body": {
-			    "type": "box",
-			    "layout": "vertical",
-			    "contents": [
+			  body: {
+			    type: "box",
+			    layout: "vertical",
+			    contents: [
 			      {
-			        "type": "span",
-			        "text": content
+			        type: "span",
+			        text: content
 			      },
 			      {
-			        "type": "span",
-			        "text": date
+			        type: "span",
+			        text: date
 			      }
 			    ]
 			  }
-			});
+			};
 	  })
 	  .catch(err => console.log(err));
 	}
