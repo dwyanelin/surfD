@@ -114,7 +114,10 @@ async function handleEvent(event){
 	else if(event.message.text.toUpperCase().includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
 		//2
 		keyword=event.message.text.replace("~KFC", "");
-		echo =await axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
+		console.log("===========================");
+    console.log(keyword);
+		console.log("===========================");
+		echo=await axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
 	  .then((res) => {
 	    //內容、價格、日期跟圖片
 	    const $ = cheerio.load(res.data);
@@ -122,11 +125,14 @@ async function handleEvent(event){
 	    let price=$(".mx-2")[0].children[0].data.trim();
 	    let date=$(".text-muted")[0].children[0].data.trim();
 	    let image=$(".card-img-bottom")[0].attribs["data-src"];
+			console.log("===========================");
+	    console.log({content, price, date, image});
+			console.log("===========================");
 	    //title=keyword(編號, bold)+price
 	    //image
 	    //content
 	    //date
-	    return {
+	    return ({
 			  "type": "bubble",
 			  /*"styles": {
 			    "header": {
@@ -178,7 +184,7 @@ async function handleEvent(event){
 			      }
 			    ]
 			  },
-			}
+			});
 	  })
 	  .catch(err => console.log(err));
 	}
