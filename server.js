@@ -133,57 +133,61 @@ async function handleEvent(event){
 	    //content
 	    //date
 	    return ({
-			  "type": "bubble",
-			  /*"styles": {
-			    "header": {
-			      "backgroundColor": "#ffaaaa"
-			    },
-			    "body": {
-			      "backgroundColor": "#aaffaa"
-			    },
-			    "footer": {
-			      "backgroundColor": "#aaaaff"
-			    }
-			  },*/
-			  "header": {
-			    "type": "box",
-			    "layout": "horizontal",
-			    "contents": [
-			      {
-			        "type": "span",
-			        "text": keyword,
-            	"weight": "bold",
-			      },
-			      {
-			        "type": "span",
-			        "text": " "
-			      },
-			      {
-			        "type": "span",
-			        "text": price
-			      }
-			    ]
-			  },
-			  "hero": {
-			    "type": "image",
-			    "url": image,
-			    "size": "full",
-			    "aspectRatio": "2:1"
-			  },
-			  "body": {
-			    "type": "box",
-			    "layout": "vertical",
-			    "contents": [
-			      {
-			        "type": "span",
-			        "text": content,
-			      },
-			      {
-			        "type": "span",
-			        "text": date
-			      }
-			    ]
-			  },
+	    	"type": "flex",
+			  "altText": "this is a flex message",
+			  "contents": {
+				  "type": "bubble",
+				  /*"styles": {
+				    "header": {
+				      "backgroundColor": "#ffaaaa"
+				    },
+				    "body": {
+				      "backgroundColor": "#aaffaa"
+				    },
+				    "footer": {
+				      "backgroundColor": "#aaaaff"
+				    }
+				  },*/
+				  "header": {
+				    "type": "box",
+				    "layout": "horizontal",
+				    "contents": [
+				      {
+				        "type": "span",
+				        "text": keyword,
+	            	"weight": "bold",
+				      },
+				      {
+				        "type": "span",
+				        "text": " "
+				      },
+				      {
+				        "type": "span",
+				        "text": price
+				      }
+				    ]
+				  },
+				  "hero": {
+				    "type": "image",
+				    "url": image,
+				    "size": "full",
+				    "aspectRatio": "2:1"
+				  },
+				  "body": {
+				    "type": "box",
+				    "layout": "vertical",
+				    "contents": [
+				      {
+				        "type": "span",
+				        "text": content,
+				      },
+				      {
+				        "type": "span",
+				        "text": date
+				      }
+				    ]
+				  },
+				}
 			});
 	  })
 	  .catch(err => console.log(err));
