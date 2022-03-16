@@ -132,15 +132,13 @@ async function handleEvent(event){
 			//image
 			//content
 			//date
-			return {
+			return ({
 				type: "bubble",
 				hero: {
 					type: "image",
-					url: "https://surfd.herokuapp.com/app/screenshot.png",
-					size: "full",
-					aspectRatio: "2:1"
+					url: "https://pbs.twimg.com/media/DfkhrO1XUAEYkdw.jpg"
 				}
-			};
+			});
 		})
 		.catch(err => console.log(err));
 	}
