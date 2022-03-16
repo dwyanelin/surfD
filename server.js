@@ -150,16 +150,16 @@ async function handleEvent(event){
 			    layout: "horizontal",
 			    contents: [
 			      {
-			        type: "span",
+			        type: "text",
 			        text: keyword,
             	weight: "bold"
 			      },
 			      {
-			        type: "span",
+			        type: "text",
 			        text: " "
 			      },
 			      {
-			        type: "span",
+			        type: "text",
 			        text: price
 			      }
 			    ]
@@ -175,11 +175,11 @@ async function handleEvent(event){
 			    layout: "vertical",
 			    contents: [
 			      {
-			        type: "span",
+			        type: "text",
 			        text: content
 			      },
 			      {
-			        type: "span",
+			        type: "text",
 			        text: date
 			      }
 			    ]
