@@ -111,7 +111,7 @@ async function handleEvent(event){
 		keyword=event.message.text.replace("~店家", "");
 		return Promise.resolve(null);
 	}
-	else if(event.message.text.includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
+	else if(event.message.text.toUpperCase().includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
 		//2
 		keyword=event.message.text.replace("~KFC", "");
 		axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
