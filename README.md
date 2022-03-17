@@ -1,4 +1,2 @@
-# fastfoodCoupons
-Fastfood coupons, include kfc, pizzahut, etc.
-
-source: ptt
+# surfD
+It's a happy app.
