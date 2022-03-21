@@ -11,6 +11,15 @@ const options = {
 // index.js
 const line=require('@line/bot-sdk');
 var express=require('express');
+
+const bodyParser = require('body-parser');
+const request = require('request-promise-native');
+const TIE = require('@artificialsolutions/tie-api-client');
+const FB_PAGE_ACCESS_TOKEN="EAAEJewbZCTzEBAI4cXWlxn23ewstg1aTY7XPc8EBQyJitgOb0gB71nClsTHReqF5aujEvVtay6LSj9c4xQH7BZCLfXIbwa4CZCmtiK43cyxtNnzQYOXtkX8RVLm7G8IlclyvSixM80xE3z1IolPpzvc2EbKkPEmKtPMOIZBWSQoF0yXQd9oJkrumnFH7E1sZD";
+const FB_VERIFY_TOKEN="";
+const TENEO_ENGINE_URL="";
+const teneoApi = TIE.init(TENEO_ENGINE_URL);
+
 const config={
 	channelAccessToken: 'mRylXzlEWz1SF/zZi2j5S6xfDXFXq66FSAXVRUCti7ljR0Ofm2bg33/CGk5UfQN8AnUx7hFY/v04p3wsl09egyN5p4jlxikPkYq/kp5uAHwSzZ98NeE72fFA9oL3bxxDi/JgVwX09gClqzO86YT9OAdB04t89/1O/w1cDnyilFU=',
 	channelSecret: '9ad6181f07656cecde7ed27546281b37'
@@ -195,6 +204,124 @@ async function handleEvent(event){
 		console.log("===========================");
 		return client.replyMessage(event.replyToken, echo);
 	}
+}
+
+app.use('/webhook', facebookWebhook(SessionHandler()));
+
+function SessionHandler() {
+
+  // Map the Facebook user id to the teneo engine session id.
+  // This code keeps the map in memory, which is ok for testing purposes
+  // For production usage it is advised to make use of more resilient storage mechanisms like redis
+  const sessionMap = new Map();
+
+  return {
+    getSession: (userId) => new Promise((resolve) => {
+      if (sessionMap.size > 0) {
+        resolve(sessionMap.get(userId));
+      }
+      else {
+        resolve("")
+      }
+    }),
+    setSession: (userId, sessionId) => new Promise((resolve) => {
+      sessionMap.set(userId, sessionId);
+      resolve();
+    })
+  };
+}
+
+/* *
+ * FACEBOOK WEBHOOK ROUTER
+ * */
+
+function facebookWebhook(sessionHandler) {
+  const router = express.Router();
+
+  router.use(bodyParser.json());
+  router.get('/', verifyEndpoint);
+  router.post('/', handleFacebookMessage(sessionHandler));
+
+  return router;
+}
+
+function verifyEndpoint(req, res) {
+  if (req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
+    console.log('Verify token')
+    res.send(req.query['hub.challenge']);
+  } else {
+    res.send('Error, wrong validation token');
+  }
+}
+
+function handleFacebookMessage(sessionHandler) {
+  return (req, res) => {
+    res.sendStatus(200);
+
+    req.body.entry.forEach(({ messaging }) => {
+      messaging.forEach(async ({ message, sender }) => {
+        try {
+          console.log(`Got message '${message.text}' from sender ${sender.id}`);
+
+          const sessionId = await sessionHandler.getSession(sender.id);
+          const teneoResponse = await teneoApi.sendInput(sessionId, {
+            text: message.text
+          });
+
+          console.log(`Got Teneo Engine response '${teneoResponse.output.text}' for session ${teneoResponse.sessionId}`);
+
+          await sessionHandler.setSession(sender.id, teneoResponse.sessionId);
+          const facebookMessage = createFacebookMessage(sender.id, teneoResponse.output.text);
+
+          await sendFacebookMessage(facebookMessage);
+
+          // use the engine output parameter 'fbmessenger' to send messenger templates and attachments
+          // https://developers.facebook.com/docs/messenger-platform/send-messages/templates
+          if (teneoResponse.output.parameters.fbmessenger) {
+            const facebookAttachment = createFacebookAttachment(sender.id, teneoResponse.output.parameters.fbmessenger);
+            await sendFacebookMessage(facebookAttachment);
+          }
+
+        } catch (error) {
+          console.error(`Failed when sending input to Teneo Engine @ ${TENEO_ENGINE_URL}`, error);
+        }
+      });
+    });
+  };
+}
+
+function createFacebookMessage(recipientId, text) {
+  return {
+    message: { text },
+    recipient: { id: recipientId }
+  };
+}
+
+function createFacebookAttachment(recipientId, attachment) {
+  return {
+    message: { attachment: attachment },
+    recipient: { id: recipientId }
+  };
+}
+
+async function sendFacebookMessage(messageData) {
+  try {
+    const response = await request({
+      uri: 'https://graph.facebook.com/v2.6/me/messages',
+      qs: { access_token: FB_PAGE_ACCESS_TOKEN },
+      method: 'POST',
+      json: messageData,
+      resolveWithFullResponse: true
+    });
+
+    if (response.statusCode !== 200) {
+      throw new Error(`Got status code ${response.statusCode} when sending response.`);
+    }
+
+    console.log('Sent response to Facebook');
+  } catch (error) {
+    console.error('Got error while sending message to Facebook', error);
+  }
 }
 
 // listen on port
