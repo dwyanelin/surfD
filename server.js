@@ -206,7 +206,7 @@ async function handleEvent(event){
 	}
 }
 
-app.use('/webhook', facebookWebhook(SessionHandler()));
+app.post('/webhook', facebookWebhook(SessionHandler()));
 
 function SessionHandler() {
 
