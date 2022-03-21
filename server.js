@@ -16,8 +16,8 @@ const bodyParser = require('body-parser');
 const request = require('request-promise-native');
 const TIE = require('@artificialsolutions/tie-api-client');
 const FB_PAGE_ACCESS_TOKEN="EAAEJewbZCTzEBAI4cXWlxn23ewstg1aTY7XPc8EBQyJitgOb0gB71nClsTHReqF5aujEvVtay6LSj9c4xQH7BZCLfXIbwa4CZCmtiK43cyxtNnzQYOXtkX8RVLm7G8IlclyvSixM80xE3z1IolPpzvc2EbKkPEmKtPMOIZBWSQoF0yXQd9oJkrumnFH7E1sZD";
-const FB_VERIFY_TOKEN="";
-const TENEO_ENGINE_URL="";
+const FB_VERIFY_TOKEN="asdf";
+const TENEO_ENGINE_URL="https://surfd.herokuapp.com/webhook";
 const teneoApi = TIE.init(TENEO_ENGINE_URL);
 
 const config={
