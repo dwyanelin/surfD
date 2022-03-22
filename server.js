@@ -209,7 +209,7 @@ console.log("teneoApi===========================");
 console.log(teneoApi);
 console.log("teneoApi===========================");
 
-app.use('/webhook', facebookWebhook(SessionHandler()));
+app.post('/webhook', facebookWebhook(SessionHandler()));
 
 function SessionHandler() {
 	console.log("SessionHandler===========================");
