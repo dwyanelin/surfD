@@ -12,14 +12,6 @@ const options = {
 const line=require('@line/bot-sdk');
 var express=require('express');
 
-const bodyParser = require('body-parser');
-const request = require('request-promise-native');
-const TIE = require('@artificialsolutions/tie-api-client');
-const FB_PAGE_ACCESS_TOKEN="EAAEJewbZCTzEBAI4cXWlxn23ewstg1aTY7XPc8EBQyJitgOb0gB71nClsTHReqF5aujEvVtay6LSj9c4xQH7BZCLfXIbwa4CZCmtiK43cyxtNnzQYOXtkX8RVLm7G8IlclyvSixM80xE3z1IolPpzvc2EbKkPEmKtPMOIZBWSQoF0yXQd9oJkrumnFH7E1sZD";
-const FB_VERIFY_TOKEN="asdf";
-const TENEO_ENGINE_URL="https://surfd.herokuapp.com/webhook";
-const teneoApi = TIE.init(TENEO_ENGINE_URL);
-
 const config={
 	channelAccessToken: 'mRylXzlEWz1SF/zZi2j5S6xfDXFXq66FSAXVRUCti7ljR0Ofm2bg33/CGk5UfQN8AnUx7hFY/v04p3wsl09egyN5p4jlxikPkYq/kp5uAHwSzZ98NeE72fFA9oL3bxxDi/JgVwX09gClqzO86YT9OAdB04t89/1O/w1cDnyilFU=',
 	channelSecret: '9ad6181f07656cecde7ed27546281b37'
@@ -206,9 +198,23 @@ async function handleEvent(event){
 	}
 }
 
+const bodyParser = require('body-parser');
+const request = require('request-promise-native');
+const TIE = require('@artificialsolutions/tie-api-client');
+const FB_PAGE_ACCESS_TOKEN="EAAEJewbZCTzEBAI4cXWlxn23ewstg1aTY7XPc8EBQyJitgOb0gB71nClsTHReqF5aujEvVtay6LSj9c4xQH7BZCLfXIbwa4CZCmtiK43cyxtNnzQYOXtkX8RVLm7G8IlclyvSixM80xE3z1IolPpzvc2EbKkPEmKtPMOIZBWSQoF0yXQd9oJkrumnFH7E1sZD";
+const FB_VERIFY_TOKEN="asdf";
+const TENEO_ENGINE_URL="https://surfd.herokuapp.com/webhook";
+const teneoApi = TIE.init(TENEO_ENGINE_URL);
+console.log("teneoApi===========================");
+console.log(teneoApi);
+console.log("teneoApi===========================");
+
 app.use('/webhook', facebookWebhook(SessionHandler()));
 
 function SessionHandler() {
+	console.log("SessionHandler===========================");
+	console.log("SessionHandler");
+	console.log("SessionHandler===========================");
 
   // Map the Facebook user id to the teneo engine session id.
   // This code keeps the map in memory, which is ok for testing purposes
@@ -236,6 +242,9 @@ function SessionHandler() {
  * */
 
 function facebookWebhook(sessionHandler) {
+	console.log("facebookWebhook===========================");
+	console.log("facebookWebhook");
+	console.log("facebookWebhook===========================");
   const router = express.Router();
 
   router.use(bodyParser.json());
@@ -246,6 +255,9 @@ function facebookWebhook(sessionHandler) {
 }
 
 function verifyEndpoint(req, res) {
+	console.log("verifyEndpoint===========================");
+	console.log("verifyEndpoint");
+	console.log("verifyEndpoint===========================");
   if (req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
     console.log('Verify token')
     res.send(req.query['hub.challenge']);
@@ -255,10 +267,16 @@ function verifyEndpoint(req, res) {
 }
 
 function handleFacebookMessage(sessionHandler) {
+	console.log("handleFacebookMessage===========================");
+	console.log("handleFacebookMessage");
+	console.log("handleFacebookMessage===========================");
   return (req, res) => {
     res.sendStatus(200);
 
     req.body.entry.forEach(({ messaging }) => {
+			console.log("messaging===========================");
+			console.log(messaging);
+			console.log("messaging===========================");
       messaging.forEach(async ({ message, sender }) => {
         try {
           console.log(`Got message '${message.text}' from sender ${sender.id}`);
@@ -291,6 +309,9 @@ function handleFacebookMessage(sessionHandler) {
 }
 
 function createFacebookMessage(recipientId, text) {
+	console.log("createFacebookMessage===========================");
+	console.log("createFacebookMessage");
+	console.log("createFacebookMessage===========================");
   return {
     message: { text },
     recipient: { id: recipientId }
@@ -298,6 +319,9 @@ function createFacebookMessage(recipientId, text) {
 }
 
 function createFacebookAttachment(recipientId, attachment) {
+	console.log("createFacebookAttachment===========================");
+	console.log("createFacebookAttachment");
+	console.log("createFacebookAttachment===========================");
   return {
     message: { attachment: attachment },
     recipient: { id: recipientId }
@@ -305,6 +329,9 @@ function createFacebookAttachment(recipientId, attachment) {
 }
 
 async function sendFacebookMessage(messageData) {
+	console.log("sendFacebookMessage===========================");
+	console.log("sendFacebookMessage");
+	console.log("sendFacebookMessage===========================");
   try {
     const response = await request({
       uri: 'https://graph.facebook.com/v2.6/me/messages',
