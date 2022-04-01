@@ -139,7 +139,8 @@ async function handleEvent(event){
 						"layout": "vertical",
 						"contents": [{
 							"type": "text",
-							"text": content
+							"text": content,
+							"wrap": true
 						},
 						{
 							"type": "text",
