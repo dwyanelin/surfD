@@ -94,7 +94,7 @@ async function handleEvent(event){
 		.then((res) => {
 			//內容、價格、日期跟圖片
 			const $ = cheerio.load(res.data);
-			let content=$(".card-text")[0].children[0].data.trim();
+			let content=$(".card-text.mb-3").text().trim();
 			let price=$(".mx-2")[0].children[0].data.trim();
 			let date=$(".text-muted")[0].children[0].data.trim();
 			let image=$(".card-img-bottom")[0].attribs["data-src"];
