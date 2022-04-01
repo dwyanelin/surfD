@@ -107,48 +107,47 @@ async function handleEvent(event){
 			//date
 
 			return {
-				type: 'image',
-				originalContentUrl: image,
-				previewImageUrl: image,
+				"type": "flex",
+				"altText": keyword,
+				"contents": {
+					"type": "bubble",
+					"header": {
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [{
+							"type": "text",
+							"text": keyword,
+							"weight": "bold"
+						},
+						{
+							"type": "text",
+							"text": " "
+						},
+						{
+							"type": "text",
+							"text": price
+						}]
+					},
+					hero: {
+						"type": "image",
+						"url": image,
+						"size": "full",
+						"aspectRatio": "2:1"
+					},
+					body: {
+						"type": "box",
+						"layout": "vertical",
+						"contents": [{
+							"type": "text",
+							"text": content
+						},
+						{
+							"type": "text",
+							"text": date
+						}]
+					}
+				}
 			};
-			/*return {
-				type: "bubble",
-				header: {
-					type: "box",
-					layout: "horizontal",
-					contents: [{
-						type: "text",
-						text: keyword,
-						weight: "bold",
-					},
-					{
-						type: "text",
-						text: " ",
-					},
-					{
-						type: "text",
-						text: price,
-					}],
-				},
-				hero: {
-					type: "image",
-					url: image,
-					size: "full",
-					aspectRatio: "2:1",
-				},
-				body: {
-					type: "box",
-					layout: "vertical",
-					contents: [{
-						type: "text",
-						text: content,
-					},
-					{
-						type: "text",
-						text: date,
-					}],
-				},
-			};*/
 		})
 		.catch(err => console.log(err));
 	}
