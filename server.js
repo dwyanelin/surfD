@@ -161,7 +161,7 @@ async function handleEvent(event){
 	console.log("===========================");
 
 	// use reply API
-	if((echo.type==="text"&&echo.text!=="")||echo.type==="image"||echo.type==="bubble"){
+	if((echo.type==="text"&&echo.text!=="")||echo.type!=="text"){
 		console.log("===========================");
 		console.log("有進到reply");
 		console.log("===========================");
