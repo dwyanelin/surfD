@@ -1,7 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+const axios=require('axios');
+const cheerio=require('cheerio');
 
-const options = {
+const options={
 	headers: {
 		'accept-language': ' zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
 		'user-agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
@@ -23,7 +23,7 @@ const client=new line.Client(config);
 // create Express app
 // about Express itself: <https://expressjs.com/>
 const app=express();
-const puppeteer = require('puppeteer');
+const puppeteer=require('puppeteer');
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
@@ -51,18 +51,26 @@ async function handleEvent(event){
 		//3
 		keyword=event.message.text.replace("~潮汐", "");
 		keyword=event.message.text.replace("~TIDE", "");
+
+		let res=await axios.get("https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html", options);
+		const $=cheerio.load(res.data);
+		let tides=$("td[headers=\"day1 tide\"]");
+		let times=$("td[headers=\"day1 time\"]");
+
+		let text=$(tides.get(0)).text()+" "+$(times.get(0)).text()+"\n"+$(tides.get(1)).text()+" "+$(times.get(1)).text()+"\n"+$(tides.get(2)).text()+" "+$(times.get(2)).text()+"\n"+$(tides.get(3)).text()+" "+$(times.get(3)).text();
+		echo={"type":"text", "text":text, "wrap":true};
 	}
 	else if(event.message.text.includes("~預報")||event.message.text.toUpperCase().includes("~WINDY")){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
 		//1
 		keyword=event.message.text.replace("~預報", "");
 		keyword=event.message.text.replace("~WINDY", "");
-		const browser = await puppeteer.launch({
+		const browser=await puppeteer.launch({
 			headless: true,
 			args: ['--no-sandbox','--disable-setuid-sandbox']
 		});
-		const page = await browser.newPage();
+		const page=await browser.newPage();
 		await page.goto("https://www.windy.com/");
-		const image = await page.screenshot({
+		const image=await page.screenshot({
 			fullPage : true,
 			type:"png",
 			path: __dirname+"/screenshot.png",
@@ -93,7 +101,7 @@ async function handleEvent(event){
 		echo=await axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
 		.then((res) => {
 			//內容、價格、日期跟圖片
-			const $ = cheerio.load(res.data);
+			const $=cheerio.load(res.data);
 			let content=$(".card-text.mb-3").text().trim();
 			let price=$(".mx-2")[0].children[0].data.trim();
 			let date=$(".text-muted")[0].children[0].data.trim();
