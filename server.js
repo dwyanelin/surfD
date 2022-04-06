@@ -47,7 +47,10 @@ async function handleEvent(event){
 
 	let keyword;
 	let echo;
-	if(event.message.text.toUpperCase().includes("~TIDE")){
+	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
+		echo={"type":"text", "text":"正在做"};
+	}
+	else if(event.message.text.toUpperCase().includes("~TIDE")){
 		echo={"type":"text", "text":"這樣tide危險～"};
 	}
 	else if(event.message.text[0]==="潮"||event.message.text.toUpperCase()[0]==="T"){//查潮汐（tide）+浪點名，預設雙獅
