@@ -11,10 +11,6 @@ const options={
 (async ()=>{
 	let res=await axios.get("https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html", options);
 		const $=cheerio.load(res.data);
-		let tides=$("td[headers=\"day1 tide\"]");
-		let times=$("td[headers=\"day1 time\"]");
-
-		let text=$(tides.get(0)).text()+" "+$(times.get(0)).text()+"\n"+$(tides.get(1)).text()+" "+$(times.get(1)).text()+"\n"+$(tides.get(2)).text()+" "+$(times.get(2)).text()+"\n"+$(tides.get(3)).text()+" "+$(times.get(3)).text();
-		echo={"type":"text", "text":text, "wrap":true};
-		console.log(echo);
+		let tideDifference=$($(".orange-text").get(0)).text();
+		console.log(tideDifference);
 })();
