@@ -52,8 +52,8 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="潮"||event.message.text.toUpperCase()[0]==="T"){//查潮汐（tide）+浪點名，預設雙獅
 		////還要加多天查詢
-		keyword=event.message.text.replace("~潮汐", "");
-		keyword=event.message.text.replace("~TIDE", "");
+		keyword=event.message.text.replace("潮", "");
+		keyword=event.message.text.replace("T", "").replace("t", "");
 		let url;
 		if(keyword.includes("頭城")||keyword.includes("臭水")||keyword.includes("南堤")||keyword.includes("烏石")||keyword.includes("北堤")||keyword.includes("外澳")||keyword.includes("雙獅")||keyword.includes("梗枋")||keyword.includes("蜜月")||keyword.includes("大溪")){
 			url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html";
@@ -200,7 +200,7 @@ async function handleEvent(event){
 		keyword=event.message.text.replace("~店家", "");
 		return Promise.resolve(null);
 	}
-	else if(event.message.text.toUpperCase().includes("~KFC")){//查KFC優惠券的內容價格日期跟圖片
+	else if(event.message.text.toUpperCase()[0]==="K"){//查KFC優惠券的內容價格日期跟圖片
 		//2
 		keyword=event.message.text.toUpperCase().replace("~KFC", "");
 		console.log("===========================");
