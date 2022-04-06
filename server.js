@@ -47,8 +47,11 @@ async function handleEvent(event){
 
 	let keyword;
 	let echo;
-	if(event.message.text.includes("~潮汐")||event.message.text.toUpperCase().includes("~TIDE")){//查潮汐（tide）+浪點名，預設雙獅
-		//3
+	if(event.message.text.toUpperCase().includes("~~TIDE")){
+		echo={"type":"text", "text":"這樣tide危險～"};
+	}
+	else if(event.message.text.includes("~潮汐")||event.message.text.toUpperCase().includes("~TIDE")){//查潮汐（tide）+浪點名，預設雙獅
+		////還要加多天查詢
 		keyword=event.message.text.replace("~潮汐", "");
 		keyword=event.message.text.replace("~TIDE", "");
 		let url;
@@ -145,17 +148,20 @@ async function handleEvent(event){
 後龍https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000506.html
 外埔
 */
+
+		//漲退潮時間
 		let res=await axios.get(url, options);
 		const $=cheerio.load(res.data);
 		let tides=$("td[headers=\"day1 tide\"]");
 		let times=$("td[headers=\"day1 time\"]");
 
-		//還要加地點跟大潮小潮
+		//地點
 		let title=$("h2[class=\"text-center\"]");
 		let titles=title.text().split(" ");
 		titles=titles.slice(0, 2);
 		let locationName=titles.join(" ");
 
+		//潮差
 		let tideDifference=$($(".orange-text").get(0)).text();
 
 		let text=locationName+"\n"+tideDifference+"\n"+$(tides.get(0)).text()+" "+$(times.get(0)).text()+"\n"+$(tides.get(1)).text()+" "+$(times.get(1)).text()+"\n"+$(tides.get(2)).text()+" "+$(times.get(2)).text()+"\n"+$(tides.get(3)).text()+" "+$(times.get(3)).text();
@@ -262,7 +268,7 @@ async function handleEvent(event){
 		})
 		.catch(err => console.log(err));
 	}
-	else{
+	else{////記錄所有雜訊
 		return Promise.resolve(null);
 	}
 
