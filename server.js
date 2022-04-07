@@ -417,7 +417,7 @@ async function handleEvent(event){
 				}
 			};
 		}
-		else if(keyword.includes(keyword.includes("一間")||keyword.includes("有間"))){
+		else if(keyword.includes("一間")||keyword.includes("有間")){
 			echo={
 				"type": "flex",
 				"altText": "一間衝浪店",
