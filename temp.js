@@ -9,8 +9,13 @@ const options={
 };
 
 (async ()=>{
-	let res=await axios.get("https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html", options);
+	let res=await axios.get("https://kfc.izo.tw/coupons/"+"22583", options);
 		const $=cheerio.load(res.data);
-		let tideDifference=$($(".orange-text").get(0)).text();
-		console.log(tideDifference);
+		let content=$(".card-text.mb-3").text().trim();
+			let price=$(".mx-2")[0].children[0].data.trim();
+			let date=$(".text-muted")[0].children[0].data.trim();
+			let image=$(".card-img-bottom")[0].attribs["data-src"];
+			console.log("===========================");
+			console.log({content, price, date, image});
+			console.log("===========================");
 })();
