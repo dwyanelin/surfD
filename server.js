@@ -61,6 +61,7 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){//查潮汐（tide）+浪點名，預設雙獅
+		////先改只抓當天潮汐（當天不一定有4個（抓當天欄位））
 		////還要加多天查詢
 		echo=await tide(event.message.text);
 	}

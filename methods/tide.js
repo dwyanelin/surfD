@@ -8,6 +8,7 @@ const options={
 const cheerio=require('cheerio');
 
 module.exports=async (keyword)=>{
+	////先改只抓當天潮汐（當天不一定有4個（抓當天欄位））
 	////還要加多天查詢
 	keyword=keyword.replace("潮", "");
 	keyword=keyword.replace("T", "").replace("t", "");
