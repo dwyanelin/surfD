@@ -57,7 +57,7 @@ module.exports=async (keyword)=>{
 	else if(keyword.includes("旗津")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T401000.html";
 	}
-	else if(keyword.includes("安平")||keyword.includes("漁光島")){
+	else if(keyword.includes("安平")||keyword.includes("漁光")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T700036.html";
 	}
 	else if(keyword.includes("大甲")||keyword.includes("松柏港")){

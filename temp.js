@@ -20,9 +20,9 @@ const options={
 			console.log("===========================");
 })();*/
 
-const tide=require("./methods/tide");
+const kfc=require("./methods/kfc");
 
-(async ()=>{let echo=await tide("基翬");
+(async ()=>{let echo=await kfc("21967");
 
 console.log(typeof echo);
 console.log(echo)})();
