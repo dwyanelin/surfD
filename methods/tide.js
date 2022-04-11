@@ -1,7 +1,16 @@
-module.exports=(keyword)=>{
+const axios=require('axios');
+const options={
+	headers: {
+		'accept-language': ' zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+		'user-agent': ' Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+	}
+}
+const cheerio=require('cheerio');
+
+module.exports=async (keyword)=>{
 	////還要加多天查詢
-	keyword=event.message.text.replace("潮", "");
-	keyword=event.message.text.replace("T", "").replace("t", "");
+	keyword=keyword.replace("潮", "");
+	keyword=keyword.replace("T", "").replace("t", "");
 	let url;
 	if(keyword.includes("頭城")||keyword.includes("臭水")||keyword.includes("南堤")||keyword.includes("烏石")||keyword.includes("北堤")||keyword.includes("外澳")||keyword.includes("雙獅")||keyword.includes("梗枋")||keyword.includes("蜜月")||keyword.includes("大溪")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html";

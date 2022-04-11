@@ -20,9 +20,9 @@ const options={
 			console.log("===========================");
 })();*/
 
-const tideDangerous=require("./methods/tideDangerous");
+const tide=require("./methods/tide");
 
-let echo=tideDangerous;
+(async ()=>{let echo=await tide("基翬");
 
 console.log(typeof echo);
-console.log(echo);
+console.log(echo)})();

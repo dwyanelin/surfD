@@ -59,7 +59,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){//查潮汐（tide）+浪點名，預設雙獅
 		////還要加多天查詢
-		echo=tide(keyword);
+		echo=await tide(event.message.text);
 	}
 	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
 		//1
