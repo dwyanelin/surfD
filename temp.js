@@ -8,7 +8,7 @@ const options={
 	}
 };
 
-(async ()=>{
+/*(async ()=>{
 	let res=await axios.get("https://kfc.izo.tw/coupons/"+"22583", options);
 		const $=cheerio.load(res.data);
 		let content=$(".card-text.mb-3").text().trim();
@@ -18,4 +18,11 @@ const options={
 			console.log("===========================");
 			console.log({content, price, date, image});
 			console.log("===========================");
-})();
+})();*/
+
+const tideDangerous=require("./methods/tideDangerous");
+
+let echo=tideDangerous;
+
+console.log(typeof echo);
+console.log(echo);

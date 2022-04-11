@@ -8,7 +8,7 @@ const options={
 	}
 }
 
-import tideDangerous from "tideDangerous";
+const tideDangerous=require("./methods/tideDangerous");
 
 // index.js
 const line=require('@line/bot-sdk');
