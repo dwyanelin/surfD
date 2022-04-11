@@ -8,6 +8,8 @@ const options={
 	}
 }
 
+import tideDangerous from "tideDangerous";
+
 // index.js
 const line=require('@line/bot-sdk');
 var express=require('express');
@@ -54,7 +56,7 @@ async function handleEvent(event){
 		};
 	}
 	else if(event.message.text.toUpperCase().includes("~TIDE")){
-		echo={"type":"text", "text":"這樣tide危險～"};
+		echo=tideDangerous;
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){//查潮汐（tide）+浪點名，預設雙獅
 		////還要加多天查詢
