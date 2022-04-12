@@ -107,11 +107,8 @@ module.exports=async (keyword)=>{
 外埔
 */
 
-	//漲退潮時間
 	let res=await axios.get(url, options);
 	const $=cheerio.load(res.data);
-	let tides=$("td[headers=\"day1 tide\"]");
-	let times=$("td[headers=\"day1 time\"]");
 
 	//地點
 	let title=$("h2[class=\"text-center\"]");
@@ -122,7 +119,15 @@ module.exports=async (keyword)=>{
 	//潮差
 	let tideDifference=$($(".orange-text").get(0)).text();
 
-	let text=locationName+"\n"+tideDifference+"\n"+$(tides.get(0)).text()+" "+$(times.get(0)).text()+"\n"+$(tides.get(1)).text()+" "+$(times.get(1)).text()+"\n"+$(tides.get(2)).text()+" "+$(times.get(2)).text()+"\n"+$(tides.get(3)).text()+" "+$(times.get(3)).text();
+	//漲退潮時間
+	let tides=$("td[headers=\"day1 tide\"]");
+	let times=$("td[headers=\"day1 time\"]");
+	let day1TideCount=$("#day1").attr("rowspan");
+
+	let text=locationName+"\n"+tideDifference;
+	for(let i=0;i<day1TideCount;i++){
+		text+="\n"+$(tides.get(i)).text()+" "+$(times.get(i)).text();
+	}
 
 	return {"type":"text", "text":text, "wrap":true};
 };
