@@ -126,6 +126,10 @@ module.exports=async (keyword)=>{
 	for(let day=1;day<=days;day++){
 		//抓日期（星期）+潮差
 		let tideDifference=$($(".orange-text").get(day-1)).parent().text();
+		if(tideDifference===""){
+			text+=previousLast;
+			break;
+		}
 		tideDifference=tideDifference.replace(" ", "").replace(")", ") ").replace("潮差", " 潮差");
 		text+="\n"+tideDifference;
 
