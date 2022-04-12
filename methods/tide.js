@@ -113,6 +113,9 @@ module.exports=async (keyword)=>{
 	if(days===null){
 		days=1;
 	}
+	else{
+		days=days[0];
+	}
 
 	//地點
 	let title=$("h2[class=\"text-center\"]");
@@ -146,6 +149,9 @@ module.exports=async (keyword)=>{
 		}
 
 		previousLast="\n"+$(tides.get(tides.length-1)).text()+" "+$(times.get(tides.length-1)).text();
+	}
+	if(days==="31"){
+		text+=previousLast;
 	}
 
 	return {"type":"text", "text":text, "wrap":true};
