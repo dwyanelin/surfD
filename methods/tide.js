@@ -8,7 +8,6 @@ const options={
 const cheerio=require('cheerio');
 
 module.exports=async (keyword)=>{
-	////先改只抓當天潮汐（當天不一定有4個（抓當天欄位））
 	////還要加多天查詢
 	keyword=keyword.replace("潮", "");
 	keyword=keyword.replace("T", "").replace("t", "");
@@ -110,23 +109,39 @@ module.exports=async (keyword)=>{
 	let res=await axios.get(url, options);
 	const $=cheerio.load(res.data);
 
+	let days=keyword.match(/\d+$/);
+	if(days===null){
+		days=1;
+	}
+
 	//地點
 	let title=$("h2[class=\"text-center\"]");
 	let titles=title.text().split(" ");
 	titles=titles.slice(0, 2);
 	let locationName=titles.join(" ");
 
-	//潮差
-	let tideDifference=$($(".orange-text").get(0)).text();
+	let text=locationName;
 
-	//漲退潮時間
-	let tides=$("td[headers=\"day1 tide\"]");
-	let times=$("td[headers=\"day1 time\"]");
-	let day1TideCount=$("#day1").attr("rowspan");
+	let previousLast;
+	for(let day=1;day<=days;day++){
+		//抓日期（星期）+潮差
+		let tideDifference=$($(".orange-text").get(day-1)).parent().text();
+		tideDifference=tideDifference.replace(" ", "").replace(")", ") ").replace("潮差", " 潮差");
+		text+="\n"+tideDifference;
 
-	let text=locationName+"\n"+tideDifference;
-	for(let i=0;i<day1TideCount;i++){
-		text+="\n"+$(tides.get(i)).text()+" "+$(times.get(i)).text();
+		//抓天數的潮汐
+		if(day>1){
+			text+=previousLast;
+		}
+
+		let tides=$("td[headers=\"day"+day+" tide\"]");
+		let times=$("td[headers=\"day"+day+" time\"]");
+
+		for(let i=0;i<tides.length-1;i++){
+			text+="\n"+$(tides.get(i)).text()+" "+$(times.get(i)).text();
+		}
+
+		previousLast="\n"+$(tides.get(tides.length-1)).text()+" "+$(times.get(tides.length-1)).text();
 	}
 
 	return {"type":"text", "text":text, "wrap":true};

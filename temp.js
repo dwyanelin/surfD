@@ -22,7 +22,7 @@ const options={
 
 const tide=require("./methods/tide");
 
-(async ()=>{let echo=await tide("萬里");
+(async ()=>{let echo=await tide("旗津3");
 
 console.log(typeof echo);
 console.log(echo)})();
