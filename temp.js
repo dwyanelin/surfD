@@ -20,9 +20,21 @@ const options={
 			console.log("===========================");
 })();*/
 
+const { ImgurClient } = require('imgur');
+const client = new imgur({ clientId: "1f37d55e8774b46" });
+
 const screenshot=require("./modules/screenshot");
 
 (async ()=>{let echo=await screenshot("https://windy.com");
 
 console.log(typeof echo);
-console.log(echo)})();
+console.log(echo);
+
+// upload multiple images via fs.createReadStream (node)
+const response = await client.upload({
+  image: createReadStream(echo),
+  type: 'stream',
+});
+response.data.forEach((r) => console.log(r.link));
+
+})();

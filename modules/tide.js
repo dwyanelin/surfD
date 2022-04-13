@@ -96,7 +96,7 @@ module.exports=async (keyword)=>{
 			text+=previousLast;
 			break;
 		}
-		tideDifference=tideDifference.replaceAll(" ", "").replace(")", ") ").replace("潮差", " 潮差");
+		tideDifference=tideDifference.replace(/ /g, "").replace(")", ") ").replace("潮差", " 潮差");
 		text+="\n"+tideDifference;
 
 		//抓天數的潮汐
