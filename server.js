@@ -91,7 +91,7 @@ app.get('/screenshot', (req, res)=>{
 		const buffer=await screenshot(url);
 		res.setHeader('Content-Disposition', 'attachment; filename="screenshot.png"');
 		res.setHeader('Content-Type', 'image/png');
-		res.send(buffer);
+		//res.send(buffer);
 	})();
 })
 
