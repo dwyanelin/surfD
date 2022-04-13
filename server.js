@@ -85,16 +85,6 @@ async function handleEvent(event){
 	}
 }
 
-/*app.get('/screenshot', (req, res)=>{
-	const url=req.query.url;
-	(async ()=>{
-		const buffer=await screenshot(url);
-		res.setHeader('Content-Disposition', 'attachment; filename="screenshot.png"');
-		res.setHeader('Content-Type', 'image/png');
-		res.send(buffer);
-	})();
-});*/
-
 // listen on port
 const port=process.env.PORT||3000;
 app.listen(port, ()=>{
