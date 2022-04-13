@@ -20,9 +20,9 @@ const options={
 			console.log("===========================");
 })();*/
 
-const forecast=require("./methods/forecast");
+const screenshot=require("./modules/screenshot");
 
-(async ()=>{let echo=await forecast("forecast");
+(async ()=>{let echo=await screenshot("https://windy.com");
 
 console.log(typeof echo);
 console.log(echo)})();
