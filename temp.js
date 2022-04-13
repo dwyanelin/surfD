@@ -20,9 +20,9 @@ const options={
 			console.log("===========================");
 })();*/
 
-const tide=require("./methods/tide");
+const forecast=require("./methods/forecast");
 
-(async ()=>{let echo=await tide("旗津32");
+(async ()=>{let echo=await forecast("forecast");
 
 console.log(typeof echo);
 console.log(echo)})();

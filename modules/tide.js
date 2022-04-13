@@ -8,7 +8,6 @@ const options={
 const cheerio=require('cheerio');
 
 module.exports=async (keyword)=>{
-	////還要加多天查詢
 	keyword=keyword.replace("潮", "");
 	keyword=keyword.replace("T", "").replace("t", "");
 	let url;
@@ -69,42 +68,6 @@ module.exports=async (keyword)=>{
 	else{
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html";
 	}
-/*
-頭城https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html
-臭水、南堤、烏石港、北堤、外澳、雙獅、梗枋、蜜月灣、大溪
-南澳https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000212.html
-蘇澳https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000203.html
-無尾
-貢寮https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500026.html
-福隆、金沙灣
-萬里https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500028.html
-翡翠灣、龜吼
-金山https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500027.html
-中角、磺港
-石門https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500022.html
-餐廳
-花蓮https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001501.html
-環保、北濱
-壽豐https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001506.html
-雙橋
-豐濱https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001508.html
-磯崎
-長濱https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001408.html
-八仙洞、
-成功https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001402.html
-宜灣、基翬、都歷
-東河https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001407.html
-北東河、河口、南東河、金樽左、金樽、小漁港、都蘭
-恆春https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001304.html
-佳樂水、大灣、南灣、港仔、獅頭、
-旗津https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T401000.html
-安平https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T700036.html
-漁光島
-大甲https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T600011.html
-松柏港
-後龍https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000506.html
-外埔
-*/
 
 	let res=await axios.get(url, options);
 	const $=cheerio.load(res.data);
@@ -156,3 +119,40 @@ module.exports=async (keyword)=>{
 
 	return {"type":"text", "text":text, "wrap":true};
 };
+
+/*
+頭城https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html
+臭水、南堤、烏石港、北堤、外澳、雙獅、梗枋、蜜月灣、大溪
+南澳https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000212.html
+蘇澳https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000203.html
+無尾
+貢寮https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500026.html
+福隆、金沙灣
+萬里https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500028.html
+翡翠灣、龜吼
+金山https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500027.html
+中角、磺港
+石門https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T500022.html
+餐廳
+花蓮https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001501.html
+環保、北濱
+壽豐https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001506.html
+雙橋
+豐濱https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001508.html
+磯崎
+長濱https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001408.html
+八仙洞、
+成功https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001402.html
+宜灣、基翬、都歷
+東河https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001407.html
+北東河、河口、南東河、金樽左、金樽、小漁港、都蘭
+恆春https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001304.html
+佳樂水、大灣、南灣、港仔、獅頭、
+旗津https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T401000.html
+安平https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T700036.html
+漁光島
+大甲https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T600011.html
+松柏港
+後龍https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000506.html
+外埔
+*/
