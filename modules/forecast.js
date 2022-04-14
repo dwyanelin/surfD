@@ -20,11 +20,11 @@ module.exports=async (keyword)=>{
 		url="https://www.windy.com/24.888/121.851";
 	}
 
-	let echo=await screenshot(url);
+	let imageBuffer=await screenshot(url);
 
 	//upload image via buffer
 	const response=await client.upload({
-		image: echo,
+		image: imageBuffer,
 		type: 'stream',
 	});
 

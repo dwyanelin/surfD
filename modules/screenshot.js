@@ -10,12 +10,12 @@ module.exports=async (url)=>{
 		width: 1920,
 		height: 1080
 	});
-	await page.goto(url);
-	const image=await page.screenshot({
+	await page.goto(url, {"waitUntil" : "networkidle0"});
+	const imageBuffer=await page.screenshot({
 		fullPage : true,
 		type:"png"
 	});
 
 	await browser.close();
-	return image;
+	return imageBuffer;
 }
