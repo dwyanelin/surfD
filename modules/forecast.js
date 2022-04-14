@@ -1,5 +1,5 @@
 const { ImgurClient }=require('imgur');
-const client=new ImgurClient({ clientId: process.env.clientId });
+const client=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
 const screenshot=require("./screenshot");
 
@@ -18,7 +18,15 @@ module.exports=async (keyword)=>{
 		url="https://www.windy.com/24.888/121.851";
 	}
 
-	let imageBuffers=await screenshot(url);//截圖三個系統的波浪預報
+	let viewport;
+	if(keyword.includes("小")){
+		viewport="小";
+	}
+	else{
+		viewport="大";
+	}
+
+	let imageBuffers=await screenshot(url, viewport);//截圖三個系統的波浪預報
 
 	let imageLinks=[];
 	//upload image via buffer
@@ -49,7 +57,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[0],
 					"size": "full",
-					"aspectRatio": "1:1",
+					"aspectRatio": "4:3",
 					"aspectMode": "cover"
 				}
 			},
@@ -59,7 +67,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[1],
 					"size": "full",
-					"aspectRatio": "1:1",
+					"aspectRatio": "4:3",
 					"aspectMode": "cover"
 				}
 			},
@@ -69,7 +77,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[2],
 					"size": "full",
-					"aspectRatio": "1:1",
+					"aspectRatio": "4:3",
 					"aspectMode": "cover"
 				}
 			}]

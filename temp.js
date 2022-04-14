@@ -23,7 +23,7 @@ const options={
 const forecast=require("./modules/forecast");
 
 (async ()=>{
-	let echo=await forecast("預雙獅");
+	let echo=await forecast("預雙獅小");
 
 	console.log(typeof echo);
 	console.log(echo);

@@ -1,21 +1,56 @@
 const puppeteer=require('puppeteer');
 
-module.exports=async (url)=>{
+module.exports=async (url, viewport)=>{
 	const browser=await puppeteer.launch({
 		headless: true,
-		args: ['--no-sandbox','--disable-setuid-sandbox']
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
 	const page=await browser.newPage();
-	await page.setViewport({
-		width: 1200,
-		height: 1200
+
+	// Set the language forcefully on javascript
+	await page.evaluateOnNewDocument(() => {
+		Object.defineProperty(navigator, "language", {
+			get: function() {
+				return "zh-TW";
+			}
+		});
+		Object.defineProperty(navigator, "languages", {
+			get: function() {
+				return ["zh-TW"];
+			}
+		});
 	});
+
+	if(viewport==="小"){
+		await page.setViewport({
+			width: 960,
+			height: 720
+		});
+	}
+	else{
+		await page.setViewport({
+			width: 1920,
+			height: 1440
+		});
+	}
+
 	await page.goto(url, {"waitUntil" : "networkidle0"});
 	const button1=await page.$('[data-do="set,waves"]');
 	await button1.evaluate(b=>b.click());
 	await page.waitForNavigation();
 	const button11=await page.$('[data-do="set,ecmwfWaves"]');
 	await button11.evaluate(b=>b.click());
+	await page.waitForNavigation();
+	//metric,wind//風速單位，按兩下
+	//metric,waves//浪高單位，按一下
+	const button12=await page.$('[data-do="metric,wind"]');
+	await button12.evaluate(b=>{
+		b.click();
+		b.click();
+	});
+	await page.waitForNavigation();
+	const button13=await page.$('[data-do="metric,waves"]');
+	await button13.evaluate(b=>b.click());
 	await page.waitForNavigation();
 	const imageBuffer1=await page.screenshot({
 		fullPage: true,
