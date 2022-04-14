@@ -33,6 +33,17 @@ module.exports=async (keyword)=>{
 	console.log(imageLinks);
 	console.log("=============================");
 
+	imageLinks=imageLinks.map(imageLink=>({
+		"type": "image",
+		"originalContentUrl": imageLink,
+		"previewImageUrl": imageLink
+	}));
+	console.log("=============================");
+	console.log(imageLinks);
+	console.log("=============================");
+
+	return imageLinks;
+
 	return {
 		"type": "template",
 		"altText": "surf forecast",
