@@ -11,12 +11,12 @@ module.exports=async (url, viewport)=>{
 	await page.evaluateOnNewDocument(() => {
 		Object.defineProperty(navigator, "language", {
 			get: function() {
-				return "zh-TW";
+				return "big5";
 			}
 		});
 		Object.defineProperty(navigator, "languages", {
 			get: function() {
-				return ["zh-TW"];
+				return ["big5"];
 			}
 		});
 	});
