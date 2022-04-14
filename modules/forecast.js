@@ -29,35 +29,23 @@ module.exports=async (keyword)=>{
 		});
 		imageLinks.push(response.data.link);
 	}
+	console.log("=============================");
+	console.log(imageLinks);
+	console.log("=============================");
 
 	return {
 		"type": "template",
-		"altText": "浪點預報",
+		"altText": "surf forecast",
 		"template": {
 			"type": "image_carousel",
 			"columns": [{
-				"imageUrl": imageLinks[0],
-				"action": {
-					"type": "postback",
-					"label": "Buy",
-					"data": "action=buy&itemid=111"
-				}
+				"imageUrl": imageLinks[0]
 			},
 			{
-				"imageUrl": imageLinks[1],
-				"action": {
-					"type": "message",
-					"label": "Yes",
-					"text": "yes"
-				}
+				"imageUrl": imageLinks[1]
 			},
 			{
-				"imageUrl": imageLinks[2],
-				"action": {
-					"type": "uri",
-					"label": "View detail",
-					"uri": "http://example.com/page/222"
-				}
+				"imageUrl": imageLinks[2]
 			}]
 		}
 	};
