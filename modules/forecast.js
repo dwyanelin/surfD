@@ -8,7 +8,7 @@ module.exports=async (keyword)=>{
 	keyword=keyword.replace("F", "").replace("f", "");
 	//https://www.windy.com/緯度latitude/經度longitude
 	////把浪點的gps設定好，帶入windy url
-	////要設定成繁體中文
+	////要設定成繁體中文//
 
 	let url;
 	if(keyword.includes("雙獅")){
