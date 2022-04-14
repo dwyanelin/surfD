@@ -29,34 +29,41 @@ module.exports=async (keyword)=>{
 		});
 		imageLinks.push(response.data.link);
 	}
-	console.log("=============================");
-	console.log(imageLinks);
-	console.log("=============================");
-
-	imageLinks=imageLinks.map(imageLink=>({
-		"type": "image",
-		"originalContentUrl": imageLink,
-		"previewImageUrl": imageLink
-	}));
-	console.log("=============================");
-	console.log(imageLinks);
-	console.log("=============================");
-
-	return imageLinks;
 
 	return {
-		"type": "template",
-		"altText": "surf forecast",
-		"template": {
-			"type": "image_carousel",
-			"columns": [{
-				"imageUrl": imageLinks[0]
+		"type": "flex",
+		"altText": "浪點預報",
+		"contents": {
+			"type": "carousel",
+			"contents": [{
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[0],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
 			},
 			{
-				"imageUrl": imageLinks[1]
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[1],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
 			},
 			{
-				"imageUrl": imageLinks[2]
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[2],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
 			}]
 		}
 	};

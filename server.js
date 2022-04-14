@@ -1,3 +1,9 @@
+/*
+client.replyMessage(event.replyToken, echo);
+echo可以是單一個message object
+也可以是message object array
+*/
+
 const tideDangerous=require("./modules/tideDangerous");
 const help=require("./modules/help");
 const tide=require("./modules/tide");
@@ -56,7 +62,6 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
 		echo=await forecast(event.message.text);
-		return client.replyMessage(event.replyToken, echo);
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		echo=live(event.message.text);
