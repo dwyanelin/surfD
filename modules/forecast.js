@@ -31,36 +31,40 @@ module.exports=async (keyword)=>{
 	}
 
 	return {
-		"type": "carousel",
-		"contents": [{
-			"type": "bubble",
-			"hero": {
-				"type": "image",
-				"url": imageLinks[0],
-				"size": "full",
-				"aspectRatio": "16:9",
-				"aspectMode": "cover"
-			}
-		},
-		{
-			"type": "bubble",
-			"hero": {
-				"type": "image",
-				"url": imageLinks[1],
-				"size": "full",
-				"aspectRatio": "16:9",
-				"aspectMode": "cover"
-			}
-		},
-		{
-			"type": "bubble",
-			"hero": {
-				"type": "image",
-				"url": imageLinks[2],
-				"size": "full",
-				"aspectRatio": "16:9",
-				"aspectMode": "cover"
-			}
-		}]
+		"type": "flex",
+		"altText": "surf forecast",
+		"contents": {
+			"type": "carousel",
+			"contents": [{
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[0],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
+			},
+			{
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[1],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
+			},
+			{
+				"type": "bubble",
+				"hero": {
+					"type": "image",
+					"url": imageLinks[2],
+					"size": "full",
+					"aspectRatio": "16:9",
+					"aspectMode": "cover"
+				}
+			}]
+		}
 	};
 }
