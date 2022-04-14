@@ -42,7 +42,11 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[0],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover"
+					"aspectMode": "cover",
+					"action": {
+						"type": "uri",
+						"uri": imageLinks[0]
+					}
 				}
 			},
 			{
@@ -52,7 +56,11 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[1],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover"
+					"aspectMode": "cover",
+					"action": {
+						"type": "uri",
+						"uri": imageLinks[1]
+					}
 				}
 			},
 			{
@@ -62,7 +70,11 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[2],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover"
+					"aspectMode": "cover",
+					"action": {
+						"type": "uri",
+						"uri": imageLinks[2]
+					}
 				}
 			}]
 		}
