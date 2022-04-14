@@ -30,6 +30,14 @@ module.exports=async (keyword)=>{
 		imageLinks.push(response.data.link);
 	}
 
+	let imageObjectArray=imageLinks.map(imageLink=>({
+		"type": "image",
+		"originalContentUrl": imageLink,
+		"previewImageUrl": imageLink
+	}));
+
+	return imageObjectArray;
+
 	return {
 		"type": "flex",
 		"altText": "surf forecast",
@@ -42,11 +50,7 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[0],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover",
-					"action": {
-						"type": "uri",
-						"uri": imageLinks[0]
-					}
+					"aspectMode": "cover"
 				}
 			},
 			{
@@ -56,11 +60,7 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[1],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover",
-					"action": {
-						"type": "uri",
-						"uri": imageLinks[1]
-					}
+					"aspectMode": "cover"
 				}
 			},
 			{
@@ -70,11 +70,7 @@ module.exports=async (keyword)=>{
 					"url": imageLinks[2],
 					"size": "full",
 					"aspectRatio": "16:9",
-					"aspectMode": "cover",
-					"action": {
-						"type": "uri",
-						"uri": imageLinks[2]
-					}
+					"aspectMode": "cover"
 				}
 			}]
 		}
