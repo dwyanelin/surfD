@@ -49,7 +49,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[0],
 					"size": "full",
-					"aspectRatio": "16:9",
+					"aspectRatio": "1:1",
 					"aspectMode": "cover"
 				}
 			},
@@ -59,7 +59,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[1],
 					"size": "full",
-					"aspectRatio": "16:9",
+					"aspectRatio": "1:1",
 					"aspectMode": "cover"
 				}
 			},
@@ -69,7 +69,7 @@ module.exports=async (keyword)=>{
 					"type": "image",
 					"url": imageLinks[2],
 					"size": "full",
-					"aspectRatio": "16:9",
+					"aspectRatio": "1:1",
 					"aspectMode": "cover"
 				}
 			}]

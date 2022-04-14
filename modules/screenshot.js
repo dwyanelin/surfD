@@ -7,12 +7,15 @@ module.exports=async (url)=>{
 	});
 	const page=await browser.newPage();
 	await page.setViewport({
-		width: 1920,
-		height: 1080
+		width: 1200,
+		height: 1200
 	});
 	await page.goto(url, {"waitUntil" : "networkidle0"});
 	const button1=await page.$('[data-do="set,waves"]');
 	await button1.evaluate(b=>b.click());
+	await page.waitForNavigation();
+	const button11=await page.$('[data-do="set,ecmwfWaves"]');
+	await button11.evaluate(b=>b.click());
 	await page.waitForNavigation();
 	const imageBuffer1=await page.screenshot({
 		fullPage: true,
