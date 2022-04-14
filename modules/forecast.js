@@ -6,11 +6,9 @@ const screenshot=require("./screenshot");
 module.exports=async (keyword)=>{
 	keyword=keyword.replace("預", "");
 	keyword=keyword.replace("F", "").replace("f", "");
-	////查地點GPS，帶入windy url
-	//https://www.windy.com/lat/lon
-	//緯度/經度
-	//點波浪，三個系統
-	//https://www.windy.com/24.888/121.851
+	//https://www.windy.com/緯度latitude/經度longitude
+	////把浪點的gps設定好，帶入windy url
+	////要設定成繁體中文
 
 	let url;
 	if(keyword.includes("雙獅")){
@@ -20,17 +18,47 @@ module.exports=async (keyword)=>{
 		url="https://www.windy.com/24.888/121.851";
 	}
 
-	let imageBuffer=await screenshot(url);
+	let imageBuffers=await screenshot(url);//截圖三個系統的波浪預報
 
+	let imageLinks=[];
 	//upload image via buffer
-	const response=await client.upload({
-		image: imageBuffer,
-		type: 'stream',
-	});
+	for(let i=0;i<imageBuffers.length;i++){
+		let response=await client.upload({
+			image: imageBuffers[i],
+			type: 'stream',
+		});
+		imageLinks.push(response.data.link);
+	}
 
 	return {
-		"type": "image",
-		"originalContentUrl": response.data.link,
-		"previewImageUrl": response.data.link,
+		"type": "template",
+		"altText": "浪點預報",
+		"template": {
+			"type": "image_carousel",
+			"columns": [{
+				"imageUrl": imageLinks[0],
+				"action": {
+					"type": "postback",
+					"label": "Buy",
+					"data": "action=buy&itemid=111"
+				}
+			},
+			{
+				"imageUrl": imageLinks[1],
+				"action": {
+					"type": "message",
+					"label": "Yes",
+					"text": "yes"
+				}
+			},
+			{
+				"imageUrl": imageLinks[2],
+				"action": {
+					"type": "uri",
+					"label": "View detail",
+					"uri": "http://example.com/page/222"
+				}
+			}]
+		}
 	};
 }
