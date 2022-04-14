@@ -56,10 +56,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
 		echo=await forecast(event.message.text);
-		console.log("=============================");
-		console.log({"replyToken":event.replyToken, "messages":echo});
-		console.log("=============================");
-		return client.replyMessage({"replyToken":event.replyToken, "messages":echo});
+		return client.replyMessage(event.replyToken, echo);
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		echo=live(event.message.text);
