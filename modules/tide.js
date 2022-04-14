@@ -47,7 +47,7 @@ module.exports=async (keyword)=>{
 	else if(keyword.includes("成功")||keyword.includes("宜灣")||keyword.includes("基翬")||keyword.includes("都歷")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001402.html";
 	}
-	else if(keyword.includes("東河")||keyword.includes("河口")||keyword.includes("金樽")||keyword.includes("小漁港")||keyword.includes("都蘭")){
+	else if(keyword.includes("東河")||keyword.includes("北東")||keyword.includes("南東")||keyword.includes("河口")||keyword.includes("金樽")||keyword.includes("小漁港")||keyword.includes("都蘭")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T001407.html";
 	}
 	else if(keyword.includes("恆春")||keyword.includes("佳樂水")||keyword.includes("大灣")||keyword.includes("南灣")||keyword.includes("港仔")||keyword.includes("獅頭")){
