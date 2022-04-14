@@ -31,40 +31,36 @@ module.exports=async (keyword)=>{
 	}
 
 	return {
-		"type": "flex",
-		"altText": "浪點預報",
-		"contents": {
-			"type": "carousel",
-			"contents": [{
-				"type": "bubble",
-				"hero": {
-					"type": "image",
-					"url": imageLinks[0],
-					"size": "full",
-					"aspectRatio": "16:9",
-					"aspectMode": "cover"
-				}
-			},
-			{
-				"type": "bubble",
-				"hero": {
-					"type": "image",
-					"url": imageLinks[1],
-					"size": "full",
-					"aspectRatio": "16:9",
-					"aspectMode": "cover"
-				}
-			},
-			{
-				"type": "bubble",
-				"hero": {
-					"type": "image",
-					"url": imageLinks[2],
-					"size": "full",
-					"aspectRatio": "16:9",
-					"aspectMode": "cover"
-				}
-			}]
-		}
+		"type": "carousel",
+		"contents": [{
+			"type": "bubble",
+			"hero": {
+				"type": "image",
+				"url": imageLinks[0],
+				"size": "full",
+				"aspectRatio": "16:9",
+				"aspectMode": "cover"
+			}
+		},
+		{
+			"type": "bubble",
+			"hero": {
+				"type": "image",
+				"url": imageLinks[1],
+				"size": "full",
+				"aspectRatio": "16:9",
+				"aspectMode": "cover"
+			}
+		},
+		{
+			"type": "bubble",
+			"hero": {
+				"type": "image",
+				"url": imageLinks[2],
+				"size": "full",
+				"aspectRatio": "16:9",
+				"aspectMode": "cover"
+			}
+		}]
 	};
 }
