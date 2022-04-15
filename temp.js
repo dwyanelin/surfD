@@ -20,10 +20,10 @@ const options={
 			console.log("===========================");
 })();*/
 
-const forecast=require("./modules/forecast");
+const store=require("./modules/store");
 
 (async ()=>{
-	let echo=await forecast("預雙獅小");
+	let echo=await store("店一間");
 
 	console.log(typeof echo);
 	console.log(echo);

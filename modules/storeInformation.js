@@ -1,0 +1,24 @@
+module.exports={
+	namiarusurfstudio:{
+		name:"namiarusurfstudio",
+		imageUrl:"https://namiaru.yibnb.com/images/bg.jpg",
+		url:"https://namiaru.yibnb.com",
+		address:"宜蘭縣頭城鎮環鎮東路二段668巷",
+		phone:"0968-369853",
+		email:"namiarusurfstudio@gmail.com",
+		lineId:"@420msvqa",
+		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
+		facebookUrl:"https://www.facebook.com/808387692583232"
+	},
+	一間衝浪店:{
+		name:"一間衝浪店",
+		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t39.30808-6/275676027_5418329274922361_5012254170367866697_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=a26aad&_nc_ohc=HAhkSQGKLZAAX9aqdRM&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT9K_K5kpGPUvwtwAhXBlPigf3nWdEvSeZZOWt4BK6zadw&oe=6253F466",
+		url:"https://www.facebook.com/aloha.hisurf",
+		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
+		phone:"03 977 7517",
+		email:"namiarusurfstudio@gmail.com",
+		lineId:"@420msvqa",
+		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
+		facebookUrl:"https://www.facebook.com/aloha.hisurf"
+	}
+};
