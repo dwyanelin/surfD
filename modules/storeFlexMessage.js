@@ -9,6 +9,7 @@ module.exports=({name, imageUrl, url, address, phone, email, lineId, instagramUr
 				"url": imageUrl,
 				"size": "full",
 				"aspectRatio": "16:9",
+				"aspectMode": "cover",
 				"action": {
 					"type": "uri",
 					"uri": url
