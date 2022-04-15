@@ -10,11 +10,9 @@ module.exports=(keyword)=>{
 	////評分改google搜尋？
 	//(name, imageUrl, url, address, phone, email, lineId, instagramUrl, facebookUrl)
 	if(keyword.toLowerCase().includes("namiaru")){
-		echo=storeFlexMessage(storeInformation.namiarusurfstudio);
+		return storeFlexMessage(storeInformation.namiarusurfstudio);
 	}
 	else if(keyword.includes("一間")||keyword.includes("有間")){
-		echo=storeFlexMessage(storeInformation.一間衝浪店);
+		return storeFlexMessage(storeInformation.一間衝浪店);
 	}
-
-	return echo;
 }
