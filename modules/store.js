@@ -6,9 +6,7 @@ module.exports=(keyword)=>{
 	keyword=keyword.replace("S", "").replace("s", "");
 
 	////google評分class="Aq14fc"
-	////再分離出店家資訊模組
 	////評分改google搜尋？
-	//(name, imageUrl, url, address, phone, email, lineId, instagramUrl, facebookUrl)
 	if(keyword.toLowerCase().includes("namiaru")){
 		return storeFlexMessage(storeInformation.namiarusurfstudio);
 	}

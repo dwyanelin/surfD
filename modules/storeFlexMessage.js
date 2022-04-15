@@ -55,7 +55,7 @@ module.exports=({name, imageUrl, url, address, phone, email, lineId, instagramUr
 					},
 					{
 						"type": "text",
-						"text": "4.6",
+						"text": "5",
 						"size": "sm",
 						"color": "#999999",
 						"margin": "md",
