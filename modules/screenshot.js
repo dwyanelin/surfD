@@ -7,8 +7,8 @@ module.exports=async (url, viewport)=>{
 	});
 	const page=await browser.newPage();
 
-	// Set the language forcefully on javascript
-	/*await page.evaluateOnNewDocument(() => {
+	//Set the language forcefully on javascript
+	await page.evaluateOnNewDocument(() => {
 		Object.defineProperty(navigator, "language", {
 			get: function() {
 				return "zh-TW";
@@ -19,7 +19,7 @@ module.exports=async (url, viewport)=>{
 				return ["zh-TW"];
 			}
 		});
-	});*/
+	});
 
 	if(viewport==="小"){
 		await page.setViewport({
