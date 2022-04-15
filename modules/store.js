@@ -15,4 +15,7 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("一間")||keyword.includes("有間")){
 		return storeFlexMessage(storeInformation.一間衝浪店);
 	}
+	else{
+		return {"type": "text", "text": ""};
+	}
 }
