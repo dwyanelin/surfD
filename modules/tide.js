@@ -66,7 +66,7 @@ module.exports=async (keyword)=>{
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000506.html";
 	}
 	else{
-		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html";
+		return {"type":"text", "text":""};
 	}
 
 	let res=await axios.get(url, options);
