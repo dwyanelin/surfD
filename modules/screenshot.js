@@ -21,16 +21,16 @@ module.exports=async (url, viewport)=>{
 		});
 	});
 
-	if(viewport==="小"){
+	if(viewport==="大"){
 		await page.setViewport({
-			width: 960,
-			height: 720
+			width: 1920,
+			height: 1440
 		});
 	}
 	else{
 		await page.setViewport({
-			width: 1920,
-			height: 1440
+			width: 960,
+			height: 720
 		});
 	}
 

@@ -136,11 +136,11 @@ module.exports=async (keyword)=>{
 	}
 
 	let viewport;
-	if(keyword.includes("小")){
-		viewport="小";
+	if(keyword.includes("大")){
+		viewport="大";
 	}
 	else{
-		viewport="大";
+		viewport="小";
 	}
 
 	let imageBuffers=await screenshot(url, viewport);//截圖三個系統的波浪預報
