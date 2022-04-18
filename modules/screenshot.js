@@ -1,3 +1,14 @@
+/*
+heroku buildpacks:add heroku/nodejs
+heroku buildpacks:set https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
+應該是用上面的add cmd，add下面三個，再git push heroku master就可，
+如果coffee不行add，就用set，set完還要再add heroku/nodejs一次（不知為啥會替換掉）
+//指令沒有list，只有add或set完後才會list裝了什麼buildpacks
+heroku/nodejs
+jontewks/puppeteer
+https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
+*/
+
 const puppeteer=require('puppeteer');
 
 module.exports=async (url, viewport)=>{

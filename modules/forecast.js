@@ -137,7 +137,41 @@ module.exports=async (keyword)=>{
 
 	let viewport;
 	if(keyword.includes("大")){
-		viewport="大";
+		viewport="大";//EGI
+		//提供box button給使用者選系統，再根據回傳訊息傳截圖
+		return {
+			"type": "template",
+			"altText": "This is a buttons template",
+			"template": {
+				"type": "buttons",
+				"thumbnailImageUrl": "https://example.com/bot/images/image.jpg",
+				"imageAspectRatio": "rectangle",
+				"imageSize": "cover",
+				"imageBackgroundColor": "#FFFFFF",
+				"title": "Menu",
+				"text": "Please select",
+				"defaultAction": {
+					"type": "uri",
+					"label": "View detail",
+					"uri": "http://example.com/page/123"
+				},
+				"actions": [{
+					"type": "postback",
+					"label": "Buy",
+					"data": "action=buy&itemid=123"
+				},
+				{
+					"type": "postback",
+					"label": "Add to cart",
+					"data": "action=add&itemid=123"
+				},
+				{
+					"type": "uri",
+					"label": "View detail",
+					"uri": "http://example.com/page/123"
+				}]
+			}
+		}
 	}
 	else{
 		viewport="小";
@@ -163,7 +197,7 @@ module.exports=async (keyword)=>{
 
 	return imageObjectArray;
 
-	return {
+	return {//這樣使用者不能點圖片放大，看不清楚
 		"type": "flex",
 		"altText": "surf forecast",
 		"contents": {
