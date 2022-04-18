@@ -5,7 +5,7 @@ echo可以是單一個message object
 */
 
 const tideDangerous=require("./modules/tideDangerous");
-const help=require("./modules/help");
+//const help=require("./modules/help");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
@@ -51,10 +51,10 @@ async function handleEvent(event){
 
 	let keyword;
 	let echo;
-	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
+	/*if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
 		echo=help;
 	}
-	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
+	else */if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
 		//查預報（forecast）+浪點名
 		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
 		echo=await forecast(event.message.text);
