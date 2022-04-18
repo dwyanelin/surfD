@@ -7,7 +7,7 @@ module.exports=async (url, viewport)=>{
 	});
 	const page=await browser.newPage();
 
-	//Set the language forcefully on javascript//
+	//Set the language forcefully on javascript
 	await page.evaluateOnNewDocument(() => {
 		Object.defineProperty(navigator, "language", {
 			get: function() {
