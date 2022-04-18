@@ -54,26 +54,33 @@ async function handleEvent(event){
 	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
 		echo=help;
 	}
-	else if(event.message.text.toUpperCase().includes("~TIDE")){
-		echo=tideDangerous;
-	}
-	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){//查潮汐（tide）+浪點名，預設雙獅
-		echo=await tide(event.message.text);
-	}
-	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){//查預報（三個系統的現在氣象圖、風力、風向、兩種浪高（都截圖？））+浪點名，預設雙獅
+	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
+		//查預報（forecast）+浪點名
+		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
 		echo=await forecast(event.message.text);
 	}
+	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
+		//查潮汐（tide）+浪點名
+		echo=await tide(event.message.text);
+	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
+		//查直播（live）+浪點名
 		echo=live(event.message.text);
 	}
-	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){//連結店家官網、FB、IG
-		////google評分class="Aq14fc"
+	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
+		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
+		////考慮是否要crawl google真實評分，google頁面評分element的class="Aq14fc"
 		echo=store(event.message.text);
 	}
-	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){//查KFC優惠券的內容價格日期跟圖片
+	else if(event.message.text.toUpperCase().includes("~TIDE")){
+		//爽
+		echo=tideDangerous;
+	}
+	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
+		//查KFC優惠券的內容價格日期跟圖片（私人）
 		echo=await kfc(event.message.text);
 	}
-	else{////記錄所有雜訊
+	else{////記錄所有雜訊（用以提供新功能）
 		return Promise.resolve(null);
 	}
 

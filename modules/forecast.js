@@ -18,7 +18,8 @@ module.exports=async (keyword)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
 	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("forecast", "");
 	//https://www.windy.com/緯度latitude/經度longitude
-	////把浪點的gps設定好，帶入windy url
+	////陸續增加浪點gps，使用下方台灣浪點地圖
+	//https://www.google.com/maps/d/viewer?hl=zh-TW&mid=1Tmx-N1h9ZELKdrtxT7RxT4oK1m0bhSoq
 
 	let url;
 	let location;
@@ -27,159 +28,159 @@ module.exports=async (keyword)=>{
 		location="雙獅";
 	}
 	else if(keyword.includes("臭水")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.855/121.833";
 		location="臭水";
 	}
 	else if(keyword.includes("南堤")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.864/121.839";
 		location="南堤";
 	}
 	else if(keyword.includes("烏石")||keyword.includes("北堤")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.872/121.842";
 		location="北堤";
 	}
 	else if(keyword.includes("外澳")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.880/121.846";
 		location="外澳";
 	}
 	else if(keyword.includes("梗枋")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.902/121.866";
 		location="梗枋";
 	}
 	else if(keyword.includes("蜜月")||keyword.includes("大溪")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.931/121.886";
 		location="蜜月";
 	}
 	else if(keyword.includes("南澳")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.448/121.818";
 		location="南澳";
 	}
 	else if(keyword.includes("蘇澳")||keyword.includes("無尾")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.610/121.864";
 		location="無尾";
 	}
 	else if(keyword.includes("貢寮")||keyword.includes("福隆")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.020/121.949";
 		location="福隆";
 	}
 	else if(keyword.includes("金沙")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.075/121.916";
 		location="金沙";
 	}
 	else if(keyword.includes("萬里")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.181/121.691";
 		location="萬里";
 	}
 	else if(keyword.includes("翡翠")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.188/121.687";
 		location="翡翠";
 	}
 	else if(keyword.includes("龜吼")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.193/121.686";
 		location="龜吼";
 	}
 	else if(keyword.includes("金山")||keyword.includes("磺港")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.231/121.644";
 		location="磺港";
 	}
 	else if(keyword.includes("中角")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.241/121.634";
 		location="中角";
 	}
 	else if(keyword.includes("石門")||keyword.includes("餐廳")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/25.288/121.531";
 		location="餐廳";
 	}
 	else if(keyword.includes("環保")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.008/121.647";
 		location="環保";
 	}
 	else if(keyword.includes("北濱")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.977/121.620";
 		location="北濱";
 	}
 	else if(keyword.includes("壽豐")||keyword.includes("雙橋")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.852/121.595";
 		location="雙橋";
 	}
 	else if(keyword.includes("豐濱")||keyword.includes("磯崎")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.701/121.550";
 		location="磯崎";
 	}
 	else if(keyword.includes("長濱")||keyword.includes("八仙洞")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.396/121.480";
 		location="八仙洞";
 	}
 	else if(keyword.includes("宜灣")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.208/121.400";
 		location="宜灣";
 	}
 	else if(keyword.includes("成功")||keyword.includes("基翬")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.115/121.396";
 		location="成功";
 	}
 	else if(keyword.includes("都歷")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/23.021/121.336";
 		location="都歷";
 	}
 	else if(keyword.includes("北東")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.975/121.314";
 		location="北東";
 	}
-	else if(keyword.includes("南東")){
-		url="https://www.windy.com/24.889/121.851";
+	else if(keyword.includes("南東")){////跟東河口可以再細分
+		url="https://www.windy.com/22.973/121.313";
 		location="南東";
 	}
 	else if(keyword.includes("東河")||keyword.includes("河口")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.973/121.313";
 		location="東河口";
 	}
-	else if(keyword.includes("金樽左")){
-		url="https://www.windy.com/24.889/121.851";
+	else if(keyword.includes("金樽左")){////跟金樽可以再細分
+		url="https://www.windy.com/22.955/121.296";
 		location="金樽左";
 	}
 	else if(keyword.includes("金樽")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.955/121.296";
 		location="金樽";
 	}
 	else if(keyword.includes("小漁港")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.953/121.291";
 		location="小漁港";
 	}
 	else if(keyword.includes("都蘭")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.876/121.238";
 		location="都蘭";
 	}
 	else if(keyword.includes("佳樂水")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/21.987/120.848";
 		location="佳樂水";
 	}
 	else if(keyword.includes("大灣")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/21.942/120.796";
 		location="大灣";
 	}
-	else if(keyword.includes("港仔")){////這的地點有待商榷
-		url="https://www.windy.com/24.889/121.851";
+	else if(keyword.includes("港仔")){////這的地點有待商榷，可跟獅頭再細分
+		url="https://www.windy.com/21.958/120.761";
 		location="港仔";
 	}
 	else if(keyword.includes("恆春")||keyword.includes("南灣")||keyword.includes("獅頭")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/21.958/120.761";
 		location="南灣";
 	}
 	else if(keyword.includes("旗津")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.610/120.265";
 		location="旗津";
 	}
 	else if(keyword.includes("安平")||keyword.includes("漁光")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/22.980/120.153";
 		location="漁光";
 	}
 	else if(keyword.includes("大甲")||keyword.includes("松柏港")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.432/120.617";
 		location="松柏港";
 	}
 	else if(keyword.includes("後龍")||keyword.includes("外埔")){
-		url="https://www.windy.com/24.889/121.851";
+		url="https://www.windy.com/24.636/120.759";
 		location="外埔";
 	}
 	else{
