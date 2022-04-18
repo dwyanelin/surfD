@@ -145,27 +145,27 @@ module.exports=async (keyword)=>{
 			"template": {
 				"type": "image_carousel",
 				"columns": [{
-					"imageUrl": "https://example.com/bot/images/item1.jpg",
-					"action": {
-						"type": "postback",
-						"label": "Buy",
-						"data": "action=buy&itemid=111"
-					}
-				},
-				{
-					"imageUrl": "https://example.com/bot/images/item2.jpg",
+					"imageUrl": "https://i.imgur.com/kuypT8T.png",
 					"action": {
 						"type": "message",
-						"label": "Yes",
+						"label": "預報大E",
 						"text": "yes"
 					}
 				},
 				{
-					"imageUrl": "https://example.com/bot/images/item3.jpg",
+					"imageUrl": "https://i.imgur.com/TRarN6B.png",
 					"action": {
-						"type": "uri",
-						"label": "View detail",
-						"uri": "http://example.com/page/222"
+						"type": "message",
+						"label": "預報大G",
+						"text": "yes"
+					}
+				},
+				{
+					"imageUrl": "https://i.imgur.com/4Y8jpGA.png",
+					"action": {
+						"type": "message",
+						"label": "預報大I",
+						"text": "yes"
 					}
 				}]
 			}
