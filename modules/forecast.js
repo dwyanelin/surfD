@@ -335,8 +335,8 @@ module.exports=async (keyword)=>{
 
 
 
-//以下是以前想法暫時留存
-	let imageObjectArray=imageLinks.map(imageLink=>({//覺得有更好的流程
+	//以下是以前想法暫時留存
+	/*let imageObjectArray=imageLinks.map(imageLink=>({//覺得有更好的流程
 		"type": "image",
 		"originalContentUrl": imageLink,
 		"previewImageUrl": imageLink
@@ -380,5 +380,5 @@ module.exports=async (keyword)=>{
 				}
 			}]
 		}
-	};
+	};*/
 }
