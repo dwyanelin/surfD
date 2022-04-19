@@ -231,14 +231,14 @@ module.exports=async (keyword)=>{
 	//else
 		//跑截圖，insert table
 
-	let imageLinks=[];
-
 	//connecting-heroku-postgres
 	client.connect();
 
-	await client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
+	client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 		console.log(err, res);
 		if(err) throw err;
+
+		let imageLinks=[];
 
 		//res.rows[0]=我們要的資料，location, imgur, created_at
 		if(res.rows.length>0){//如果有截圖location
@@ -286,49 +286,50 @@ module.exports=async (keyword)=>{
 			client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 		}
 		client.end();
+
+		if(viewport==="大"){
+			return {
+				"type": "image",
+				"originalContentUrl": imageLinks[0],
+				"previewImageUrl": imageLinks[0]
+			}
+		}
+		else{
+			return {
+				"type": "template",
+				"altText": location+"windy預報",
+				"template": {
+					"type": "image_carousel",
+					"columns": [{
+						"imageUrl": imageLinks[0],
+						"action": {
+							"type": "message",
+							"label": "預報"+location+"ECMWF",
+							"text": "預報"+location+"E"
+						}
+					},
+					{
+						"imageUrl": imageLinks[1],
+						"action": {
+							"type": "message",
+							"label": "預報"+location+"GFS",
+							"text": "預報"+location+"G"
+						}
+					},
+					{
+						"imageUrl": imageLinks[2],
+						"action": {
+							"type": "message",
+							"label": "預報"+location+"ICON",
+							"text": "預報"+location+"I"
+						}
+					}]
+				}
+			};
+		}
 	});
 	//connecting-heroku-postgres
 
-	if(viewport==="大"){
-		return {
-			"type": "image",
-			"originalContentUrl": imageLinks[0],
-			"previewImageUrl": imageLinks[0]
-		}
-	}
-	else{
-		return {
-			"type": "template",
-			"altText": location+"windy預報",
-			"template": {
-				"type": "image_carousel",
-				"columns": [{
-					"imageUrl": imageLinks[0],
-					"action": {
-						"type": "message",
-						"label": "預報"+location+"ECMWF",
-						"text": "預報"+location+"E"
-					}
-				},
-				{
-					"imageUrl": imageLinks[1],
-					"action": {
-						"type": "message",
-						"label": "預報"+location+"GFS",
-						"text": "預報"+location+"G"
-					}
-				},
-				{
-					"imageUrl": imageLinks[2],
-					"action": {
-						"type": "message",
-						"label": "預報"+location+"ICON",
-						"text": "預報"+location+"I"
-					}
-				}]
-			}
-		};
-	}
 
 
 
