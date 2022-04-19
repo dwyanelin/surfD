@@ -265,7 +265,7 @@ module.exports=async (keyword)=>{
 				}
 
 				//update table
-				client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at='+Date.now()+' WHERE location=\''+locationKey+'\';');
+				client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
 			}
 		}
 		else{
