@@ -234,7 +234,7 @@ module.exports=async (keyword)=>{
 	//connecting-heroku-postgres
 	client.connect();
 
-	return client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
+	let response=client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 		console.log(err, res);
 		if(err) throw err;
 
@@ -331,7 +331,8 @@ module.exports=async (keyword)=>{
 	});
 	//connecting-heroku-postgres
 
-
+	console.log(response);
+	return response;
 
 
 
