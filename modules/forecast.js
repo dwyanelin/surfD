@@ -236,7 +236,7 @@ module.exports=async (keyword)=>{
 	//connecting-heroku-postgres
 	client.connect();
 
-	client.query('SELECT location, imgur, created_at FROM windyImgur where location='+locationKey+';', async (err, res)=>{
+	client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 		console.log(err, res);
 		if(err) throw err;
 
@@ -265,7 +265,7 @@ module.exports=async (keyword)=>{
 				}
 
 				//update table
-				client.query('UPDATE windyImgur SET imgur='+JSON.stringify(imageLinks)+', created_at='+Date.now()+' WHERE location='+locationKey+';');
+				client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at='+Date.now()+' WHERE location=\''+locationKey+'\';');
 			}
 		}
 		else{
@@ -283,7 +283,7 @@ module.exports=async (keyword)=>{
 			}
 
 			//insert table
-			client.query('INSERT INTO windyImgur(location, imgur) VALUES ('+locationKey+', '+JSON.stringify(imageLinks)+');');
+			client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 		}
 		client.end();
 	});
