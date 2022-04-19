@@ -12,7 +12,7 @@
 ////加入MSW
 ////加入瑪神預報
 const { ImgurClient }=require('imgur');
-const client=new ImgurClient({ clientId: "1f37d55e8774b46" });
+const clientImgur=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
 const screenshot=require("./screenshot");
 
@@ -257,7 +257,7 @@ module.exports=async (keyword)=>{
 
 				//upload image via buffer
 				for(let i=0;i<imageBuffers.length;i++){
-					let response=await client.upload({
+					let response=await clientImgur.upload({
 						image: imageBuffers[i],
 						type: 'stream'
 					});
@@ -275,7 +275,7 @@ module.exports=async (keyword)=>{
 
 			//upload image via buffer
 			for(let i=0;i<imageBuffers.length;i++){
-				let response=await client.upload({
+				let response=await clientImgur.upload({
 					image: imageBuffers[i],
 					type: 'stream'
 				});
