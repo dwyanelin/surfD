@@ -285,7 +285,6 @@ module.exports=async (keyword)=>{
 			//insert table
 			client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 		}
-		client.end();
 
 		if(viewport==="大"){
 			return {
@@ -327,6 +326,8 @@ module.exports=async (keyword)=>{
 				}
 			};
 		}
+		
+		client.end();
 	});
 	//connecting-heroku-postgres
 
