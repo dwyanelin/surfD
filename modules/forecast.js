@@ -16,6 +16,17 @@ const client=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
 const screenshot=require("./screenshot");
 
+//connecting-heroku-postgres
+const {Client}=require('pg');
+
+const client=new Client({
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false
+	}
+});
+//connecting-heroku-postgres
+
 module.exports=async (keyword)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
 	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("forecast", "");
@@ -191,6 +202,7 @@ module.exports=async (keyword)=>{
 
 	let viewport;
 	let system;
+	let locationKey;
 	if(/[egi]/i.test(keyword)){
 		viewport="大";//EGI
 		if(keyword.toUpperCase().includes("E")){
@@ -202,22 +214,80 @@ module.exports=async (keyword)=>{
 		else if(keyword.toUpperCase().includes("I")){
 			system="I";
 		}
+		locationKey=location+system;
 	}
 	else{
 		viewport="小";
+		locationKey=location;
 	}
 
-	let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+	//如果有截圖location
+		//如果時間<=一小時，直接取用
+			//tableName=windyImgur, id, location, imgur, created_at
+			//location=雙獅，imgur=url*3
+			//location=雙獅E，imgur=url
+		//else
+			//跑截圖，update table
+	//else
+		//跑截圖，insert table
 
 	let imageLinks=[];
-	//upload image via buffer
-	for(let i=0;i<imageBuffers.length;i++){
-		let response=await client.upload({
-			image: imageBuffers[i],
-			type: 'stream'
-		});
-		imageLinks.push(response.data.link);
-	}
+
+	//connecting-heroku-postgres
+	client.connect();
+
+	client.query('SELECT location, imgur, created_at FROM windyImgur where location='+locationKey+';', (err, res)=>{
+		console.log(err, res);
+		if(err) throw err;
+
+		//res.rows[0]=我們要的資料，location, imgur, created_at
+		if(res.rows.length>0){//如果有截圖location
+			let row=res.rows[0];
+			console.log(row.created_at);
+			let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000
+			console.log(hours);
+			if(hours<=1){//如果時間<=一小時，直接取用
+				imageLinks=JSON.parse(row.imgur);
+				console.log(imageLinks);
+			}
+			else{
+				console.log("跑進有截圖location，但截圖時間超過一小時的流程");
+				//跑截圖
+				let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+
+				//upload image via buffer
+				for(let i=0;i<imageBuffers.length;i++){
+					let response=await client.upload({
+						image: imageBuffers[i],
+						type: 'stream'
+					});
+					imageLinks.push(response.data.link);
+				}
+
+				//update table
+				client.query('UPDATE windyImgur SET imgur='+JSON.stringify(imageLinks)+', created_at='+Date.now()+' WHERE location='+locationKey+';');
+			}
+		}
+		else{
+			console.log("跑進沒有截圖location的流程");
+			//跑截圖
+			let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+
+			//upload image via buffer
+			for(let i=0;i<imageBuffers.length;i++){
+				let response=await client.upload({
+					image: imageBuffers[i],
+					type: 'stream'
+				});
+				imageLinks.push(response.data.link);
+			}
+
+			//insert table
+			client.query('INSERT INTO windyImgur(location, imgur) VALUES ('+locationKey+', '+JSON.stringify(imageLinks)+');');
+		}
+		client.end();
+	});
+	//connecting-heroku-postgres
 
 	if(viewport==="大"){
 		return {
@@ -260,6 +330,11 @@ module.exports=async (keyword)=>{
 		};
 	}
 
+
+
+
+
+//以下是以前想法暫時留存
 	let imageObjectArray=imageLinks.map(imageLink=>({//覺得有更好的流程
 		"type": "image",
 		"originalContentUrl": imageLink,

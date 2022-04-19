@@ -34,14 +34,14 @@ module.exports=async (url, viewport, system)=>{
 
 	if(viewport==="大"){
 		await page.setViewport({
-			width: 1920,
-			height: 1440
+			width: 1600,
+			height: 1200
 		});
 	}
 	else{
 		await page.setViewport({
-			width: 960,
-			height: 720
+			width: 900,
+			height: 900
 		});
 	}
 

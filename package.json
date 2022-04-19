@@ -19,6 +19,7 @@
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "imgur": "^2.1.4",
+    "pg": "^8.7.3",
     "puppeteer": "^13.5.1"
   },
   "engines": {
