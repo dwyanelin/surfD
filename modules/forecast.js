@@ -331,7 +331,7 @@ module.exports=async (keyword)=>{
 			}
 		});
 		//connecting-heroku-postgres
-	}
+	});
 
 
 
