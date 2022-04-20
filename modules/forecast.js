@@ -235,7 +235,7 @@ module.exports=async (keyword)=>{
 	client.connect();
 
 	let response=client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
-		console.log(err, res);
+		//console.log(err, res);
 		if(err) throw err;
 
 		let imageLinks=[];
