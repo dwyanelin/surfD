@@ -16,18 +16,7 @@ const clientImgur=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
 const screenshot=require("./screenshot");
 
-//connecting-heroku-postgres
-const {Client}=require('pg');
-
-const client=new Client({
-	connectionString: process.env.DATABASE_URL,
-	ssl: {
-		rejectUnauthorized: false
-	}
-});
-//connecting-heroku-postgres
-
-module.exports=async (keyword)=>{
+module.exports=async (keyword, clientPostgres)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
 	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("forecast", "");
 	//https://www.windy.com/緯度latitude/經度longitude
@@ -233,9 +222,7 @@ module.exports=async (keyword)=>{
 
 	//connecting-heroku-postgres
 	return new Promise((resolve, reject) => {
-		client.connect();
-
-		client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
+		clientPostgres.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 			//console.log(err, res);
 			if(err) throw err;
 
@@ -266,7 +253,7 @@ module.exports=async (keyword)=>{
 					}
 
 					//update table
-					client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
+					clientPostgres.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
 				}
 			}
 			else{
@@ -284,10 +271,8 @@ module.exports=async (keyword)=>{
 				}
 
 				//insert table
-				client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
+				clientPostgres.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 			}
-
-			client.end();
 
 			if(viewport==="大"){
 				resolve({

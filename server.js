@@ -25,6 +25,19 @@ const config={
 // create LINE SDK client
 const client=new line.Client(config);
 
+//connecting-heroku-postgres
+const {Client}=require('pg');
+
+const clientPostgres=new Client({
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false
+	}
+});
+
+clientPostgres.connect();
+//connecting-heroku-postgres
+
 // create Express app
 // about Express itself: <https://expressjs.com/>
 const app=express();
@@ -57,7 +70,7 @@ async function handleEvent(event){
 	else */if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
 		//查預報（forecast）+浪點名
 		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
-		echo=await forecast(event.message.text);
+		echo=await forecast(event.message.text, clientPostgres);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
 		//查潮汐（tide）+浪點名
