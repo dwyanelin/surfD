@@ -232,26 +232,45 @@ module.exports=async (keyword)=>{
 		//跑截圖，insert table
 
 	//connecting-heroku-postgres
-	client.connect();
+	return new Promise((resolve, reject) => {
+		client.connect();
 
-	let response=client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
-		//console.log(err, res);
-		if(err) throw err;
+		client.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
+			//console.log(err, res);
+			if(err) throw err;
 
-		let imageLinks=[];
+			let imageLinks=[];
 
-		//res.rows[0]=我們要的資料，location, imgur, created_at
-		if(res.rows.length>0){//如果有截圖location
-			let row=res.rows[0];
-			console.log(row.created_at);
-			let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000
-			console.log(hours);
-			if(hours<=1){//如果時間<=一小時，直接取用
-				imageLinks=JSON.parse(row.imgur);
-				console.log(imageLinks);
+			//res.rows[0]=我們要的資料，location, imgur, created_at
+			if(res.rows.length>0){//如果有截圖location
+				let row=res.rows[0];
+				console.log(row.created_at);
+				let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000
+				console.log(hours);
+				if(hours<=1){//如果時間<=一小時，直接取用
+					imageLinks=JSON.parse(row.imgur);
+					console.log(imageLinks);
+				}
+				else{
+					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
+					//跑截圖
+					let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+
+					//upload image via buffer
+					for(let i=0;i<imageBuffers.length;i++){
+						let response=await clientImgur.upload({
+							image: imageBuffers[i],
+							type: 'stream'
+						});
+						imageLinks.push(response.data.link);
+					}
+
+					//update table
+					client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
+				}
 			}
 			else{
-				console.log("跑進有截圖location，但截圖時間超過一小時的流程");
+				console.log("跑進沒有截圖location的流程");
 				//跑截圖
 				let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
 
@@ -264,77 +283,55 @@ module.exports=async (keyword)=>{
 					imageLinks.push(response.data.link);
 				}
 
-				//update table
-				client.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
+				//insert table
+				client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 			}
-		}
-		else{
-			console.log("跑進沒有截圖location的流程");
-			//跑截圖
-			let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
 
-			//upload image via buffer
-			for(let i=0;i<imageBuffers.length;i++){
-				let response=await clientImgur.upload({
-					image: imageBuffers[i],
-					type: 'stream'
+			client.end();
+
+			if(viewport==="大"){
+				resolve({
+					"type": "image",
+					"originalContentUrl": imageLinks[0],
+					"previewImageUrl": imageLinks[0]
 				});
-				imageLinks.push(response.data.link);
 			}
-
-			//insert table
-			client.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
-		}
-
-		if(viewport==="大"){
-			return {
-				"type": "image",
-				"originalContentUrl": imageLinks[0],
-				"previewImageUrl": imageLinks[0]
+			else{
+				resolve({
+					"type": "template",
+					"altText": location+"windy預報",
+					"template": {
+						"type": "image_carousel",
+						"columns": [{
+							"imageUrl": imageLinks[0],
+							"action": {
+								"type": "message",
+								"label": "預報"+location+"ECMWF",
+								"text": "預報"+location+"E"
+							}
+						},
+						{
+							"imageUrl": imageLinks[1],
+							"action": {
+								"type": "message",
+								"label": "預報"+location+"GFS",
+								"text": "預報"+location+"G"
+							}
+						},
+						{
+							"imageUrl": imageLinks[2],
+							"action": {
+								"type": "message",
+								"label": "預報"+location+"ICON",
+								"text": "預報"+location+"I"
+							}
+						}]
+					}
+				});
 			}
-		}
-		else{
-			return {
-				"type": "template",
-				"altText": location+"windy預報",
-				"template": {
-					"type": "image_carousel",
-					"columns": [{
-						"imageUrl": imageLinks[0],
-						"action": {
-							"type": "message",
-							"label": "預報"+location+"ECMWF",
-							"text": "預報"+location+"E"
-						}
-					},
-					{
-						"imageUrl": imageLinks[1],
-						"action": {
-							"type": "message",
-							"label": "預報"+location+"GFS",
-							"text": "預報"+location+"G"
-						}
-					},
-					{
-						"imageUrl": imageLinks[2],
-						"action": {
-							"type": "message",
-							"label": "預報"+location+"ICON",
-							"text": "預報"+location+"I"
-						}
-					}]
-				}
-			};
-		}
-		
-		client.end();
-	});
-	//connecting-heroku-postgres
-
-	console.log("===========================response");
-	console.log(response);
-	console.log("===========================");
-	return response;
+		});
+		//connecting-heroku-postgres
+	}
 
 
 
