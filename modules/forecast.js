@@ -16,7 +16,7 @@ const clientImgur=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
 const screenshot=require("./screenshot");
 
-module.exports=async (keyword, clientPostgres)=>{
+module.exports=async (keyword, clientPostgres, puppeteer)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
 	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("forecast", "");
 	//https://www.windy.com/緯度latitude/經度longitude
@@ -241,7 +241,7 @@ module.exports=async (keyword, clientPostgres)=>{
 				else{
 					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
 					//跑截圖
-					let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+					let imageBuffers=await screenshot(url, viewport, system, puppeteer);//截圖三個系統的波浪預報
 
 					//upload image via buffer
 					for(let i=0;i<imageBuffers.length;i++){
@@ -259,7 +259,7 @@ module.exports=async (keyword, clientPostgres)=>{
 			else{
 				console.log("跑進沒有截圖location的流程");
 				//跑截圖
-				let imageBuffers=await screenshot(url, viewport, system);//截圖三個系統的波浪預報
+				let imageBuffers=await screenshot(url, viewport, system, puppeteer);//截圖三個系統的波浪預報
 
 				//upload image via buffer
 				for(let i=0;i<imageBuffers.length;i++){
