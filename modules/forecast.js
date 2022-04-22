@@ -221,7 +221,7 @@ module.exports=async (keyword, clientPostgres, puppeteer)=>{
 		//跑截圖，insert table
 
 	//connecting-heroku-postgres
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve, reject)=>{
 		clientPostgres.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 			//console.log(err, res);
 			if(err) throw err;
