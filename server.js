@@ -36,6 +36,10 @@ const clientPostgres=new Client({
 });
 
 const puppeteer=require('puppeteer');
+const browser=await puppeteer.launch({
+	headless: true,
+	args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
 
 clientPostgres.connect();
 //connecting-heroku-postgres
@@ -72,7 +76,7 @@ async function handleEvent(event){
 	else */if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
 		//查預報（forecast）+浪點名
 		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
-		echo=await forecast(event.message.text, clientPostgres, puppeteer);
+		echo=await forecast(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
 		//查潮汐（tide）+浪點名

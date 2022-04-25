@@ -9,11 +9,11 @@ jontewks/puppeteer
 https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
 */
 
-module.exports=async (url, viewport, system, puppeteer)=>{
-	const browser=await puppeteer.launch({
+module.exports=async (url, viewport, system, browser)=>{
+	/*const browser=await puppeteer.launch({
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
-	});
+	});*/
 	try{
 		const page=await browser.newPage();
 
