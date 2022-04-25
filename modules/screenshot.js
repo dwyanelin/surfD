@@ -167,4 +167,7 @@ module.exports=async (url, viewport, system, puppeteer)=>{
 	catch(error){
 		console.log(error);
 	}
+	finally {
+		await browser.close();//總是在try結束後關閉browser
+	}
 }
