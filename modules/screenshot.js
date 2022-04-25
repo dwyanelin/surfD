@@ -10,11 +10,11 @@ https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
 */
 
 module.exports=async (url, viewport, system, puppeteer)=>{
+	const browser=await puppeteer.launch({
+		headless: true,
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
+	});
 	try{
-		const browser=await puppeteer.launch({
-			headless: true,
-			args: ['--no-sandbox', '--disable-setuid-sandbox']
-		});
 		const page=await browser.newPage();
 
 		//Set the language forcefully on javascript
