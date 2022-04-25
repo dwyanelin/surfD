@@ -13,7 +13,7 @@ const kfc=require("./modules/kfc");
 const forecast=require("./modules/forecast");
 const screenshot=require("./modules/screenshot");
 
-// index.js
+//index.js
 const line=require('@line/bot-sdk');
 var express=require('express');
 
@@ -22,7 +22,7 @@ const config={
 	channelSecret: process.env.channelSecret
 };
 
-// create LINE SDK client
+//create LINE SDK client
 const client=new line.Client(config);
 
 //connecting-heroku-postgres
@@ -36,20 +36,17 @@ const clientPostgres=new Client({
 });
 
 const puppeteer=require('puppeteer');
-const browser=await puppeteer.launch({
-	headless: true,
-	args: ['--no-sandbox', '--disable-setuid-sandbox']
-});
+let browser;
 
 clientPostgres.connect();
 //connecting-heroku-postgres
 
-// create Express app
-// about Express itself: <https://expressjs.com/>
+//create Express app
+//about Express itself: <https://expressjs.com/>
 const app=express();
 
-// register a webhook handler with middleware
-// about the middleware, please refer to doc
+//register a webhook handler with middleware
+//about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res)=>{
 	//console.log(req, res);
 	Promise
@@ -61,10 +58,10 @@ app.post('/callback', line.middleware(config), (req, res)=>{
 	});
 });
 
-// event handler
+//event handler
 async function handleEvent(event){
 	if(event.type!=='message'||event.message.type!=='text'){
-		// ignore non-text-message event
+		//ignore non-text-message event
 		return Promise.resolve(null);
 	}
 
@@ -108,7 +105,7 @@ async function handleEvent(event){
 	console.log(echo);
 	console.log("===========================");
 
-	// use reply API
+	//use reply API
 	if((echo.type==="text"&&echo.text!=="")||echo.type!=="text"){
 		console.log("===========================");
 		console.log("有進到reply");
@@ -117,8 +114,12 @@ async function handleEvent(event){
 	}
 }
 
-// listen on port
+//listen on port
 const port=process.env.PORT||3000;
 app.listen(port, ()=>{
 	console.log(`listening on ${port}`);
+	browser=await puppeteer.launch({
+		headless: true,
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
+	});
 });
