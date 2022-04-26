@@ -102,7 +102,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 					}
 				},
 				{
-					"imageUrl":"asdf",
+					"imageUrl":"https://i.imgur.com/MppshkM.png",
 					"action":{
 						"type":"message",
 						"label":"預報龜吼ICON",
