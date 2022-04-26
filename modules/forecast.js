@@ -80,37 +80,6 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 	else if(keyword.includes("龜吼")){
 		url="https://www.windy.com/25.193/121.686";
 		location="龜吼";
-		return {
-			"type": 'template',
-			"altText": '龜吼windy預報',
-			"template": {
-				"type": 'image_carousel',
-				"columns": [{
-					"imageUrl":"https://i.imgur.com/MppshkM.png",
-					"action":{
-						"type":"message",
-						"label":"預報龜 吼ECMWF",
-						"text":"預報龜吼E"
-					}
-				},
-				{
-					"imageUrl":"https://i.imgur.com/V5EcabF.png",
-					"action":{
-						"type":"message",
-						"label":"預報龜吼GFS",
-						"text":"預報龜吼G"
-					}
-				},
-				{
-					"imageUrl":"https://i.imgur.com/MppshkM.png",
-					"action":{
-						"type":"message",
-						"label":"預報龜吼ICON",
-						"text":"預報龜吼I"
-					}
-				}]
-			}
-		}
 	}
 	else if(keyword.includes("金山")||keyword.includes("磺港")){
 		url="https://www.windy.com/25.231/121.644";
@@ -268,6 +237,27 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				if(hours<=1){//如果時間<=一小時，直接取用
 					imageLinks=JSON.parse(row.imgur);
 					console.log(imageLinks);
+					let isAllLinksWork=imageLinks.every(link=>link&&link.includes("https://i.imgur.com/")&&link.includes(".png"));
+					if(isAllLinksWork===false){
+						console.log("跑進有截圖location，但截圖網址有問題的流程");
+						//先清空links重新來
+						imageLinks=[];
+
+						//跑截圖
+						let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+
+						//upload image via buffer
+						for(let i=0;i<imageBuffers.length;i++){
+							let response=await clientImgur.upload({
+								image: imageBuffers[i],
+								type: 'stream'
+							});
+							imageLinks.push(response.data.link);
+						}
+
+						//update table
+						clientPostgres.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
+					}
 				}
 				else{
 					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
