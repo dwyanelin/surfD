@@ -14,8 +14,9 @@ module.exports=async (url, viewport, system, browser)=>{
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});*/
+	let page;
 	try{
-		const page=await browser.newPage();
+		page=await browser.newPage();
 
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
@@ -67,7 +68,7 @@ module.exports=async (url, viewport, system, browser)=>{
 				fullPage: true,
 				type: "png"
 			});
-			await browser.close();
+			await page.close();
 			return [imageBufferE];
 		}
 		else if(system==="G"){
@@ -93,7 +94,7 @@ module.exports=async (url, viewport, system, browser)=>{
 				fullPage: true,
 				type: "png"
 			});
-			await browser.close();
+			await page.close();
 			return [imageBufferG];
 		}
 		else if(system==="I"){
@@ -119,7 +120,7 @@ module.exports=async (url, viewport, system, browser)=>{
 				fullPage: true,
 				type: "png"
 			});
-			await browser.close();
+			await page.close();
 			return [imageBufferI];
 		}
 		else{
@@ -160,7 +161,7 @@ module.exports=async (url, viewport, system, browser)=>{
 				type: "png"
 			});
 
-			await browser.close();
+			await page.close();
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
 		}
 	}
@@ -168,6 +169,6 @@ module.exports=async (url, viewport, system, browser)=>{
 		console.log(error);
 	}
 	finally {
-		await browser.close();//總是在try結束後關閉browser
+		await page.close();//總是在try結束後關閉browser
 	}
 }
