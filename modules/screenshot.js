@@ -17,7 +17,7 @@ module.exports=async (url, viewport, system, browser)=>{
 	let page;
 	try{
 		page=await browser.newPage();
-		console.log(page);
+		console.log(browser.pages());
 
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
@@ -170,6 +170,9 @@ module.exports=async (url, viewport, system, browser)=>{
 		console.log(error);
 	}
 	finally {
-		await page.close();//總是在try結束後關閉browser
+		console.log("===========================");
+		console.log("finally");
+		console.log("===========================");
+		//await page.close();//總是在try結束後關閉browser
 	}
 }
