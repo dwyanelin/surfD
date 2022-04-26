@@ -17,7 +17,8 @@ module.exports=async (url, viewport, system, browser)=>{
 	let page;
 	try{
 		page=await browser.newPage();
-		console.log(browser.pages());
+		let pages=await browser.pages();
+		console.log(pages);
 
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
