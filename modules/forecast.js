@@ -80,6 +80,37 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 	else if(keyword.includes("龜吼")){
 		url="https://www.windy.com/25.193/121.686";
 		location="龜吼";
+		return {
+			"type": 'template',
+			"altText": '龜吼windy預報',
+			"template": {
+				"type": 'image_carousel',
+				"columns": [{
+					"imageUrl":"https://i.imgur.com/MppshkM.png",
+					"action":{
+						"type":"message",
+						"label":"預報龜 吼ECMWF",
+						"text":"預報龜吼E"
+					}
+				},
+				{
+					"imageUrl":"https://i.imgur.com/V5EcabF.png",
+					"action":{
+						"type":"message",
+						"label":"預報龜吼GFS",
+						"text":"預報龜吼G"
+					}
+				},
+				{
+					"imageUrl":"asdf",
+					"action":{
+						"type":"message",
+						"label":"預報龜吼ICON",
+						"text":"預報龜吼I"
+					}
+				}]
+			}
+		}
 	}
 	else if(keyword.includes("金山")||keyword.includes("磺港")){
 		url="https://www.windy.com/25.231/121.644";
