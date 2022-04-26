@@ -231,13 +231,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			//res.rows[0]=我們要的資料，location, imgur, created_at
 			if(res.rows.length>0){//如果有截圖location
 				let row=res.rows[0];
-				console.log(row.created_at);
+				//console.log(row.created_at);
 				let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000
-				console.log(hours);
+				//console.log(hours);
 				if(hours<=1){//如果時間<=一小時，直接取用
 					imageLinks=JSON.parse(row.imgur);
 					console.log(imageLinks);
-					let isAllLinksWork=imageLinks.every(link=>link&&link.includes("https://i.imgur.com/")&&link.includes(".png"));
+					let isAllLinksWork=imageLinks.every(link=>link&&link.includes("https://i.imgur.com/")&&(link.includes(".png")||link.includes(".jpg")));
 					if(isAllLinksWork===false){
 						console.log("跑進有截圖location，但截圖網址有問題的流程");
 						//先清空links重新來
