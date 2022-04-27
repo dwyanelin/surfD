@@ -36,10 +36,11 @@ const clientPostgres=new Client({
 });
 
 const puppeteer=require('puppeteer');
-let browser=await puppeteer.launch({
+let browser;
+(async ()=>browser=await puppeteer.launch({
 	headless: true,
 	args: ['--no-sandbox', '--disable-setuid-sandbox']
-});
+}))();
 
 clientPostgres.connect();
 //connecting-heroku-postgres
