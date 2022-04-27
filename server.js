@@ -36,7 +36,10 @@ const clientPostgres=new Client({
 });
 
 const puppeteer=require('puppeteer');
-let browser;
+let browser=await puppeteer.launch({
+	headless: true,
+	args: ['--no-sandbox', '--disable-setuid-sandbox']
+});
 
 clientPostgres.connect();
 //connecting-heroku-postgres
@@ -118,8 +121,4 @@ async function handleEvent(event){
 const port=process.env.PORT||3000;
 app.listen(port, async ()=>{
 	console.log(`listening on ${port}`);
-	browser=await puppeteer.launch({
-		headless: true,
-		args: ['--no-sandbox', '--disable-setuid-sandbox']
-	});
 });
