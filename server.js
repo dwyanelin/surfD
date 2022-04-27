@@ -13,17 +13,14 @@ const kfc=require("./modules/kfc");
 const forecast=require("./modules/forecast");
 const screenshot=require("./modules/screenshot");
 
-//index.js
+//create LINE SDK client
 const line=require('@line/bot-sdk');
-var express=require('express');
-
 const config={
 	channelAccessToken: process.env.channelAccessToken,
 	channelSecret: process.env.channelSecret
 };
-
-//create LINE SDK client
 const client=new line.Client(config);
+//create LINE SDK client
 
 //connecting-heroku-postgres
 const {Client}=require('pg');
@@ -34,20 +31,23 @@ const clientPostgres=new Client({
 		rejectUnauthorized: false
 	}
 });
+clientPostgres.connect();
+//connecting-heroku-postgres
 
+//開chrome
 const puppeteer=require('puppeteer');
 let browser;
 (async ()=>browser=await puppeteer.launch({
 	headless: true,
 	args: ['--no-sandbox', '--disable-setuid-sandbox']
 }))();
-
-clientPostgres.connect();
-//connecting-heroku-postgres
+//開chrome
 
 //create Express app
 //about Express itself: <https://expressjs.com/>
+var express=require('express');
 const app=express();
+//create Express app
 
 //register a webhook handler with middleware
 //about the middleware, please refer to doc
