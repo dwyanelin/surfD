@@ -196,12 +196,13 @@ module.exports=async (url, viewport, system, browser)=>{
 		}
 	}
 	catch(error){
+		await page.close();
 		console.log(error);
 	}
 	finally {
 		console.log("===========================");
 		console.log("finally");
 		console.log("===========================");
-		await page.close();//總是在try結束後關閉browser
+		//await page.close();//總是在try結束後關閉browser
 	}
 }
