@@ -191,7 +191,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 
 	let viewport;
 	let system;
-	let locationKey;
+	let locationKey;//要存postgres的key
 	if(/[egi]/i.test(keyword)){
 		viewport="大";//EGI
 		if(keyword.toUpperCase().includes("E")){
@@ -207,7 +207,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 	}
 	else{
 		viewport="小";
-		locationKey=location;
+		if(/[a3全]/i.test(keyword)){//指定要All預報圖，就回復3個小預報圖
+			system="A";
+			locationKey=location+system;
+		}
+		else{//最簡單的指令，快速回復1個小預報圖
+			locationKey=location;
+		}
 	}
 
 	//如果有截圖location
@@ -303,37 +309,46 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				});
 			}
 			else{
-				resolve({
-					"type": "template",
-					"altText": location+"windy預報",
-					"template": {
-						"type": "image_carousel",
-						"columns": [{
-							"imageUrl": imageLinks[0],
-							"action": {
-								"type": "message",
-								"label": "預報"+location+"ECMWF",
-								"text": "預報"+location+"E"
-							}
-						},
-						{
-							"imageUrl": imageLinks[1],
-							"action": {
-								"type": "message",
-								"label": "預報"+location+"GFS",
-								"text": "預報"+location+"G"
-							}
-						},
-						{
-							"imageUrl": imageLinks[2],
-							"action": {
-								"type": "message",
-								"label": "預報"+location+"ICON",
-								"text": "預報"+location+"I"
-							}
-						}]
-					}
-				});
+				if(system==="A"){
+					resolve({
+						"type": "template",
+						"altText": location+"windy預報",
+						"template": {
+							"type": "image_carousel",
+							"columns": [{
+								"imageUrl": imageLinks[0],
+								"action": {
+									"type": "message",
+									"label": "預報"+location+"ECMWF",
+									"text": "預報"+location+"E"
+								}
+							},
+							{
+								"imageUrl": imageLinks[1],
+								"action": {
+									"type": "message",
+									"label": "預報"+location+"GFS",
+									"text": "預報"+location+"G"
+								}
+							},
+							{
+								"imageUrl": imageLinks[2],
+								"action": {
+									"type": "message",
+									"label": "預報"+location+"ICON",
+									"text": "預報"+location+"I"
+								}
+							}]
+						}
+					});
+				}
+				else{
+					resolve({
+						"type": "image",
+						"originalContentUrl": imageLinks[0],
+						"previewImageUrl": imageLinks[0]
+					});
+				}
 			}
 		});
 		//connecting-heroku-postgres

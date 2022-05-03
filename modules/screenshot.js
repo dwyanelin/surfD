@@ -125,7 +125,7 @@ module.exports=async (url, viewport, system, browser)=>{
 			await page.close();
 			return [imageBufferI];
 		}
-		else{
+		else if(system==="A"){
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -165,6 +165,33 @@ module.exports=async (url, viewport, system, browser)=>{
 
 			await page.close();
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
+		}
+		else{
+			await page.goto(url, {"waitUntil" : "networkidle0"});
+			const button1=await page.$('[data-do="set,waves"]');
+			await button1.evaluate(b=>b.click());
+			await page.waitForNavigation();
+			const button11=await page.$('[data-do="set,ecmwfWaves"]');
+			await button11.evaluate(b=>b.click());
+			await page.waitForNavigation();
+			//metric,wind//風速單位，按兩下
+			//metric,waves//浪高單位，按一下
+			const button12=await page.$('[data-do="metric,wind"]');
+			await button12.evaluate(b=>{
+				b.click();
+				b.click();
+			});
+			await page.waitForNavigation();
+			const button13=await page.$('[data-do="metric,waves"]');
+			await button13.evaluate(b=>b.click());
+			await page.waitForNavigation();
+			const imageBufferE=await page.screenshot({
+				fullPage: true,
+				type: "png"
+			});
+
+			await page.close();
+			return [imageBufferE];
 		}
 	}
 	catch(error){
