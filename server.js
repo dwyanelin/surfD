@@ -24,16 +24,16 @@ const client=new line.Client(config);
 //Step2: create richmenu object
 const richmenu=require("./modules/richmenu");
 const fs=require('fs');
-const richMenuId='richmenu-42f9e117ec49d5f8a19a465146f3aecf';
+const richMenuId='richmenu-e1518bcf1598cfeb7429a513692d6b7b';
 //Step3-1: createRichMenu and get richMenuId
-client.createRichMenu(richmenu)
+/*client.createRichMenu(richmenu)
 .then(richMenuId=>{
 	console.log("richMenuId: "+richMenuId)
 })
-.catch(err=>console.error(err));
+.catch(err=>console.error(err));*/
 //Step3-2: setRichMenuImage: upload image for RichMenu
-/*client.setRichMenuImage(richMenuId, fs.createReadStream('./images/richmenu.jpg'))
-.then(res=>console.log(res));*/
+client.setRichMenuImage(richMenuId, fs.createReadStream('./images/richmenu.jpg'))
+.then(res=>console.log(res));
 //Step4: display to "all" users
 //client.setDefaultRichMenu(richMenuId);
 //create LINE SDK client and richmenu
