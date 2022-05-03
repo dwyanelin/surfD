@@ -77,6 +77,11 @@ module.exports={
 			"y": 365,
 			"width": 360,
 			"height": 364
+		},
+		"action": {
+			"type": "message",
+			"label": "這樣Tide危險～",
+			"text": "~Tide"
 		}
 	}]
 };
