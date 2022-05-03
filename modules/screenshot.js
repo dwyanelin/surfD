@@ -196,7 +196,9 @@ module.exports=async (url, viewport, system, browser)=>{
 		}
 	}
 	catch(error){
-		await page.close();
+		if(page.isClosed()===false){
+			await page.close();
+		}
 		console.log(error);
 	}
 	finally {

@@ -258,7 +258,36 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"text": ""
 							});
 						}
-						console.log("asdf");
+						else{
+							console.log("asdf");
+
+							//upload image via buffer
+							for(let i=0;i<imageBuffers.length;i++){
+								let response=await clientImgur.upload({
+									image: imageBuffers[i],
+									type: 'stream'
+								});
+								imageLinks.push(response.data.link);
+							}
+
+							//update table
+							clientPostgres.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
+						}
+					}
+				}
+				else{
+					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
+					//跑截圖
+					let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+
+					if(typeof imageBuffers==="undefined"){
+						resolve({
+							"type": "text",
+							"text": ""
+						});
+					}
+					else{
+						console.log("zxcv");
 
 						//upload image via buffer
 						for(let i=0;i<imageBuffers.length;i++){
@@ -273,31 +302,6 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						clientPostgres.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
 					}
 				}
-				else{
-					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
-					//跑截圖
-					let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
-
-					if(typeof imageBuffers==="undefined"){
-						resolve({
-							"type": "text",
-							"text": ""
-						});
-					}
-					console.log("zxcv");
-
-					//upload image via buffer
-					for(let i=0;i<imageBuffers.length;i++){
-						let response=await clientImgur.upload({
-							image: imageBuffers[i],
-							type: 'stream'
-						});
-						imageLinks.push(response.data.link);
-					}
-
-					//update table
-					clientPostgres.query('UPDATE windyImgur SET imgur=\''+JSON.stringify(imageLinks)+'\', created_at=to_timestamp('+Date.now()+'/1000) WHERE location=\''+locationKey+'\';');
-				}
 			}
 			else{
 				console.log("跑進沒有截圖location的流程");
@@ -310,19 +314,21 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						"text": ""
 					});
 				}
-				console.log("qwer");
+				else{
+					console.log("qwer");
 
-				//upload image via buffer
-				for(let i=0;i<imageBuffers.length;i++){
-					let response=await clientImgur.upload({
-						image: imageBuffers[i],
-						type: 'stream'
-					});
-					imageLinks.push(response.data.link);
+					//upload image via buffer
+					for(let i=0;i<imageBuffers.length;i++){
+						let response=await clientImgur.upload({
+							image: imageBuffers[i],
+							type: 'stream'
+						});
+						imageLinks.push(response.data.link);
+					}
+
+					//insert table
+					clientPostgres.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 				}
-
-				//insert table
-				clientPostgres.query('INSERT INTO windyImgur(location, imgur) VALUES (\''+locationKey+'\', \''+JSON.stringify(imageLinks)+'\');');
 			}
 
 			if(viewport==="大"){
