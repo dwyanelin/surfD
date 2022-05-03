@@ -320,7 +320,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"ECMWF",
-									"text": "預報"+location+"E"
+									"text": "F"+location+"E"
 								}
 							},
 							{
@@ -328,7 +328,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"GFS",
-									"text": "預報"+location+"G"
+									"text": "F"+location+"G"
 								}
 							},
 							{
@@ -336,7 +336,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"ICON",
-									"text": "預報"+location+"I"
+									"text": "F"+location+"I"
 								}
 							}]
 						}
