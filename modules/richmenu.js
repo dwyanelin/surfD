@@ -4,8 +4,8 @@ module.exports={
 		"height": 728
 	},
 	"selected": true,
-	"name": "Foreseen richmenu",
-	"chatBarText": "選單",
+	"name": "surfD richmenu",
+	"chatBarText": "功能說明",
 	"areas": [{//區塊1：
 		"bounds": {
 			"x": 0,
@@ -29,7 +29,7 @@ module.exports={
 		"action": {
 			"type": "message",
 			"label": "Forecast(預報)+浪點",
-			"uri": "F雙獅"
+			"text": "F雙獅"
 		}
 	},
 	{//區塊3：
@@ -42,7 +42,7 @@ module.exports={
 		"action": {
 			"type": "message",
 			"label": "Tide(潮汐)+浪點",
-			"uri": "T雙獅"
+			"text": "T雙獅"
 		}
 	},
 	{//區塊4：
@@ -55,7 +55,7 @@ module.exports={
 		"action": {
 			"type": "message",
 			"label": "Live(直播)+浪點",
-			"uri": "L金樽"
+			"text": "L金樽"
 		}
 	},
 	{//區塊5：
