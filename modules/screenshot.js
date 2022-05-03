@@ -196,7 +196,9 @@ module.exports=async (url, viewport, system, browser)=>{
 		}
 	}
 	catch(error){
-		if(page.isClosed()===false){
+		//免費server效能太差，windy太吃效能
+		//最常見的執行超時30秒會跑來這
+		if(page.isClosed()===false){//要先檢查page還沒被關掉，再去關他才不會錯誤
 			console.log("===========================");
 			console.log("error await page.close();");
 			console.log("===========================");
