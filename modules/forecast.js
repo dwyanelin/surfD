@@ -258,6 +258,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"text": ""
 							});
 						}
+						console.log("asdf");
 
 						//upload image via buffer
 						for(let i=0;i<imageBuffers.length;i++){
@@ -283,6 +284,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 							"text": ""
 						});
 					}
+					console.log("zxcv");
 
 					//upload image via buffer
 					for(let i=0;i<imageBuffers.length;i++){
@@ -308,6 +310,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						"text": ""
 					});
 				}
+				console.log("qwer");
 
 				//upload image via buffer
 				for(let i=0;i<imageBuffers.length;i++){
