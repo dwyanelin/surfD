@@ -252,6 +252,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						//跑截圖
 						let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
 
+						if(typeof imageBuffers==="undefined"){
+							resolve({
+								"type": "text",
+								"text": ""
+							});
+						}
+
 						//upload image via buffer
 						for(let i=0;i<imageBuffers.length;i++){
 							let response=await clientImgur.upload({
@@ -270,6 +277,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 					//跑截圖
 					let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
 
+					if(typeof imageBuffers==="undefined"){
+						resolve({
+							"type": "text",
+							"text": ""
+						});
+					}
+
 					//upload image via buffer
 					for(let i=0;i<imageBuffers.length;i++){
 						let response=await clientImgur.upload({
@@ -287,6 +301,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				console.log("跑進沒有截圖location的流程");
 				//跑截圖
 				let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+
+				if(typeof imageBuffers==="undefined"){
+					resolve({
+						"type": "text",
+						"text": ""
+					});
+				}
 
 				//upload image via buffer
 				for(let i=0;i<imageBuffers.length;i++){

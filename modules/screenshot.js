@@ -14,8 +14,9 @@ module.exports=async (url, viewport, system, browser)=>{
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});*/
+	let page;
 	try{
-		let page=await browser.newPage();
+		page=await browser.newPage();
 		let pages=await browser.pages();
 		//console.log(pages);
 		console.log(pages.length);
@@ -201,6 +202,6 @@ module.exports=async (url, viewport, system, browser)=>{
 		console.log("===========================");
 		console.log("finally");
 		console.log("===========================");
-		//await page.close();//總是在try結束後關閉browser
+		await page.close();//總是在try結束後關閉browser
 	}
 }
