@@ -5,7 +5,7 @@ echo可以是單一個message object
 */
 
 const tideDangerous=require("./modules/tideDangerous");
-//const help=require("./modules/help");
+const help=require("./modules/help");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
