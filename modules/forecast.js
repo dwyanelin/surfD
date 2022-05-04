@@ -208,10 +208,11 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 	else{
 		viewport="小";
 		if(/[a3全]/i.test(keyword)){//指定要All預報圖，就回復3個小預報圖
-			system="A";
+			system="A";//All
 			locationKey=location+system;
 		}
 		else{//最簡單的指令，快速回復1個小預報圖
+			system="F";//Fast
 			locationKey=location;
 		}
 	}
@@ -237,11 +238,13 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			//res.rows[0]=我們要的資料，location, imgur, created_at
 			if(res.rows.length>0){//如果有截圖location
 				let row=res.rows[0];
+				console.log("截圖cache建立時間：");
 				console.log(row.created_at);
 				let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000
-				console.log(hours);
+				console.log("離現在幾小時（超過1小不取用）："+hours);
 				if(hours<=1){//如果時間<=一小時，直接取用
 					imageLinks=JSON.parse(row.imgur);
+					console.log("直接取用截圖cache網址：");
 					console.log(imageLinks);
 					let isAllLinksWork=imageLinks.every(link=>link&&link.includes("https://i.imgur.com/")&&(link.includes(".png")||link.includes(".jpg")));
 					if(isAllLinksWork===false){
@@ -250,7 +253,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						imageLinks=[];
 
 						//跑截圖
-						let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+						let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
 
 						if(typeof imageBuffers==="undefined"){
 							resolve({
@@ -259,7 +262,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 							});
 						}
 						else{
-							console.log("1"+location+system);
+							console.log("有截圖cache但網址有問題，成功截圖："+location+system);
 
 							//upload image via buffer
 							for(let i=0;i<imageBuffers.length;i++){
@@ -278,7 +281,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				else{
 					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
 					//跑截圖
-					let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+					let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
 
 					if(typeof imageBuffers==="undefined"){
 						resolve({
@@ -287,7 +290,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						});
 					}
 					else{
-						console.log("2"+location+system);
+						console.log("有截圖cache但時間超過，成功截圖："+location+system);
 
 						//upload image via buffer
 						for(let i=0;i<imageBuffers.length;i++){
@@ -306,7 +309,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			else{
 				console.log("跑進沒有截圖location的流程");
 				//跑截圖
-				let imageBuffers=await screenshot(url, viewport, system, browser);//截圖三個系統的波浪預報
+				let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
 
 				if(typeof imageBuffers==="undefined"){
 					resolve({
@@ -315,7 +318,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 					});
 				}
 				else{
-					console.log("3"+location+system);
+					console.log("沒有截圖cache，成功截圖"+location+system);
 
 					//upload image via buffer
 					for(let i=0;i<imageBuffers.length;i++){

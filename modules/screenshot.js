@@ -9,7 +9,7 @@ jontewks/puppeteer
 https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
 */
 
-module.exports=async (url, viewport, system, browser)=>{
+module.exports=async (url, viewport, system, browser, location)=>{
 	/*const browser=await puppeteer.launch({
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -19,7 +19,7 @@ module.exports=async (url, viewport, system, browser)=>{
 		page=await browser.newPage();
 		let pages=await browser.pages();
 		//console.log(pages);
-		console.log(pages.length);
+		console.log("browser開啟的page數量："+pages.length);
 
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
@@ -201,18 +201,15 @@ module.exports=async (url, viewport, system, browser)=>{
 		if(typeof page!=="undefined"&&page.isClosed()===false){
 			//剛開伺服器就跑指令，browser還沒開好page就會是undefined
 			//要先檢查page還沒被關掉，再去關他才不會錯誤
-			console.log("===========================");
+			console.log("截圖失敗："+location+system);
 			console.log("error await page.close();");
 			console.log("===========================");
 			await page.close();
 		}
-		console.log("===========================");
-		console.log("error");
 		console.log(error);
 		console.log("===========================");
 	}
 	finally {
-		console.log("===========================");
 		console.log("finally");
 		console.log("===========================");
 		//await page.close();//總是在try結束後關閉browser
