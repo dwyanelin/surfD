@@ -40,7 +40,7 @@ module.exports={
 	},{
 		"index": 61,//在字串中的index
 		"productId": "5ac21d59031a6752fb806d5d",
-		"emojiId": "173"//outdoor衝浪板
+		"emojiId": "151"//outdoor衝浪
 	}],
 	"wrap": true
 };
