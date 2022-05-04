@@ -4,14 +4,14 @@ echo可以是單一個message object
 也可以是message object array
 */
 
-const tideDangerous=require("./modules/tideDangerous");
 const help=require("./modules/help");
+const about=require("./modules/about");
+const forecast=require("./modules/forecast");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
+const tideDangerous=require("./modules/tideDangerous");
 const kfc=require("./modules/kfc");
-const forecast=require("./modules/forecast");
-const screenshot=require("./modules/screenshot");
 
 //create LINE SDK client and richmenu
 const line=require('@line/bot-sdk');
@@ -74,9 +74,9 @@ app.post('/callback', line.middleware(config), (req, res)=>{
 	//console.log(req, res);
 	Promise
 	.all(req.body.events.map(handleEvent))
-	.then((result)=>res.json(result))
-	.catch((err)=>{
-		console.error(err);
+	.then(result=>res.json(result))
+	.catch(error=>{
+		console.error(error);
 		res.status(500).end();
 	});
 });
@@ -93,13 +93,33 @@ async function handleEvent(event){
 	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
 		echo=help;
 	}
+	else if(event.message.text[0]==="/"){
+		if(event.message.text.toUpperCase()==="/F"){
+			echo=about.forecast;
+		}
+		else if(event.message.text.toUpperCase()==="/T"){
+			echo=about.tide;
+		}
+		else if(event.message.text.toUpperCase()==="/L"){
+			echo=about.live;
+		}
+		else if(event.message.text.toUpperCase()==="/S"){
+			echo=about.store;
+		}
+		else{
+			return Promise.resolve(null);
+		}
+	}
 	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
 		//查預報（forecast）+浪點名
-		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
+		//先reply ecmwf小截圖，另可指定三個系統的小截圖，或單一系統的大截圖
+		//字串尾加：F, A, E, G, I
 		echo=await forecast(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
 		//查潮汐（tide）+浪點名
+		//可指定查詢天數，最多31
+		//字串尾加：天數
 		echo=await tide(event.message.text);
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){

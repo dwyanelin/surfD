@@ -28,8 +28,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "Forecast(預報)+浪點",
-			"text": "F雙獅"
+			"label": "觸發Forecast(預報)使用說明",
+			"text": "/F"
 		}
 	},
 	{//區塊3：
@@ -41,8 +41,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "Tide(潮汐)+浪點",
-			"text": "T雙獅"
+			"label": "觸發Tide(潮汐)使用說明",
+			"text": "/T"
 		}
 	},
 	{//區塊4：
@@ -54,8 +54,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "Live(直播)+浪點",
-			"text": "L金樽"
+			"label": "觸發Live(直播)使用說明",
+			"text": "/L"
 		}
 	},
 	{//區塊5：
@@ -67,8 +67,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "Store(店家)+店名",
-			"text": "Snamiaru"
+			"label": "觸發Store(店家)使用說明",
+			"text": "/S"
 		}
 	},
 	{//區塊6：

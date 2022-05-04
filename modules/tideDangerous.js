@@ -1,4 +1,4 @@
 module.exports={
 	"type":"text",
-	"text":"這樣tide危險～"
+	"text":"這樣Tide危險～"
 };
