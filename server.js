@@ -90,10 +90,10 @@ async function handleEvent(event){
 
 	let keyword;
 	let echo;
-	/*if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
+	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
 		echo=help;
 	}
-	else */if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
+	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
 		//查預報（forecast）+浪點名
 		//三個系統的波浪預報截圖，或單一系統的高解析波浪預報截圖
 		echo=await forecast(event.message.text, clientPostgres, browser);
@@ -123,14 +123,12 @@ async function handleEvent(event){
 		return Promise.resolve(null);
 	}
 
-	console.log("===========================");
 	console.log(typeof echo);
 	console.log(echo);
 	console.log("===========================");
 
 	//use reply API
 	if((echo.type==="text"&&echo.text!=="")||echo.type!=="text"){
-		console.log("===========================");
 		console.log("有進到reply");
 		console.log("===========================");
 		return client.replyMessage(event.replyToken, echo);
