@@ -59,7 +59,7 @@ module.exports={
 	},
 	store:{
 		"type": "text",
-		"text": "查詢店家$的格式：\nS+店名\n\n例如：\n「Snamiaru」\n\n如店家想新增您的店家資訊，請備妥以下資訊：\n店名、店家封面圖網址(比例16:9)、店家官網網址、地址、電話、email、line ID、IG網址、FB網址\n並email至：\ntest@gmail.com\n\n收到後將盡速新增！",
+		"text": "查詢店家$的格式：\nS+店名\n\n例如：\n「Snamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊：\n店名、地址、電話、(以下可不提供)店家封面圖網址(比例接近16:9)、店家官網網址、email、line ID、IG網址、FB網址\n並email至：\ntest@gmail.com\n\n收到後將定期新增！",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",

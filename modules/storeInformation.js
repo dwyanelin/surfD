@@ -21,11 +21,10 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
 	},
-	//要測試沒imageUrl=>沒hero、沒email、沒下面1/3或2/3、（下面三個都沒=>沒footer）
 	豆你丸:{
 		name:"豆你丸",
 		imageUrl:"https://i.imgur.com/YVrPbWm.jpg",
-		url:"https://www.facebook.com/DouNiWanZi",
+		url:null,
 		address:"桃園市大溪區和平路3號",
 		phone:"03 387 8100",
 		email:null,
