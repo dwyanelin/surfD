@@ -23,14 +23,14 @@ const client=new line.Client(config);
 //Step1: create your image for richmenu
 //Step2: create richmenu object
 //Step3-1: createRichMenu and get richMenuId
-/*const richmenu=require("./modules/richmenu");
+const richmenu=require("./modules/richmenu");
 client.createRichMenu(richmenu)
 .then(richMenuId=>{
 	console.log("richMenuId: "+richMenuId)
 })
-.catch(err=>console.error(err));*/
+.catch(err=>console.error(err));
 
-const richMenuId='richmenu-e1518bcf1598cfeb7429a513692d6b7b';
+//const richMenuId='richmenu-e1518bcf1598cfeb7429a513692d6b7b';
 
 //Step3-2: setRichMenuImage: upload image for RichMenu
 /*const fs=require('fs');
@@ -38,7 +38,7 @@ client.setRichMenuImage(richMenuId, fs.createReadStream('./images/richmenu.jpg')
 .then(res=>console.log(res));*/
 
 //Step4: display to "all" users
-client.setDefaultRichMenu(richMenuId);
+//client.setDefaultRichMenu(richMenuId);
 //create LINE SDK client and richmenu
 
 //connecting-heroku-postgres
