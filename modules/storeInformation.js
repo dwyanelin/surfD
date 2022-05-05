@@ -24,12 +24,12 @@ module.exports={
 	//要測試沒imageUrl=>沒hero、沒email、沒下面1/3或2/3、（下面三個都沒=>沒footer）
 	test:{
 		name:"test",
-		imageUrl:null,
+		imageUrl:"https://i.imgur.com/bHMjsw1.jpg",
 		url:"https://www.facebook.com/aloha.hisurf",
 		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
 		phone:"03-9777517",
 		email:null,
-		lineId:null,
+		lineId:"@420msvqa",
 		instagramUrl:null,
 		facebookUrl:null
 	}
