@@ -33,12 +33,12 @@ client.createRichMenu(richmenu)
 const richMenuId='richmenu-a0baad6e6f8827b6d3b7a67e9959a6d9';
 
 //Step3-2: setRichMenuImage: upload image for RichMenu
-const fs=require('fs');
+/*const fs=require('fs');
 client.setRichMenuImage(richMenuId, fs.createReadStream('./images/richmenu.jpg'))
-.then(res=>console.log(res));
+.then(res=>console.log(res));*/
 
 //Step4: display to "all" users
-//client.setDefaultRichMenu(richMenuId);
+client.setDefaultRichMenu(richMenuId);
 //create LINE SDK client and richmenu
 
 //connecting-heroku-postgres
