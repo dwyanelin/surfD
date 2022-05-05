@@ -37,9 +37,13 @@ module.exports=async (url, viewport, system, browser, location)=>{
 
 		if(viewport==="大"){
 			await page.setViewport({
+				width: 900,
+				height: 900
+			});
+			/*await page.setViewport({
 				width: 1600,
 				height: 1200
-			});
+			});*/
 		}
 		else{
 			await page.setViewport({
