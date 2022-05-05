@@ -3,7 +3,7 @@ module.exports={
 		name:"namiarusurfstudio",
 		imageUrl:"https://namiaru.yibnb.com/images/bg.jpg",
 		url:"https://namiaru.yibnb.com",
-		address:"宜蘭縣頭城鎮環鎮東路二段668巷",
+		address:"宜蘭縣頭城鎮環鎮東路二段668巷8號",
 		phone:"0968-369853",
 		email:"namiarusurfstudio@gmail.com",
 		lineId:"@420msvqa",
@@ -12,13 +12,25 @@ module.exports={
 	},
 	一間衝浪店:{
 		name:"一間衝浪店",
-		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t39.30808-6/275676027_5418329274922361_5012254170367866697_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=a26aad&_nc_ohc=HAhkSQGKLZAAX9aqdRM&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT9K_K5kpGPUvwtwAhXBlPigf3nWdEvSeZZOWt4BK6zadw&oe=6253F466",
+		imageUrl:"https://i.imgur.com/bHMjsw1.jpg",
 		url:"https://www.facebook.com/aloha.hisurf",
 		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
-		phone:"03 977 7517",
+		phone:"03-9777517",
 		email:"namiarusurfstudio@gmail.com",
 		lineId:"@420msvqa",
 		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
+	},
+	//要測試沒imageUrl=>沒hero、沒email、沒下面1/3或2/3、（下面三個都沒=>沒footer）
+	test:{
+		name:"test",
+		imageUrl:null,
+		url:"https://www.facebook.com/aloha.hisurf",
+		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
+		phone:"03-9777517",
+		email:null,
+		lineId:null,
+		instagramUrl:null,
+		facebookUrl:null
 	}
 };
