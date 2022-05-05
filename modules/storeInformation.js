@@ -24,7 +24,7 @@ module.exports={
 	豆你丸:{
 		name:"豆你丸",
 		imageUrl:"https://i.imgur.com/YVrPbWm.jpg",
-		url:null,
+		url:"https://www.facebook.com/DouNiWanZi",
 		address:"桃園市大溪區和平路3號",
 		phone:"03 387 8100",
 		email:null,
