@@ -13,8 +13,8 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("一間")||keyword.includes("有間")){
 		return storeFlexMessage(storeInformation.一間衝浪店);
 	}
-	else if(keyword.toLowerCase().includes("test")){
-		return storeFlexMessage(storeInformation.test);
+	else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
+		return storeFlexMessage(storeInformation.豆你丸);
 	}
 	else{
 		return {"type": "text", "text": ""};

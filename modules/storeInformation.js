@@ -15,22 +15,22 @@ module.exports={
 		imageUrl:"https://i.imgur.com/bHMjsw1.jpg",
 		url:"https://www.facebook.com/aloha.hisurf",
 		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
-		phone:"03-9777517",
+		phone:"03 977 7517",
 		email:"namiarusurfstudio@gmail.com",
 		lineId:"@420msvqa",
 		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
 	},
 	//要測試沒imageUrl=>沒hero、沒email、沒下面1/3或2/3、（下面三個都沒=>沒footer）
-	test:{
-		name:"test",
-		imageUrl:"https://i.imgur.com/bHMjsw1.jpg",
-		url:"https://www.facebook.com/aloha.hisurf",
-		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
-		phone:"03-9777517",
+	豆你丸:{
+		name:"豆你丸",
+		imageUrl:"https://i.imgur.com/YVrPbWm.jpg",
+		url:"https://www.facebook.com/DouNiWanZi",
+		address:"桃園市大溪區和平路3號",
+		phone:"03 387 8100",
 		email:null,
-		lineId:"@420msvqa",
+		lineId:null,
 		instagramUrl:null,
-		facebookUrl:null
+		facebookUrl:"https://www.facebook.com/DouNiWanZi"
 	}
 };
