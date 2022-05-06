@@ -114,6 +114,7 @@ async function handleEvent(event){
 		//查預報（forecast）+浪點名
 		//先reply ecmwf小截圖，另可指定三個系統的小截圖，或單一系統的大截圖
 		//字串尾加：F, A, E, G, I
+		////還要記錄浪點預報次數
 		echo=await forecast(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
