@@ -7,8 +7,6 @@
 3.哪個系統
 */
 
-////////一小時內windy要使用暫存的截圖，不然瀏覽器開windy太吃記憶體
-
 ////加入MSW
 ////加入瑪神預報
 const { ImgurClient }=require('imgur');

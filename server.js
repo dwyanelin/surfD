@@ -129,7 +129,6 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
-		////考慮是否要crawl google真實評分，google頁面評分element的class="Aq14fc"
 		echo=store(event.message.text);
 	}
 	else if(event.message.text.toUpperCase().includes("~TIDE")){
