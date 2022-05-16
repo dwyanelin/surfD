@@ -131,9 +131,6 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBufferI];
 		}
 		else if(system==="A"){
-			await page.goto("https://windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('[data-t="PART_ANIMATION"]');//關閉粒子動畫
-			await particles.evaluate(b=>b.click());
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -175,9 +172,6 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
 		}
 		else{
-			await page.goto("https://windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('[data-t="PART_ANIMATION"]');//關閉粒子動畫
-			await particles.evaluate(b=>b.click());
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
