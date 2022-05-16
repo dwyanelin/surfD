@@ -183,6 +183,13 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			const asdf=await page.$('[data-do="set,waves"]');
 			console.log(asdf);
+			const imageBufferE=await page.screenshot({
+				fullPage: true,
+				type: "png"
+			});
+
+			await page.close();
+			return [imageBufferE];
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -201,13 +208,13 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			const button13=await page.$('[data-do="metric,waves"]');
 			await button13.evaluate(b=>b.click());
 			await page.waitForNavigation();
-			const imageBufferE=await page.screenshot({
+			/*const imageBufferE=await page.screenshot({
 				fullPage: true,
 				type: "png"
 			});
 
 			await page.close();
-			return [imageBufferE];
+			return [imageBufferE];*/
 		}
 	}
 	catch(error){
