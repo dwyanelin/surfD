@@ -199,12 +199,12 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			//console.log(particles);
 			////class沒off才按
 			if(particles!==null){
-				const className=await particles.getProperty('className');
+				const className=await (await particles.getProperty('className')).jsonValue();
 				console.log(className);
-				/*if(!className.includes("off")){
+				if(!className.includes("off")){
 					await particles.evaluate(b=>b.click());
 					await page.waitForNavigation();
-				}*/
+				}
 			}
 			//粒子動畫關掉，增加執行速度
 
