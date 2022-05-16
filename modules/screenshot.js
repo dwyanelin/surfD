@@ -144,7 +144,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			////class沒off才按
 			if(particles!==null){
 				const className=await (await particles.getProperty('className')).jsonValue();
-				//console.log(className);
+				console.log(className);
 				if(!className.includes("off")){
 					await particles.evaluate(b=>b.click());
 					await page.waitForNavigation();
@@ -206,7 +206,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			////class沒off才按
 			if(particles!==null){
 				const className=await (await particles.getProperty('className')).jsonValue();
-				//console.log(className);
+				console.log(className);
 				if(!className.includes("off")){
 					await particles.evaluate(b=>b.click());
 					await page.waitForNavigation();
