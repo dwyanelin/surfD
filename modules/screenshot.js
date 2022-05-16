@@ -139,6 +139,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			await page.waitForNavigation();*/
 			const particles=await page.$('[id="menu-check-particles"]');
+			////class沒off才按
 			if(particles!==null){
 				await particles.evaluate(b=>b.click());
 			}
@@ -194,7 +195,11 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			await page.waitForNavigation();*/
 			const particles=await page.$('[id="menu-check-particles"]');
-			if(particles!==null){
+			console.log(particles);
+			const className=await particles.getProperty('className');
+			console.log(className);
+			////class沒off才按
+			if(particles!==null&&!className.includes("off")){
 				await particles.evaluate(b=>b.click());
 			}
 			await page.waitForNavigation();
