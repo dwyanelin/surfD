@@ -131,9 +131,20 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBufferI];
 		}
 		else if(system==="A"){
+			//粒子動畫關掉，增加執行速度
 			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('[id="particles"]');
-			await particles.evaluate(b=>b.click());
+			/*const menu=await page.$('[data-do="rqstOpen,menu"]');
+			if(menu!==null){
+				await menu.evaluate(b=>b.click());
+			}
+			await page.waitForNavigation();*/
+			const particles=await page.$('[id="menu-check-particles"]');
+			if(particles!==null){
+				await particles.evaluate(b=>b.click());
+			}
+			await page.waitForNavigation();
+			//粒子動畫關掉，增加執行速度
+
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -175,21 +186,20 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
 		}
 		else{
+			//粒子動畫關掉，增加執行速度
 			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('[id="particles"]');
-			console.log(particles);
+			/*const menu=await page.$('[data-do="rqstOpen,menu"]');
+			if(menu!==null){
+				await menu.evaluate(b=>b.click());
+			}
+			await page.waitForNavigation();*/
+			const particles=await page.$('[id="menu-check-particles"]');
 			if(particles!==null){
 				await particles.evaluate(b=>b.click());
 			}
-			const asdf=await page.$('[data-do="set,waves"]');
-			console.log(asdf);
-			const imageBufferE=await page.screenshot({
-				fullPage: true,
-				type: "png"
-			});
+			await page.waitForNavigation();
+			//粒子動畫關掉，增加執行速度
 
-			await page.close();
-			return [imageBufferE];
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -208,13 +218,13 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			const button13=await page.$('[data-do="metric,waves"]');
 			await button13.evaluate(b=>b.click());
 			await page.waitForNavigation();
-			/*const imageBufferE=await page.screenshot({
+			const imageBufferE=await page.screenshot({
 				fullPage: true,
 				type: "png"
 			});
 
 			await page.close();
-			return [imageBufferE];*/
+			return [imageBufferE];
 		}
 	}
 	catch(error){
