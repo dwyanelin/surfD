@@ -132,7 +132,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else if(system==="A"){
 			await page.goto(url, {"waitUntil" : "networkidle0"});
-			const particles=await page.$('#particles');//關閉粒子動畫
+			const particles=await page.$('[id="particles"]');//關閉粒子動畫
 			await particles.evaluate(b=>b.click());
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
@@ -175,7 +175,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else{//#particles
 			await page.goto(url, {"waitUntil" : "networkidle0"});
-			const particles=await page.$('#particles');//關閉粒子動畫
+			const particles=await page.$('[id="particles"]');//關閉粒子動畫
 			await particles.evaluate(b=>b.click());
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
