@@ -177,7 +177,12 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		else{
 			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
 			const particles=await page.$('[id="particles"]');
-			await particles.evaluate(b=>b.click());
+			console.log(particles);
+			if(particles!==null){
+				await particles.evaluate(b=>b.click());
+			}
+			const asdf=await page.$('[data-do="set,waves"]');
+			console.log(asdf);
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
