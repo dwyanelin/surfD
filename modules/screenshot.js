@@ -132,6 +132,8 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else if(system==="A"){
 			await page.goto(url, {"waitUntil" : "networkidle0"});
+			const particles=await page.$('#particles');//關閉粒子動畫
+			await particles.evaluate(b=>b.click());
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
@@ -171,8 +173,10 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			await page.close();
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
 		}
-		else{
+		else{//#particles
 			await page.goto(url, {"waitUntil" : "networkidle0"});
+			const particles=await page.$('#particles');//關閉粒子動畫
+			await particles.evaluate(b=>b.click());
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
