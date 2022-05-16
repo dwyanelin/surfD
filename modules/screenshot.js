@@ -172,6 +172,11 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBuffer1, imageBuffer2, imageBuffer3];
 		}
 		else{
+			await page.goto("https://windy.com", {"waitUntil" : "networkidle0"});
+			const particles=await page.$('[id="particles"]');
+			console.log(particles);
+			const asdf=await page.$('[data-do="set,waves"]');
+			console.log(asdf);
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
