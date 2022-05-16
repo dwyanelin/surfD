@@ -132,7 +132,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else if(system==="A"){
 			await page.goto("https://windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('#particles');//關閉粒子動畫
+			const particles=await page.$('[data-ref="particles"]');//關閉粒子動畫
 			await particles.evaluate(b=>b.click());
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
@@ -176,7 +176,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else{
 			await page.goto("https://windy.com", {"waitUntil" : "networkidle0"});
-			const particles=await page.$('[id="particles"]');//關閉粒子動畫
+			const particles=await page.$('[data-ref="particles"]');//關閉粒子動畫
 			await particles.evaluate(b=>b.click());
 			await page.goto(url, {"waitUntil" : "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
