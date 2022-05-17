@@ -139,9 +139,8 @@ module.exports=async (url, viewport, system, browser, location)=>{
 				await menu.evaluate(b=>b.click());
 				await page.waitForNavigation();
 			}
-			const particles=await page.$('[id="menu-check-particles"]');*/
+			const particles=await page.$('[id="menu-check-particles"]');
 			//console.log(particles);
-			////class沒off才按
 			if(particles!==null){
 				const className=await (await particles.getProperty('className')).jsonValue();
 				console.log(className);
@@ -149,7 +148,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 					await particles.evaluate(b=>b.click());
 					await page.waitForNavigation();
 				}
-			}
+			}*/
 			//粒子動畫關掉，增加執行速度
 
 			await page.goto(url, {"waitUntil" : "networkidle0"});
@@ -203,7 +202,6 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			const particles=await page.$('[id="menu-check-particles"]');
 			//console.log(particles);
-			////class沒off才按
 			if(particles!==null){
 				const className=await (await particles.getProperty('className')).jsonValue();
 				console.log(className);
