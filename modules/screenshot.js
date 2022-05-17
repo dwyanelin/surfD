@@ -132,7 +132,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else if(system==="A"){
 			//粒子動畫關掉，增加執行速度
-			/*await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
+			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
 			const menu=await page.$('[data-do="rqstOpen,menu"]');
 			//console.log(menu);
 			if(menu!==null){
@@ -148,7 +148,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 					await particles.evaluate(b=>b.click());
 					await page.waitForNavigation();
 				}
-			}*/
+			}
 			//粒子動畫關掉，增加執行速度
 
 			await page.goto(url, {"waitUntil" : "networkidle0"});
