@@ -7,8 +7,6 @@
 3.哪個系統
 */
 
-////加入MSW
-////加入瑪神預報
 const { ImgurClient }=require('imgur');
 const clientImgur=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
@@ -434,4 +432,4 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			}]
 		}
 	};*/
-}
+};
