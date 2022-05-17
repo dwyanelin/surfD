@@ -141,6 +141,7 @@ async function handleEvent(event){
 	else if(event.message.text[0].toUpperCase()==="S"){//開燈關燈時間sunrise sunset
 		return Promise.resolve(null);
 	}
+	////加入瑪神預報
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
 		//查KFC優惠券的內容價格日期跟圖片（私人）
 		echo=await kfc(event.message.text);

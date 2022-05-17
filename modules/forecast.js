@@ -1,6 +1,7 @@
 /*
-先顯示windy三個系統的小圖預報，
-並附上label跟message action，去觸發單一系統的大圖預報（三個大圖會系統超時）
+先截圖windy E系統的小圖預報，
+有加A才截圖3個系統的小圖預報，並附上label跟message action，
+點擊可以去觸發單一系統的小（大）圖預報
 
 1.地點
 2.小圖大圖
@@ -14,7 +15,7 @@ const screenshot=require("./screenshot");
 
 module.exports=async (keyword, clientPostgres, browser)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
-	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("forecast", "");
+	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("F", "");
 	//https://www.windy.com/緯度latitude/經度longitude
 	////陸續增加浪點gps，使用下方台灣浪點地圖
 	//https://www.google.com/maps/d/viewer?hl=zh-TW&mid=1Tmx-N1h9ZELKdrtxT7RxT4oK1m0bhSoq
@@ -165,6 +166,10 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 		url="https://www.windy.com/21.958/120.761";
 		location="南灣";
 	}
+	else if(keyword.toUpperCase().includes("AK")){//颱風管浪barrel高級浪點
+		url="https://www.windy.com/21.927/120.708";
+		location="AK";
+	}
 	else if(keyword.includes("旗津")){
 		url="https://www.windy.com/22.610/120.265";
 		location="旗津";
@@ -213,10 +218,11 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 		}
 	}
 
-	//如果有截圖location
+	//如果有截圖locationKey
 		//如果時間<=一小時，直接取用
 			//tableName=windyImgur, id, location, imgur, created_at
-			//location=雙獅，imgur=url*3
+			//location=雙獅，imgur=url
+			//location=雙獅A，imgur=url*3
 			//location=雙獅E，imgur=url
 		//else
 			//跑截圖，update table
@@ -249,7 +255,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						imageLinks=[];
 
 						//跑截圖
-						let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
+						let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
 
 						if(typeof imageBuffers==="undefined"){
 							resolve({
@@ -277,7 +283,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				else{
 					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
 					//跑截圖
-					let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
+					let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
 
 					if(typeof imageBuffers==="undefined"){
 						resolve({
@@ -305,7 +311,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			else{
 				console.log("跑進沒有截圖location的流程");
 				//跑截圖
-				let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖三個系統的波浪預報
+				let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
 
 				if(typeof imageBuffers==="undefined"){
 					resolve({
