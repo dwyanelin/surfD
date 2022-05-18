@@ -11,9 +11,7 @@ const screenshotMsw=require("./screenshotMsw");
 
 module.exports=async (keyword, clientPostgres, browser)=>{
 	keyword=keyword.toUpperCase().replace("MSW", "").replace("M", "");
-	//https://www.windy.com/緯度latitude/經度longitude
-	////陸續增加浪點gps，使用下方台灣浪點地圖
-	//https://www.google.com/maps/d/viewer?hl=zh-TW&mid=1Tmx-N1h9ZELKdrtxT7RxT4oK1m0bhSoq
+	//https://magicseaweed.com/Taiwan-Surf-Forecast/88/
 
 	let url;
 	let location;
@@ -177,12 +175,18 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 		return {"type":"text", "text":""};
 	}
 
-	let days=keyword.match(/\d+$/);//天數看要截幾個圖
+	let days=keyword.match(/\d+$/);//天數看要截幾個圖，1~7
 	if(days===null){
 		days=1;
 	}
 	else{
 		days=days[0];
+	}
+	if(days<1){
+		days=1;
+	}
+	if(days>7){
+		days=7;
 	}
 
 	let locationKey=location+days;//要存postgres的key
@@ -223,6 +227,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						imageLinks=[];
 
 						//跑截圖
+						////暫時只有一張截圖會跑進來，先留著以備以後可能會回傳多張
 						let imageBuffers=await screenshotMsw(url, days, browser, location);//截圖msw+天數波浪預報
 
 						if(typeof imageBuffers==="undefined"){
@@ -307,11 +312,11 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				}
 			}
 
-			resolve([{//都是傳多張image回去
+			resolve({
 				"type": "image",
 				"originalContentUrl": imageLinks[0],
 				"previewImageUrl": imageLinks[0]
-			}]);
+			});
 		});
 		//connecting-heroku-postgres
 	});

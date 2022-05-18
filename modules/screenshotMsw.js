@@ -9,17 +9,15 @@ jontewks/puppeteer
 https://github.com/CoffeeAndCode/puppeteer-heroku-buildpack.git
 */
 
+const images=require("images");
+
 module.exports=async (url, days, browser, location)=>{
-	/*const browser=await puppeteer.launch({
-		headless: true,
-		args: ['--no-sandbox', '--disable-setuid-sandbox']
-	});*/
 	let page;
 	try{
 		page=await browser.newPage();
 		let pages=await browser.pages();
 		//console.log(pages);
-		console.log("browser開啟的page數量："+pages.length);
+		console.log("browser開啟的page數量(msw)："+pages.length);
 
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
@@ -37,101 +35,105 @@ module.exports=async (url, days, browser, location)=>{
 
 		/*
 			先goto到網頁，
-			找到<thead>，在找到他next()，頁面定位過去，
-			看能不能截圖x, y, width, height
+			找到<thead>，找出他的位置，截圖，
+			再看天數，將截圖放進i				每個next()，找出他的位置，扣掉最後一個不要截的child，截圖
+			創個imageAll，寬度=thead寬度，高度的thead+i部截圖高度，
+			按順序draw進去，
+			encode成png，return
 		*/
 
 		await page.goto(url, {"waitUntil" : "networkidle0"});
+
+		const thead=await page.$('thead');
+		const rectHead=await page.evaluate(el=>{
+			const {top, left, width, height}=el.getBoundingClientRect();
+			return {top, left, width, height};
+		}, thead);
+		//console.log(rectHead);
+		const imageBufferHead=await page.screenshot({
+			clip: {
+				x: rectHead.left,
+				y: rectHead.top,
+				width: rectHead.width,
+				height: rectHead.height
+			},
+			type: "png"
+		});
+
+		let nowElement=thead;
+		let imageBufferBodys=[];
+		for(let i=0;i<days;i++){
+			const tbody=await page.evaluateHandle(el=>el.nextElementSibling, nowElement);
+			nowElement=tbody;
+			const rectBody=await page.evaluate(el=>{
+				const {top, left, width, height}=el.getBoundingClientRect();
+				return {top, left, width, height};
+			}, tbody);
+			//console.log(rectBody);
+
+			const lastTr=(await tbody.$$(':scope > tr:last-child'))[0];
+			const rectBodyLastTr=await page.evaluate(el=>{
+				const {top, left, width, height}=el.getBoundingClientRect();
+				return {top, left, width, height};
+			}, lastTr);
+			//console.log(rectBodyLastTr);
+			const imageBufferBody=await page.screenshot({
+				clip: {
+					x: rectBody.left,
+					y: rectBody.top,
+					width: rectBody.width,
+					height: rectBody.height-rectBodyLastTr.height
+				},
+				type: "png"
+			});
+			imageBufferBodys.push(imageBufferBody);
+		}
+
+		let imageHead=images(imageBufferHead);
+		let imageBodys=imageBufferBodys.map(imageBufferBody=>images(imageBufferBody));
+		let imageAllHeight=imageHead.height();
+		for(let i=0;i<days;i++){
+			imageAllHeight+=imageBodys[i].height();
+		}
+		let imageAll=images(imageHead.width(), imageAllHeight);
+		imageAll
+		.draw(imageHead, 0, 0)
+		for(let i=0;i<days;i++){
+			imageAll
+			.draw(imageBodys[i], 0, imageHead.height()+imageBodys[i].height()*i)
+		}
+		let imageAllBuffer=imageAll
+		.encode("png");
+
+		await page.close();
+		return [imageAllBuffer];
+
+
+		await page.goto(url, {"waitUntil" : "networkidle0"});
 		const button1=await page.$('[data-do="set,waves"]');
+		await button1.evaluate(b=>b.click());
+		await page.waitForNavigation();
+		const button11=await page.$('[data-do="set,ecmwfWaves"]');
+		await button11.evaluate(b=>b.click());
+		await page.waitForNavigation();
+		//metric,wind//風速單位，按兩下
+		//metric,waves//浪高單位，按一下
+		const button12=await page.$('[data-do="metric,wind"]');
+		await button12.evaluate(b=>{
+			b.click();
+			b.click();
+		});
+		await page.waitForNavigation();
+		const button13=await page.$('[data-do="metric,waves"]');
+		await button13.evaluate(b=>b.click());
+		await page.waitForNavigation();
+		const imageBufferE=await page.screenshot({
+			fullPage: true,
+			type: "png"
+		});
 
-		if(days==="E"){
-			await page.goto(url, {"waitUntil" : "networkidle0"});
-			const button1=await page.$('[data-do="set,waves"]');
-			await button1.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const button11=await page.$('[data-do="set,ecmwfWaves"]');
-			await button11.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			//metric,wind//風速單位，按兩下
-			//metric,waves//浪高單位，按一下
-			const button12=await page.$('[data-do="metric,wind"]');
-			await button12.evaluate(b=>{
-				b.click();
-				b.click();
-			});
-			await page.waitForNavigation();
-			const button13=await page.$('[data-do="metric,waves"]');
-			await button13.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const imageBufferE=await page.screenshot({
-				fullPage: true,
-				type: "png"
-			});
-
-			await page.close();
-			return [imageBufferE];
-		}
-		else if(days==="A"){
-			//粒子動畫關掉，增加執行速度
-			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
-			const menu=await page.$('[data-do="rqstOpen,menu"]');
-			//console.log(menu);
-			if(menu!==null){
-				await menu.evaluate(b=>b.click());
-				await page.waitForNavigation();
-			}
-			const particles=await page.$('[id="menu-check-particles"]');
-			//console.log(particles);
-			if(particles!==null){
-				const className=await (await particles.getProperty('className')).jsonValue();
-				console.log(className);
-				if(!className.includes("off")){
-					await particles.evaluate(b=>b.click());
-					await page.waitForNavigation();
-				}
-			}
-			//粒子動畫關掉，增加執行速度
-
-			await page.goto(url, {"waitUntil" : "networkidle0"});
-			const button1=await page.$('[data-do="set,waves"]');
-			await button1.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const button11=await page.$('[data-do="set,ecmwfWaves"]');
-			await button11.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			//metric,wind//風速單位，按兩下
-			//metric,waves//浪高單位，按一下
-			const button12=await page.$('[data-do="metric,wind"]');
-			await button12.evaluate(b=>{
-				b.click();
-				b.click();
-			});
-			await page.waitForNavigation();
-			const button13=await page.$('[data-do="metric,waves"]');
-			await button13.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const imageBuffer1=await page.screenshot({
-				fullPage: true,
-				type: "png"
-			});
-			const button2=await page.$('[data-do="set,gfsWaves"]');
-			await button2.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const imageBuffer2=await page.screenshot({
-				fullPage: true,
-				type: "png"
-			});
-			const button3=await page.$('[data-do="set,iconWaves"]');
-			await button3.evaluate(b=>b.click());
-			await page.waitForNavigation();
-			const imageBuffer3=await page.screenshot({
-				fullPage: true,
-				type: "png"
-			});
-
-			await page.close();
-			return [imageBuffer1, imageBuffer2, imageBuffer3];
-		}
+		await page.close();
+		return [imageBufferE];
 	}
 	catch(error){
 		//免費server效能太差，windy太吃效能

@@ -20,42 +20,32 @@ const options={
 			console.log("===========================");
 })();*/
 
-/*const msw=require("./modules/msw");
+//connecting-heroku-postgres
+const {Client}=require('pg');
 
-(async ()=>{
-	let echo=await msw("m雙獅");
-
-	console.log(typeof echo);
-	console.log(echo);
-})();*/
+const clientPostgres=new Client({
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false
+	}
+});
+clientPostgres.connect();
+//connecting-heroku-postgres
 
 //開chrome
 const puppeteer=require('puppeteer');
+let browser;
+//開chrome
+
+const msw=require("./modules/msw");
+
 (async ()=>{
-	let browser=await puppeteer.launch({
+	browser=await puppeteer.launch({
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
-	let page=await browser.newPage();
-	await page.goto("https://magicseaweed.com/Wushi-Surf-Report/844/", {"waitUntil" : "networkidle0"});
-	const thead=await page.$('thead');
-	const tbody=await page.evaluateHandle(el => el.nextElementSibling, thead);
-	let rect=await page.evaluate(el=>{
-		const {top, left, width, height}=el.getBoundingClientRect();
-		return {top, left, width, height};
-	}, tbody);
-	console.log(rect);
-	await page.evaluate(async () => {
-    await new Promise((resolve, reject) => {
-      window.scrollBy(0, rect.top);
-      resolve();
-    });
-  });
-	const imageBuffer=await page.screenshot({
-		fullPage: true,
-		//type: "png",
-		path: "./screenshot.png"
-	});
-	//console.log(await (await prev.getProperty('innerText')).jsonValue());
+	let echo=await msw("雙獅", clientPostgres, browser);
+
+	console.log(typeof echo);
+	console.log(echo);
 })();
-//開chrome
