@@ -7,6 +7,7 @@ echo可以是單一個message object
 const help=require("./modules/help");
 const about=require("./modules/about");
 const forecast=require("./modules/forecast");
+const msw=require("./modules/msw");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
@@ -136,7 +137,7 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
-		return Promise.resolve(null);
+		echo=await msw(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0].toUpperCase()==="S"){//開燈關燈時間sunrise sunset
 		return Promise.resolve(null);
