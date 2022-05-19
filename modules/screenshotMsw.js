@@ -19,10 +19,6 @@ module.exports=async (url, days, browser, location)=>{
 		//console.log(pages);
 		console.log("browser開啟的page數量(msw)："+pages.length);
 
-		const context=browser.defaultBrowserContext();
-		await context.overridePermissions(url, ['geolocation']);
-		await page.setGeolocation({latitude:24.888, longitude:121.849});
-
 		//Set the language forcefully on javascript
 		await page.evaluateOnNewDocument(() => {
 			Object.defineProperty(navigator, "language", {
@@ -46,7 +42,7 @@ module.exports=async (url, days, browser, location)=>{
 			encode成png，return
 		*/
 
-		await page.goto(url, {"waitUntil" : "networkidle0"});
+		await page.goto(url+"?units=eu", {"waitUntil" : "networkidle0"});
 
 		const thead=await page.$('thead');
 		const rectHead=await page.evaluate(el=>{
