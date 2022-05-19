@@ -137,6 +137,7 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
+		////單位要改一下
 		echo=await msw(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0].toUpperCase()==="S"){//開燈關燈時間sunrise sunset

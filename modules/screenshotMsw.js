@@ -14,6 +14,10 @@ const images=require("images");
 module.exports=async (url, days, browser, location)=>{
 	let page;
 	try{
+		const context=browser.defaultBrowserContext();
+		await context.overridePermissions(url, ['geolocation']);
+		await page.setGeolocation({latitude:24.888, longitude:121.849});
+
 		page=await browser.newPage();
 		let pages=await browser.pages();
 		//console.log(pages);
