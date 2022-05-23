@@ -53,7 +53,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 
 		if(system==="E"){
-			await page.goto(url, {"waitUntil" : "networkidle0"});
+			await page.goto(url, {"waitUntil": "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
@@ -79,7 +79,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBufferE];
 		}
 		else if(system==="G"){
-			await page.goto(url, {"waitUntil" : "networkidle0"});
+			await page.goto(url, {"waitUntil": "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
@@ -105,7 +105,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			return [imageBufferG];
 		}
 		else if(system==="I"){
-			await page.goto(url, {"waitUntil" : "networkidle0"});
+			await page.goto(url, {"waitUntil": "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
@@ -132,7 +132,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else if(system==="A"){
 			//粒子動畫關掉，增加執行速度
-			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
+			await page.goto("https://www.windy.com", {"waitUntil": "networkidle0"});
 			const menu=await page.$('[data-do="rqstOpen,menu"]');
 			//console.log(menu);
 			if(menu!==null){
@@ -151,7 +151,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			//粒子動畫關掉，增加執行速度
 
-			await page.goto(url, {"waitUntil" : "networkidle0"});
+			await page.goto(url, {"waitUntil": "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();
@@ -193,7 +193,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 		}
 		else{
 			//粒子動畫關掉，增加執行速度
-			await page.goto("https://www.windy.com", {"waitUntil" : "networkidle0"});
+			await page.goto("https://www.windy.com", {"waitUntil": "networkidle0"});
 			const menu=await page.$('[data-do="rqstOpen,menu"]');
 			//console.log(menu);
 			if(menu!==null){
@@ -212,7 +212,7 @@ module.exports=async (url, viewport, system, browser, location)=>{
 			}
 			//粒子動畫關掉，增加執行速度
 
-			await page.goto(url, {"waitUntil" : "networkidle0"});
+			await page.goto(url, {"waitUntil": "networkidle0"});
 			const button1=await page.$('[data-do="set,waves"]');
 			await button1.evaluate(b=>b.click());
 			await page.waitForNavigation();

@@ -42,7 +42,7 @@ module.exports=async (url, days, browser, location)=>{
 			encode成png，return
 		*/
 
-		await page.goto(url+"?units=eu", {"waitUntil" : "networkidle0"});
+		await page.goto(url+"?units=eu", {"waitUntil": "networkidle0"});
 
 		const thead=await page.$('thead');
 		const rectHead=await page.evaluate(el=>{
@@ -109,7 +109,7 @@ module.exports=async (url, days, browser, location)=>{
 		return [imageAllBuffer];
 
 
-		await page.goto(url, {"waitUntil" : "networkidle0"});
+		await page.goto(url, {"waitUntil": "networkidle0"});
 		const button1=await page.$('[data-do="set,waves"]');
 		await button1.evaluate(b=>b.click());
 		await page.waitForNavigation();

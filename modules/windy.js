@@ -11,11 +11,11 @@
 const { ImgurClient }=require('imgur');
 const clientImgur=new ImgurClient({ clientId: "1f37d55e8774b46" });
 
-const screenshot=require("./screenshot");
+const screenshotWindy=require("./screenshotWindy");
 
 module.exports=async (keyword, clientPostgres, browser)=>{
 	keyword=keyword.replace("預報", "").replace("預", "");
-	keyword=keyword.toUpperCase().replace("FORECAST", "").replace("F", "");
+	keyword=keyword.toUpperCase().replace("WINDY", "").replace("W", "");
 	//https://www.windy.com/緯度latitude/經度longitude
 	////陸續增加浪點gps，使用下方台灣浪點地圖
 	//https://www.google.com/maps/d/viewer?hl=zh-TW&mid=1Tmx-N1h9ZELKdrtxT7RxT4oK1m0bhSoq
@@ -255,7 +255,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 						imageLinks=[];
 
 						//跑截圖
-						let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
+						let imageBuffers=await screenshotWindy(url, viewport, system, browser, location);//截圖windy波浪預報
 
 						if(typeof imageBuffers==="undefined"){
 							resolve({
@@ -283,7 +283,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 				else{
 					console.log("跑進有截圖location，但截圖時間超過一小時的流程");
 					//跑截圖
-					let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
+					let imageBuffers=await screenshotWindy(url, viewport, system, browser, location);//截圖windy波浪預報
 
 					if(typeof imageBuffers==="undefined"){
 						resolve({
@@ -311,7 +311,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			else{
 				console.log("跑進沒有截圖location的流程");
 				//跑截圖
-				let imageBuffers=await screenshot(url, viewport, system, browser, location);//截圖windy波浪預報
+				let imageBuffers=await screenshotWindy(url, viewport, system, browser, location);//截圖windy波浪預報
 
 				if(typeof imageBuffers==="undefined"){
 					resolve({
@@ -355,7 +355,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"ECMWF",
-									"text": "F"+location+"E"
+									"text": "W"+location+"E"
 								}
 							},
 							{
@@ -363,7 +363,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"GFS",
-									"text": "F"+location+"G"
+									"text": "W"+location+"G"
 								}
 							},
 							{
@@ -371,7 +371,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 								"action": {
 									"type": "message",
 									"label": "預報"+location+"ICON",
-									"text": "F"+location+"I"
+									"text": "W"+location+"I"
 								}
 							}]
 						}

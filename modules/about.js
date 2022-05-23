@@ -17,13 +17,13 @@
 module.exports={
 	forecast:{
 		"type": "text",
-		"text": "查詢預報$的格式：\nF+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\n\n例如：\n「F雙獅」、「F佳樂水A」\n\n陸續增加全台浪點$",
+		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」\n\n陸續增加全台浪點$",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
 			"emojiId": "164"//outdoor太陽
 		},{
-			"index": 72,//在字串中的index
+			"index": 96,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "192"//海浪
 		}],

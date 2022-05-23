@@ -6,7 +6,7 @@ echo可以是單一個message object
 
 const help=require("./modules/help");
 const about=require("./modules/about");
-const forecast=require("./modules/forecast");
+const windy=require("./modules/windy");
 const msw=require("./modules/msw");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
@@ -111,12 +111,12 @@ async function handleEvent(event){
 			return Promise.resolve(null);
 		}
 	}
-	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="F"){
-		//查預報（forecast）+浪點名
+	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="W"){
+		//查預報（windy）+浪點名
 		//先reply ecmwf小截圖，另可指定三個系統的小截圖，或單一系統的大截圖
 		//字串尾加：F, A, E, G, I
 		////還要記錄浪點預報次數
-		echo=await forecast(event.message.text, clientPostgres, browser);
+		echo=await windy(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
 		//查潮汐（tide）+浪點名
@@ -137,9 +137,8 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
-		////單位要改一下
 		echo=await msw(event.message.text, clientPostgres, browser);
-	}
+	}////還要做個MSW api版本
 	else if(event.message.text[0].toUpperCase()==="S"){//開燈關燈時間sunrise sunset
 		return Promise.resolve(null);
 	}
