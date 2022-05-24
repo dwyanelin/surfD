@@ -52,10 +52,10 @@ module.exports=async (url, days, browser, location)=>{
 		console.log(rectPageTitle);
 		const imageBufferPageTitle=await page.screenshot({
 			clip: {
-				x: pageTitle.left,
-				y: pageTitle.top,
-				width: pageTitle.width,
-				height: pageTitle.height
+				x: rectPageTitle.left,
+				y: rectPageTitle.top,
+				width: rectPageTitle.width,
+				height: rectPageTitle.height
 			},
 			type: "png"
 		});
