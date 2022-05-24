@@ -105,6 +105,7 @@ async function handleEvent(event){
 			echo=about.live;
 		}
 		else if(event.message.text.toUpperCase()==="/S"){
+			////修改收取店家資訊email
 			echo=about.store;
 		}
 		else{
@@ -126,6 +127,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		//查直播（live）+浪點名
+		////增加之前阿瑪分享某網站直播連結
 		echo=live(event.message.text);
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
@@ -137,9 +139,11 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
+		////圖片要加入浪點名稱
 		echo=await msw(event.message.text, clientPostgres, browser);
 	}////還要做個MSW api版本
-	else if(event.message.text[0].toUpperCase()==="S"){//開燈關燈時間sunrise sunset
+	else if(event.message.text[0].toUpperCase()==="S"){
+		////開燈關燈時間sunrise sunset
 		return Promise.resolve(null);
 	}
 	////加入瑪神預報

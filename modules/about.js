@@ -17,7 +17,7 @@
 module.exports={
 	forecast:{
 		"type": "text",
-		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」\n\n陸續增加全台浪點$",
+		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」、「M翡翠3」\n\n陸續增加全台浪點$",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
@@ -31,7 +31,7 @@ module.exports={
 	},
 	tide:{
 		"type": "text",
-		"text": "查詢潮汐$的格式：\nT+浪點+(可不填)「天數」\n\n例如：\n「T翡翠」、「T北堤5」\n\n陸續增加全台浪點$",
+		"text": "查詢潮汐$的格式：\nT+浪點+(可不填)「天數」\n\n例如：\n「T蜜月」、「T北堤5」\n\n陸續增加全台浪點$",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",

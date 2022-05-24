@@ -44,6 +44,22 @@ module.exports=async (url, days, browser, location)=>{
 
 		await page.goto(url+"?units=eu", {"waitUntil": "networkidle0"});
 
+		const pageTitle=await page.$('[class="nomargin page-title"]');
+		const rectPageTitle=await page.evaluate(el=>{
+			const {top, left, width, height}=el.getBoundingClientRect();
+			return {top, left, width, height};
+		}, pageTitle);
+		console.log(rectPageTitle);
+		const imageBufferPageTitle=await page.screenshot({
+			clip: {
+				x: pageTitle.left,
+				y: pageTitle.top,
+				width: pageTitle.width,
+				height: pageTitle.height
+			},
+			type: "png"
+		});
+
 		const thead=await page.$('thead');
 		const rectHead=await page.evaluate(el=>{
 			const {top, left, width, height}=el.getBoundingClientRect();
@@ -89,18 +105,22 @@ module.exports=async (url, days, browser, location)=>{
 			imageBufferBodys.push(imageBufferBody);
 		}
 
+		let imagePageTitle=images(imageBufferPageTitle);
 		let imageHead=images(imageBufferHead);
 		let imageBodys=imageBufferBodys.map(imageBufferBody=>images(imageBufferBody));
-		let imageAllHeight=imageHead.height();
+
+		let imageAllHeight=imagePageTitle.height();
+		imageAllHeight+=imageHead.height();
 		for(let i=0;i<days;i++){
 			imageAllHeight+=imageBodys[i].height();
 		}
 		let imageAll=images(imageHead.width(), imageAllHeight);
 		imageAll
-		.draw(imageHead, 0, 0)
+		.draw(imagePageTitle, 0, 0)
+		.draw(imageHead, 0, imagePageTitle.height())
 		for(let i=0;i<days;i++){
 			imageAll
-			.draw(imageBodys[i], 0, imageHead.height()+imageBodys[i].height()*i)
+			.draw(imageBodys[i], 0, imagePageTitle.height()+imageHead.height()+imageBodys[i].height()*i)
 		}
 		let imageAllBuffer=imageAll
 		.encode("png");
