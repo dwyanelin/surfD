@@ -114,7 +114,7 @@ module.exports=async (url, days, browser, location)=>{
 		for(let i=0;i<days;i++){
 			imageAllHeight+=imageBodys[i].height();
 		}
-		let imageAll=images(imageHead.width(), imageAllHeight);
+		let imageAll=images(imageHead.width(), imageAllHeight).fill(0xff, 0xff, 0xff);
 		imageAll
 		.draw(imagePageTitle, 0, 0)
 		.draw(imageHead, 0, imagePageTitle.height())
