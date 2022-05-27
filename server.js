@@ -123,11 +123,12 @@ async function handleEvent(event){
 		//查潮汐（tide）+浪點名
 		//可指定查詢天數，最多31
 		//字串尾加：天數
+		////1.加入潮位高度
 		echo=await tide(event.message.text);
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		//查直播（live）+浪點名
-		////增加之前阿瑪分享某網站直播連結
+		////2.增加之前阿瑪分享某網站直播連結
 		echo=live(event.message.text);
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
@@ -139,7 +140,6 @@ async function handleEvent(event){
 		echo=tideDangerous;
 	}
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
-		////圖片要加入浪點名稱
 		echo=await msw(event.message.text, clientPostgres, browser);
 	}////還要做個MSW api版本
 	else if(event.message.text[0].toUpperCase()==="S"){
@@ -147,6 +147,8 @@ async function handleEvent(event){
 		return Promise.resolve(null);
 	}
 	////加入瑪神預報
+	////中央氣象局海象預報
+	////https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
 		//查KFC優惠券的內容價格日期跟圖片（私人）
 		echo=await kfc(event.message.text);
