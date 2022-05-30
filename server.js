@@ -123,7 +123,6 @@ async function handleEvent(event){
 		//查潮汐（tide）+浪點名
 		//可指定查詢天數，最多31
 		//字串尾加：天數
-		////1.加入潮位高度
 		echo=await tide(event.message.text);
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
