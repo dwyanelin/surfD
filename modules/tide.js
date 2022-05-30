@@ -109,10 +109,10 @@ module.exports=async (keyword)=>{
 		let tideHeight=$("td[headers=\"day"+day+" Above_Chart_Datum\"]");
 
 		for(let i=0;i<tides.length-1;i++){
-			text+="\n"+$(tides.get(i)).text()+" "+$(times.get(i)).text()+" "+$(tideHeight.get(i)).text();
+			text+="\n"+$(tides.get(i)).text()+" "+$(tideHeight.get(i)).text()+"cm "+$(times.get(i)).text();
 		}
 
-		previousLast="\n"+$(tides.get(tides.length-1)).text()+" "+$(times.get(tides.length-1)).text()+" "+$(tideHeight.get(tides.length-1)).text();
+		previousLast="\n"+$(tides.get(tides.length-1)).text()+" "+$(tideHeight.get(tides.length-1)).text()+"cm "+$(times.get(tides.length-1)).text();
 	}
 	if(days==="31"){
 		text+=previousLast;
