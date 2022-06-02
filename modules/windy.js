@@ -231,7 +231,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 
 	//connecting-heroku-postgres
 	return new Promise((resolve, reject)=>{
-		clientPostgres.query('SELECT location, imgur, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
+		clientPostgres.query('SELECT location, imgur, count, created_at FROM windyImgur where location=\''+locationKey+'\';', async (err, res)=>{
 			//console.log(err, res);
 			if(err) throw err;
 
@@ -240,6 +240,11 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 			//res.rows[0]=我們要的資料，location, imgur, created_at
 			if(res.rows.length>0){//如果有截圖location
 				let row=res.rows[0];
+
+				//先update查詢次數
+				clientPostgres.query('UPDATE windyImgur SET count='+(row.count+1)+' WHERE location=\''+locationKey+'\';');
+				//先update查詢次數
+
 				console.log("截圖cache建立時間：");
 				console.log(row.created_at);
 				let hours=Math.abs(Date.now()-row.created_at)/3.6e6;//3600000

@@ -113,6 +113,7 @@ CREATE TABLE windyImgur (
 	id SERIAL NOT NULL PRIMARY KEY,
 	location varchar(8) UNIQUE NOT NULL,
 	imgur varchar(128) NOT NULL,
+	count int DEFAULT 1 NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
 
@@ -127,6 +128,7 @@ CREATE TABLE mswImgur (
 	id SERIAL NOT NULL PRIMARY KEY,
 	location varchar(8) UNIQUE NOT NULL,
 	imgur varchar(256) NOT NULL,
+	count int DEFAULT 1 NOT NULL,
 	created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
 
