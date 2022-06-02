@@ -116,7 +116,6 @@ async function handleEvent(event){
 		//查預報（windy）+浪點名
 		//先reply ecmwf小截圖，另可指定三個系統的小截圖，或單一系統的大截圖
 		//字串尾加：F, A, E, G, I
-		////2.還要記錄浪點預報次數
 		echo=await windy(event.message.text, clientPostgres, browser);
 	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
@@ -146,7 +145,7 @@ async function handleEvent(event){
 		return Promise.resolve(null);
 	}
 	////加入瑪神預報
-	/*////3.
+	/*////2.
 	中央氣象局海象預報
 	https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
 	日出、日落、風級、風向、浪週期、浪高、浪向、流速、流向、雷達回波圖、紫外線圖
