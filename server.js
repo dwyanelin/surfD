@@ -129,6 +129,10 @@ async function handleEvent(event){
 		//查直播（live）+浪點名
 		echo=live(event.message.text);
 	}
+	else if(event.message.text[0].slice(0, 3).toUpperCase()==="SUN"){
+		////開燈關燈時間sunrise sunset
+		return Promise.resolve(null);
+	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
 		echo=store(event.message.text);
@@ -140,17 +144,13 @@ async function handleEvent(event){
 	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
 		echo=await msw(event.message.text, clientPostgres, browser);
 	}////還要做個MSW api版本
-	else if(event.message.text[0].toUpperCase()==="S"){
-		////開燈關燈時間sunrise sunset
-		return Promise.resolve(null);
-	}
 	////加入瑪神預報
 	/*////1.
 	中央氣象局海象預報
 	https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
 	日出、日落、風級、風向、浪週期、浪高、浪向、流速、流向、雷達回波圖、
 	*/
-	else if(event.message.text[0].slice(0, 2).toUpperCase()==="UV"){//紫外線圖
+	else if(event.message.text.slice(0, 2).toUpperCase()==="UV"){//紫外線圖
 		echo=uv;
 	}
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
