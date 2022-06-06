@@ -11,6 +11,7 @@ const msw=require("./modules/msw");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
+const uv=require("./modules/uv");
 const tideDangerous=require("./modules/tideDangerous");
 const kfc=require("./modules/kfc");
 
@@ -126,7 +127,6 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		//查直播（live）+浪點名
-		////1.增加之前阿瑪分享某網站直播連結
 		echo=live(event.message.text);
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
@@ -145,11 +145,14 @@ async function handleEvent(event){
 		return Promise.resolve(null);
 	}
 	////加入瑪神預報
-	/*////2.
+	/*////1.
 	中央氣象局海象預報
 	https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
-	日出、日落、風級、風向、浪週期、浪高、浪向、流速、流向、雷達回波圖、紫外線圖
+	日出、日落、風級、風向、浪週期、浪高、浪向、流速、流向、雷達回波圖、
 	*/
+	else if(event.message.text[0].slice(0, 2).toUpperCase()==="UV"){//紫外線圖
+		echo=uv;
+	}
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
 		//查KFC優惠券的內容價格日期跟圖片（私人）
 		echo=await kfc(event.message.text);
