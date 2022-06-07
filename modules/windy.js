@@ -178,7 +178,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 		url="https://www.windy.com/22.980/120.153";
 		location="漁光";
 	}
-	else if(keyword.includes("大甲")||keyword.includes("松柏港")){
+	else if(keyword.includes("大甲")||keyword.includes("松柏")){
 		url="https://www.windy.com/24.432/120.617";
 		location="松柏港";
 	}

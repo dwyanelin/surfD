@@ -132,7 +132,7 @@ async function handleEvent(event){
 		echo=live(event.message.text);
 	}
 	else if(event.message.text.slice(0, 3).toUpperCase()==="SUN"){
-		////開燈關燈時間sunrise sunset（日出、日落）
+		//開燈關燈時間sunrise sunset（日出、日落）
 		echo=await sun(event.message.text, browser);
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){

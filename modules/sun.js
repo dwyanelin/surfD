@@ -164,7 +164,7 @@ module.exports=async (keyword, browser)=>{
 		url="https://www.windy.com/22.980/120.153";
 		location="漁光";
 	}*/
-	else if(keyword.includes("大甲")||keyword.includes("松柏港")){
+	else if(keyword.includes("大甲")||keyword.includes("松柏")){
 		url="https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O005";
 		location="松柏港";
 	}
@@ -206,7 +206,16 @@ module.exports=async (keyword, browser)=>{
 		let sunsetTimeString=await sunset.evaluate(el=>el.textContent);
 
 		await page.close();
-		return {"type":"text", "text":location+"\n日出："+sunriseTimeString+"\n日落："+sunsetTimeString};
+		return {
+			"type":"text",
+			"text":location+"$\n日出："+sunriseTimeString+"\n日落："+sunsetTimeString,
+			"emojis": [{
+				"index": location.length,//在字串中的index
+				"productId": "5ac21d59031a6752fb806d5d",
+				"emojiId": "164"//outdoor太陽
+			}],
+			"wrap": true
+		};
 	}
 	catch(error){
 		//可能執行超時30秒會跑來這

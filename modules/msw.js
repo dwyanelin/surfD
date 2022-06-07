@@ -163,7 +163,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 		url="https://magicseaweed.com/Xiaomeijun-Surf-Report/5466/";//小美軍
 		location="漁光";
 	}
-	else if(keyword.includes("大甲")||keyword.includes("松柏港")){
+	else if(keyword.includes("大甲")||keyword.includes("松柏")){
 		url="https://magicseaweed.com/Daan-Beach-Surf-Report/5470/";
 		location="松柏港";
 	}
