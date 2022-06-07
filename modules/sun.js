@@ -204,7 +204,9 @@ module.exports=async (keyword, browser)=>{
 
 		let sunriseTimeString=await sunrise.evaluate(el=>el.textContent);
 		let sunsetTimeString=await sunset.evaluate(el=>el.textContent);
-		return {"type":"text", "text":"日出："+sunriseTimeString+"\n日落："+sunsetTimeString};
+
+		await page.close();
+		return {"type":"text", "text":location+"\n日出："+sunriseTimeString+"\n日落："+sunsetTimeString};
 	}
 	catch(error){
 		//可能執行超時30秒會跑來這
