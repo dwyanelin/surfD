@@ -131,7 +131,7 @@ async function handleEvent(event){
 		//查直播（live）+浪點名
 		echo=live(event.message.text);
 	}
-	else if(event.message.text[0].slice(0, 3).toUpperCase()==="SUN"){
+	else if(event.message.text.slice(0, 3).toUpperCase()==="SUN"){
 		////開燈關燈時間sunrise sunset（日出、日落）
 		echo=await sun(event.message.text, browser);
 	}
