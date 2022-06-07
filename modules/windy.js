@@ -220,7 +220,7 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 
 	//如果有截圖locationKey
 		//如果時間<=一小時，直接取用
-			//tableName=windyImgur, id, location, imgur, created_at
+			//tableName=windyImgur, columnName=id, location, imgur, created_at
 			//location=雙獅，imgur=url
 			//location=雙獅A，imgur=url*3
 			//location=雙獅E，imgur=url

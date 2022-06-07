@@ -156,8 +156,7 @@ module.exports=async (url, days, browser, location)=>{
 		return [imageBufferE];
 	}
 	catch(error){
-		//免費server效能太差，windy太吃效能
-		//最常見的執行超時30秒會跑來這
+		//可能執行超時30秒會跑來這
 		if(typeof page!=="undefined"&&page.isClosed()===false){
 			//剛開伺服器就跑指令，browser還沒開好page就會是undefined
 			//要先檢查page還沒被關掉，再去關他才不會錯誤

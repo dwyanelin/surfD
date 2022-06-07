@@ -10,6 +10,7 @@ const windy=require("./modules/windy");
 const msw=require("./modules/msw");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
+const sun=require("./modules/sun");
 const store=require("./modules/store");
 const uv=require("./modules/uv");
 const radar=require("./modules/radar");
@@ -131,8 +132,8 @@ async function handleEvent(event){
 		echo=live(event.message.text);
 	}
 	else if(event.message.text[0].slice(0, 3).toUpperCase()==="SUN"){
-		////開燈關燈時間sunrise sunset
-		return Promise.resolve(null);
+		////開燈關燈時間sunrise sunset（日出、日落）
+		echo=await sun(event.message.text, browser);
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
@@ -149,8 +150,9 @@ async function handleEvent(event){
 	/*////1.
 	中央氣象局海象預報
 	https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
-	日出、日落、風級、風向、浪週期、浪高、浪向、流速、流向、雷達回波圖、
+	風級、風向、浪週期、浪高、浪向、流速、流向、
 	*/
+	////中央氣象局的浪況預報也用截圖的
 	else if(event.message.text.slice(0, 2).toUpperCase()==="UV"){//紫外線圖
 		echo=uv;
 	}

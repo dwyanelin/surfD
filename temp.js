@@ -1,4 +1,4 @@
-const axios=require('axios');
+/*const axios=require('axios');
 const cheerio=require('cheerio');
 
 const options={
@@ -15,7 +15,7 @@ const options={
 	console.log("===========================");
 	console.log($(table).text());
 	console.log("===========================");
-})();
+})();*/
 
 /*
 //connecting-heroku-postgres
@@ -29,22 +29,22 @@ const clientPostgres=new Client({
 });
 clientPostgres.connect();
 //connecting-heroku-postgres
+*/
 
 //開chrome
 const puppeteer=require('puppeteer');
 let browser;
 //開chrome
 
-const msw=require("./modules/msw");
+const sun=require("./modules/sun");
 
 (async ()=>{
 	browser=await puppeteer.launch({
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
-	let echo=await msw("雙獅", clientPostgres, browser);
+	let echo=await sun("雙獅", browser);
 
 	console.log(typeof echo);
 	console.log(echo);
 })();
-*/

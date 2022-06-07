@@ -193,9 +193,9 @@ module.exports=async (keyword, clientPostgres, browser)=>{
 
 	//如果有截圖locationKey
 		//如果時間<=一小時，直接取用
-			//tableName=mswImgur, id, location, imgur, created_at
+			//tableName=mswImgur, columnName=id, location, imgur, created_at
 			//location=雙獅，imgur=url
-			//location=雙獅7，imgur=url*7
+			//location=雙獅7，imgur=url*7接成一個
 		//else
 			//跑截圖，update table
 	//else
