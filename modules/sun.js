@@ -208,11 +208,15 @@ module.exports=async (keyword, browser)=>{
 		await page.close();
 		return {
 			"type":"text",
-			"text":location+"$\n日出："+sunriseTimeString+"\n日落："+sunsetTimeString,
+			"text":location+"$$\n日出："+sunriseTimeString+"\n日落："+sunsetTimeString,
 			"emojis": [{
 				"index": location.length,//在字串中的index
+				"productId": "5ac21184040ab15980c9b43a",
+				"emojiId": "213"//海面日出
+			},{
+				"index": location.length+1,//在字串中的index
 				"productId": "5ac21d59031a6752fb806d5d",
-				"emojiId": "164"//outdoor太陽
+				"emojiId": "192"//outdoor海邊椰子樹夕陽
 			}],
 			"wrap": true
 		};
