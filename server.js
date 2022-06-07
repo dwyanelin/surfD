@@ -12,6 +12,7 @@ const tide=require("./modules/tide");
 const live=require("./modules/live");
 const store=require("./modules/store");
 const uv=require("./modules/uv");
+const radar=require("./modules/radar");
 const tideDangerous=require("./modules/tideDangerous");
 const kfc=require("./modules/kfc");
 
@@ -152,6 +153,9 @@ async function handleEvent(event){
 	*/
 	else if(event.message.text.slice(0, 2).toUpperCase()==="UV"){//紫外線圖
 		echo=uv;
+	}
+	else if(event.message.text[0]==="雷"||event.message.text[0].toUpperCase()==="R"){//雷達回波圖
+		echo=radar;
 	}
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
 		//查KFC優惠券的內容價格日期跟圖片（私人）
