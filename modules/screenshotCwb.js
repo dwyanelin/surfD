@@ -33,8 +33,11 @@ module.exports=async (url, browser, location)=>{
 			});
 		});
 
+		await page.setViewport({width: 1199});
+
 		/*
 			先goto到網頁，找到以下的位置：
+			class="main-title"
 			id="tabcontent-2"
 			id="tabcontent-3"
 			截圖，
@@ -45,12 +48,28 @@ module.exports=async (url, browser, location)=>{
 
 		await page.goto(url, {"waitUntil": "networkidle0"});
 
+		const title=await page.$('[class="main-title"]');
+		const rectTitle=await page.evaluate(el=>{
+			const {top, left, width, height}=el.getBoundingClientRect();
+			return {top, left, width, height};
+		}, title);
+		//console.log(rectTitle);
+		const imageBufferTitle=await page.screenshot({
+			clip: {
+				x: rectTitle.left,
+				y: rectTitle.top,
+				width: rectTitle.width,
+				height: rectTitle.height
+			},
+			type: "png"
+		});
+
 		const tableWeather=await page.$('[id="tabcontent-2"]');
 		const rectTableWeather=await page.evaluate(el=>{
 			const {top, left, width, height}=el.getBoundingClientRect();
 			return {top, left, width, height};
 		}, tableWeather);
-		console.log(rectTableWeather);
+		//console.log(rectTableWeather);
 		const imageBufferTableWeather=await page.screenshot({
 			clip: {
 				x: rectTableWeather.left,
@@ -77,18 +96,20 @@ module.exports=async (url, browser, location)=>{
 			type: "png"
 		});
 
+		let imageTitle=images(imageBufferTitle);
 		let imageTableWeather=images(imageBufferTableWeather);
 		let imageTableWave=images(imageBufferTableWave);
 
-		let imageAllHeight=imageTableWeather.height()+imageTableWave.height();
+		let imageAllHeight=imageTitle.height()+imageTableWeather.height()+imageTableWave.height();
 
 		//較寬的當全圖寬度，並填滿白色，空的地方才不會缺一角
-		let imageAll=images(Math.max(imageTableWeather.width(), imageTableWave.width()), imageAllHeight).fill(0xff, 0xff, 0xff);
+		let imageAll=images(Math.max(imageBufferTitle.width(), imageTableWeather.width(), imageTableWave.width()), imageAllHeight).fill(0xff, 0xff, 0xff);
 		//較寬的當全圖寬度，並填滿白色，空的地方才不會缺一角
 
 		imageAll
-		.draw(imageTableWeather, 0, 0)
-		.draw(imageTableWave, 0, imageTableWeather.height())
+		.draw(imageTitle, 0, 0)
+		.draw(imageTableWeather, 0, imageTitle.height())
+		.draw(imageTableWave, 0, imageTitle.height()+imageTableWeather.height())
 		let imageAllBuffer=imageAll
 		.encode("png");
 

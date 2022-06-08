@@ -49,7 +49,7 @@ module.exports=async (url, days, browser, location)=>{
 			const {top, left, width, height}=el.getBoundingClientRect();
 			return {top, left, width, height};
 		}, pageTitle);
-		console.log(rectPageTitle);
+		//console.log(rectPageTitle);
 		const imageBufferPageTitle=await page.screenshot({
 			clip: {
 				x: rectPageTitle.left,
