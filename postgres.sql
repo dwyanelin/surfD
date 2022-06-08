@@ -135,3 +135,18 @@ CREATE TABLE mswImgur (
 -- index (location)
 CREATE UNIQUE INDEX idx_mswImgur_location
 	ON mswImgur (location ASC);
+
+
+DROP TABLE IF EXISTS cwbImgur;
+
+CREATE TABLE cwbImgur (
+	id SERIAL NOT NULL PRIMARY KEY,
+	location varchar(8) UNIQUE NOT NULL,
+	imgur varchar(256) NOT NULL,
+	count int DEFAULT 1 NOT NULL,
+	created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+
+-- index (location)
+CREATE UNIQUE INDEX idx_cwbImgur_location
+	ON cwbImgur (location ASC);

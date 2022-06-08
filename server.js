@@ -8,6 +8,7 @@ const help=require("./modules/help");
 const about=require("./modules/about");
 const windy=require("./modules/windy");
 const msw=require("./modules/msw");
+const cwb=require("./modules/cwb");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const sun=require("./modules/sun");
@@ -153,6 +154,10 @@ async function handleEvent(event){
 	風級、風向、浪週期、浪高、浪向、流速、流向、
 	*/
 	////中央氣象局的浪況預報也用截圖的
+	else if(event.message.text[0].toUpperCase()==="C"){//中央氣象局預報
+		//central weather bureau
+		echo=await cwb(event.message.text, clientPostgres, browser);
+	}
 	else if(event.message.text.slice(0, 2).toUpperCase()==="UV"){//紫外線圖
 		echo=uv;
 	}

@@ -127,33 +127,6 @@ module.exports=async (url, days, browser, location)=>{
 
 		await page.close();
 		return [imageAllBuffer];
-
-
-		await page.goto(url, {"waitUntil": "networkidle0"});
-		const button1=await page.$('[data-do="set,waves"]');
-		await button1.evaluate(b=>b.click());
-		await page.waitForNavigation();
-		const button11=await page.$('[data-do="set,ecmwfWaves"]');
-		await button11.evaluate(b=>b.click());
-		await page.waitForNavigation();
-		//metric,wind//風速單位，按兩下
-		//metric,waves//浪高單位，按一下
-		const button12=await page.$('[data-do="metric,wind"]');
-		await button12.evaluate(b=>{
-			b.click();
-			b.click();
-		});
-		await page.waitForNavigation();
-		const button13=await page.$('[data-do="metric,waves"]');
-		await button13.evaluate(b=>b.click());
-		await page.waitForNavigation();
-		const imageBufferE=await page.screenshot({
-			fullPage: true,
-			type: "png"
-		});
-
-		await page.close();
-		return [imageBufferE];
 	}
 	catch(error){
 		//可能執行超時30秒會跑來這
