@@ -17,33 +17,33 @@ const options={
 	console.log("===========================");
 })();*/
 
-/*
+
 //connecting-heroku-postgres
 const {Client}=require('pg');
 
 const clientPostgres=new Client({
-	connectionString: process.env.DATABASE_URL,
+	connectionString: "postgres://sxbnpzsyssdmju:35a6034e052b869017573731bc2d483826f1e1a02a658ddc315e3eb14412a940@ec2-54-80-123-146.compute-1.amazonaws.com:5432/djs1c759ff30m",
 	ssl: {
 		rejectUnauthorized: false
 	}
 });
 clientPostgres.connect();
 //connecting-heroku-postgres
-*/
+
 
 //開chrome
 const puppeteer=require('puppeteer');
 let browser;
 //開chrome
 
-const sun=require("./modules/sun");
+const cwb=require("./modules/cwb");
 
 (async ()=>{
 	browser=await puppeteer.launch({
 		headless: true,
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
-	let echo=await sun("雙獅", browser);
+	let echo=await cwb("北堤", clientPostgres, browser);
 
 	console.log(typeof echo);
 	console.log(echo);

@@ -33,7 +33,10 @@ module.exports=async (url, browser, location)=>{
 			});
 		});
 
-		await page.setViewport({width: 1199});
+		await page.setViewport({
+			width: 1199,
+			height: 900
+		});
 
 		/*
 			先goto到網頁，找到以下的位置：
@@ -103,7 +106,7 @@ module.exports=async (url, browser, location)=>{
 		let imageAllHeight=imageTitle.height()+imageTableWeather.height()+imageTableWave.height();
 
 		//較寬的當全圖寬度，並填滿白色，空的地方才不會缺一角
-		let imageAll=images(Math.max(imageBufferTitle.width(), imageTableWeather.width(), imageTableWave.width()), imageAllHeight).fill(0xff, 0xff, 0xff);
+		let imageAll=images(Math.max(imageTitle.width(), imageTableWeather.width(), imageTableWave.width()), imageAllHeight).fill(0xff, 0xff, 0xff);
 		//較寬的當全圖寬度，並填滿白色，空的地方才不會缺一角
 
 		imageAll
