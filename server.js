@@ -103,8 +103,8 @@ async function handleEvent(event){
 		echo=help;
 	}
 	else if(event.message.text[0]==="/"){//ftsburl
-		if(event.message.text.toUpperCase()==="/A"){
-			echo=about.forecast;
+		if(event.message.text.toUpperCase()==="/A"){//ftsburl
+			echo=[{"type": "text", "text": "個別功能詳細說明指令：\n「/F」、「/T」、「/S」、「/B」、「/U」、「/R」、「/L」"}, about.forecast, about.tide, about.sun, about.business, about.uv, about.radar, about.live];
 		}
 		else if(event.message.text.toUpperCase()==="/F"){
 			echo=about.forecast;
@@ -166,7 +166,7 @@ async function handleEvent(event){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
 		////1.新增雙獅或想加的知名店家
 		if(event.message.text.includes("列表")||event.message.text.toUpperCase().includes("LIST")){
-			echo={"type": "text", "text": "店家列表："+Object.keys(businessInformation).join("、\n")};
+			echo={"type": "text", "text": "店家列表：\n"+Object.keys(businessInformation).join("、\n")};
 		}
 		else{
 			echo=business(event.message.text);
