@@ -1,6 +1,7 @@
 module.exports=(keyword)=>{
-	keyword=keyword.replace("直", "");
-	keyword=keyword.replace("L", "").replace("l", "");
+	keyword=keyword.replace("直播", "").replace("直", "");
+	keyword=keyword.toUpperCase().replace("LIVE", "").replace("L", "");
+
 	let echo;
 	if(keyword.includes("金樽")){
 		echo={"type":"text", "text":"https://www.youtube.com/watch?v=q3KJt-SZc2s"};

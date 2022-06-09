@@ -4,7 +4,8 @@
 */
 
 module.exports=async (keyword, browser)=>{
-	keyword=keyword.toUpperCase().replace("SUN", "");
+	keyword=keyword.replace("日出", "").replace("日落", "").replace("日", "");
+	keyword=keyword.toUpperCase().replace("SUN", "").replace("S", "");
 
 	let url;
 	let location;

@@ -12,18 +12,19 @@
 203滿月
 213海面日出
 225太陽
+229下雨
 */
 
-module.exports={
+module.exports={//ftsburl
 	forecast:{
 		"type": "text",
-		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」、「M翡翠3」\n\n陸續增加全台浪點$",
+		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\nC+浪點\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」、「M翡翠3」、「C南灣」\n\n陸續增加全台浪點$",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
 			"emojiId": "164"//outdoor太陽
 		},{
-			"index": 103,//在字串中的index
+			"index": 114,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "192"//海浪
 		}],
@@ -43,6 +44,54 @@ module.exports={
 		}],
 		"wrap": true
 	},
+	sun:{
+		"type": "text",
+		"text": "查詢日出$日落$時間的格式：\nS+浪點\n\n例如：\n「S福隆」\n\n陸續增加全台浪點$",
+		"emojis": [{
+			"index": 4,//在字串中的index
+			"productId": "5ac21184040ab15980c9b43a",
+			"emojiId": "213"//海面日出
+		},{
+			"index": 7,//在字串中的index
+			"productId": "5ac21d59031a6752fb806d5d",
+			"emojiId": "192"//海邊椰子樹夕陽
+		},{
+			"index": 52,//在字串中的index
+			"productId": "5ac21184040ab15980c9b43a",
+			"emojiId": "192"//海浪
+		}],
+		"wrap": true
+	},
+	business:{
+		"type": "text",
+		"text": "查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊：\n店名、地址、電話、(以下可不提供)店家封面圖網址(比例接近16:9)、店家官網網址、email、line ID、IG網址、FB網址\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
+		"emojis": [{
+			"index": 4,//在字串中的index
+			"productId": "5ac21d59031a6752fb806d5d",
+			"emojiId": "151"//outdoor衝浪
+		}],
+		"wrap": true
+	},
+	uv:{
+		"type": "text",
+		"text": "查詢紫外線$請輸入：\n「U」",
+		"emojis": [{
+			"index": 5,//在字串中的index
+			"productId": "5ac21184040ab15980c9b43a",
+			"emojiId": "225"//太陽
+		}],
+		"wrap": true
+	},
+	radar:{
+		"type": "text",
+		"text": "查詢雷達回波（即時降雨）$請輸入：\n「R」",
+		"emojis": [{
+			"index": 12,//在字串中的index
+			"productId": "5ac21184040ab15980c9b43a",
+			"emojiId": "229"//下雨
+		}],
+		"wrap": true
+	},
 	live:{
 		"type": "text",
 		"text": "查詢直播$的格式：\nL+浪點\n\n例如：\n「L金樽」、「L南灣」\n\n目前有直播的浪點為：\n金樽、杉原灣、南灣，陸續增加全台浪點$",
@@ -54,16 +103,6 @@ module.exports={
 			"index": 62,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "192"//海浪
-		}],
-		"wrap": true
-	},
-	store:{
-		"type": "text",
-		"text": "查詢店家$的格式：\nS+店名\n\n例如：\n「Snamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊：\n店名、地址、電話、(以下可不提供)店家封面圖網址(比例接近16:9)、店家官網網址、email、line ID、IG網址、FB網址\n並email至：\ntest@gmail.com\n\n收到後將定期新增！",
-		"emojis": [{
-			"index": 4,//在字串中的index
-			"productId": "5ac21d59031a6752fb806d5d",
-			"emojiId": "151"//outdoor衝浪
 		}],
 		"wrap": true
 	}

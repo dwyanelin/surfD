@@ -1,4 +1,4 @@
-module.exports={
+module.exports={//ftsburl
 	"size": {
 		"width": 1080,
 		"height": 728
@@ -54,8 +54,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "觸發Live(直播)使用說明",
-			"text": "/L"
+			"label": "觸發Sun(日出日落時間)使用說明",
+			"text": "/S"
 		}
 	},
 	{//區塊5：
@@ -67,11 +67,11 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "觸發Store(店家)使用說明",
-			"text": "/S"
+			"label": "觸發Business(店家)使用說明",
+			"text": "/B"
 		}
 	},
-	{//區塊6：
+	{//區塊6：//url(uv, radar, live)
 		"bounds": {
 			"x": 721,
 			"y": 365,
@@ -80,8 +80,8 @@ module.exports={
 		},
 		"action": {
 			"type": "message",
-			"label": "這樣Tide危險～",
-			"text": "~Tide"
+			"label": "其他",
+			"text": "/O"
 		}
 	}]
 };

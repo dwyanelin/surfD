@@ -8,8 +8,9 @@ const options={
 const cheerio=require('cheerio');
 
 module.exports=async (keyword)=>{
-	keyword=keyword.replace("肯", "");
-	keyword=keyword.replace("K", "").replace("k", "");
+	keyword=keyword.replace("肯德基", "").replace("肯", "");
+	keyword=keyword.toUpperCase().replace("KFC", "").replace("K", "");
+
 	return await axios.get("https://kfc.izo.tw/coupons/"+keyword, options)
 	.then((res)=>{
 		//內容、價格、日期跟圖片

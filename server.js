@@ -12,7 +12,7 @@ const cwb=require("./modules/cwb");
 const tide=require("./modules/tide");
 const live=require("./modules/live");
 const sun=require("./modules/sun");
-const store=require("./modules/store");
+const business=require("./modules/business");
 const uv=require("./modules/uv");
 const radar=require("./modules/radar");
 const tideDangerous=require("./modules/tideDangerous");
@@ -98,71 +98,81 @@ async function handleEvent(event){
 	if(event.message.text.toUpperCase()==="HELP"||event.message.text==="使用教學"){
 		echo=help;
 	}
-	else if(event.message.text[0]==="/"){
+	else if(event.message.text[0]==="/"){//ftsburl
 		if(event.message.text.toUpperCase()==="/F"){
 			echo=about.forecast;
 		}
 		else if(event.message.text.toUpperCase()==="/T"){
 			echo=about.tide;
 		}
+		else if(event.message.text.toUpperCase()==="/S"){
+			echo=about.sun;
+		}
+		else if(event.message.text.toUpperCase()==="/B"){
+			echo=about.business;
+		}
+		else if(event.message.text.toUpperCase()==="/U"){
+			echo=about.uv;
+		}
+		else if(event.message.text.toUpperCase()==="/R"){
+			echo=about.radar;
+		}
 		else if(event.message.text.toUpperCase()==="/L"){
 			echo=about.live;
 		}
-		else if(event.message.text.toUpperCase()==="/S"){
-			////修改收取店家資訊email
-			echo=about.store;
+		else if(event.message.text.toUpperCase()==="/O"){//url
+			echo=[about.uv, about.radar, about.live];
 		}
 		else{
 			return Promise.resolve(null);
 		}
 	}
-	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="W"){
-		//查預報（windy）+浪點名
+	else if(event.message.text[0]==="預"||event.message.text[0].toUpperCase()==="W"){//windy
+		//預報（windy）+浪點名+F, A, E, G, I
 		//先reply ecmwf小截圖，另可指定三個系統的小截圖，或單一系統的大截圖
-		//字串尾加：F, A, E, G, I
 		echo=await windy(event.message.text, clientPostgres, browser);
 	}
+	else if(event.message.text[0].toUpperCase()==="M"){//msw
+		//預報（msw）+浪點名+天數
+		//按天數reply幾個預報table，合在一張圖
+		echo=await msw(event.message.text, clientPostgres, browser);
+	}////還要做個MSW api版本
+	else if(event.message.text[0].toUpperCase()==="C"){//central weather bureau
+		//預報（cwb）+浪點名
+		//天氣+浪況合在一張圖（天氣、風級、風向、浪週期、浪高、浪向、流速、流向等等..）
+		echo=await cwb(event.message.text, clientPostgres, browser);
+	}
+	else if(event.message.text[0]==="阿"||event.message.text[0].toUpperCase()==="A"){
+		////加入瑪神預報
+		return Promise.resolve(null);
+	}
 	else if(event.message.text[0]==="潮"||event.message.text[0].toUpperCase()==="T"){
-		//查潮汐（tide）+浪點名
-		//可指定查詢天數，最多31
-		//字串尾加：天數
+		//查潮汐（tide）+浪點名+天數（最多31）
+		//滿乾、時間、潮高
 		echo=await tide(event.message.text);
+	}
+	else if(event.message.text[0]==="日"||event.message.text[0].toUpperCase()==="S"){
+		//開燈關燈時間sunrise sunset（日出、日落）
+		echo=await sun(event.message.text, browser);
+	}
+	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="B"){
+		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
+		////1.新增雙獅或想加的知名店家
+		echo=business(event.message.text);
+	}
+	else if(event.message.text[0]==="紫"||event.message.text[0].toUpperCase()==="U"){//紫外線圖
+		echo=uv;
+	}
+	else if(event.message.text[0]==="雷"||event.message.text[0].toUpperCase()==="R"){//雷達回波圖
+		echo=radar;
 	}
 	else if(event.message.text[0]==="直"||event.message.text[0].toUpperCase()==="L"){
 		//查直播（live）+浪點名
 		echo=live(event.message.text);
 	}
-	else if(event.message.text.slice(0, 3).toUpperCase()==="SUN"){
-		//開燈關燈時間sunrise sunset（日出、日落）
-		echo=await sun(event.message.text, browser);
-	}
-	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="S"){
-		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
-		echo=store(event.message.text);
-	}
 	else if(event.message.text.toUpperCase().includes("~TIDE")){
 		//爽
 		echo=tideDangerous;
-	}
-	else if(event.message.text[0].toUpperCase()==="M"){//MSW預報
-		echo=await msw(event.message.text, clientPostgres, browser);
-	}////還要做個MSW api版本
-	////加入瑪神預報
-	/*////1.
-	中央氣象局海象預報
-	https://www.cwb.gov.tw/V8/C/L/Surfing/Surfing.html?PID=O004
-	風級、風向、浪週期、浪高、浪向、流速、流向、
-	*/
-	////中央氣象局的浪況預報也用截圖的
-	else if(event.message.text[0].toUpperCase()==="C"){//中央氣象局預報
-		//central weather bureau
-		echo=await cwb(event.message.text, clientPostgres, browser);
-	}
-	else if(event.message.text.slice(0, 2).toUpperCase()==="UV"){//紫外線圖
-		echo=uv;
-	}
-	else if(event.message.text[0]==="雷"||event.message.text[0].toUpperCase()==="R"){//雷達回波圖
-		echo=radar;
 	}
 	else if(event.message.text[0]==="肯"||event.message.text[0].toUpperCase()==="K"){
 		//查KFC優惠券的內容價格日期跟圖片（私人）

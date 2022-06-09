@@ -8,8 +8,9 @@ const options={
 const cheerio=require('cheerio');
 
 module.exports=async (keyword)=>{
-	keyword=keyword.replace("潮", "");
-	keyword=keyword.replace("T", "").replace("t", "");
+	keyword=keyword.replace("潮汐", "").replace("潮", "");
+	keyword=keyword.toUpperCase().replace("TIDE", "").replace("T", "");
+
 	let url;
 	if(keyword.includes("頭城")||keyword.includes("臭水")||keyword.includes("南堤")||keyword.includes("烏石")||keyword.includes("北堤")||keyword.includes("外澳")||keyword.includes("雙獅")||keyword.includes("梗枋")||keyword.includes("蜜月")||keyword.includes("大溪")){
 		url="https://www.cwb.gov.tw/V8/C/M/Fishery/tide_30day_MOD/T000204.html";
