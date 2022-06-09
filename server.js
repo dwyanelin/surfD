@@ -28,14 +28,14 @@ const client=new line.Client(config);
 //Step1: create your image for richmenu
 //Step2: create richmenu object
 //Step3-1: createRichMenu and get richMenuId
-/*const richmenu=require("./modules/richmenu");
+const richmenu=require("./modules/richmenu");
 client.createRichMenu(richmenu)
 .then(richMenuId=>{
 	console.log("richMenuId: "+richMenuId)
 })
-.catch(err=>console.error(err));*/
+.catch(err=>console.error(err));
 
-const richMenuId='richmenu-a0baad6e6f8827b6d3b7a67e9959a6d9';
+//const richMenuId='richmenu-a0baad6e6f8827b6d3b7a67e9959a6d9';
 
 //Step3-2: setRichMenuImage: upload image for RichMenu
 /*const fs=require('fs');
@@ -43,7 +43,7 @@ client.setRichMenuImage(richMenuId, fs.createReadStream('./images/richmenu.jpg')
 .then(res=>console.log(res));*/
 
 //Step4: display to "all" users
-client.setDefaultRichMenu(richMenuId);
+//client.setDefaultRichMenu(richMenuId);
 //create LINE SDK client and richmenu
 
 //connecting-heroku-postgres
@@ -157,8 +157,8 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="B"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
-		////1.新增雙獅或想加的知名店家
-		////2.可列出店家列表
+		////2.新增雙獅或想加的知名店家
+		////1.可列出店家列表（help, about）
 		echo=business(event.message.text);
 	}
 	else if(event.message.text[0]==="紫"||event.message.text[0].toUpperCase()==="U"){//紫外線圖
