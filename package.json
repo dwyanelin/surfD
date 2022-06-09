@@ -1,6 +1,6 @@
 {
-  "name": "surfd",
-  "version": "0.99.0",
+  "name": "surfD",
+  "version": "1.0.0",
   "description": "surfInformation, kfcCoupons.",
   "main": "server.js",
   "scripts": {
