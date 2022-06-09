@@ -104,7 +104,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="/"){//ftsburl
 		if(event.message.text.toUpperCase()==="/A"){//ftsburl
-			echo=[about.forecast, about.tide, about.sun, about.business, about.uv, about.radar, about.live];
+			echo=[about.forecast, about.tide, about.sun, about.business];
 		}
 		else if(event.message.text.toUpperCase()==="/F"){
 			echo=about.forecast;
