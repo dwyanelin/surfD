@@ -158,6 +158,7 @@ async function handleEvent(event){
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="B"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
 		////1.新增雙獅或想加的知名店家
+		////2.可列出店家列表
 		echo=business(event.message.text);
 	}
 	else if(event.message.text[0]==="紫"||event.message.text[0].toUpperCase()==="U"){//紫外線圖
