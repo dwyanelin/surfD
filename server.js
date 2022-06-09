@@ -104,7 +104,7 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="/"){//ftsburl
 		if(event.message.text.toUpperCase()==="/A"){//ftsburl
-			echo=[{"type": "text", "text": "個別功能詳細說明指令：\n「/F」、「/T」、「/S」、「/B」、「/U」、「/R」、「/L」"}, about.forecast, about.tide, about.sun, about.business, about.uv, about.radar, about.live];
+			echo=[about.forecast, about.tide, about.sun, about.business, about.uv, about.radar, about.live];
 		}
 		else if(event.message.text.toUpperCase()==="/F"){
 			echo=about.forecast;

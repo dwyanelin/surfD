@@ -22,7 +22,7 @@ const options={
 const {Client}=require('pg');
 
 const clientPostgres=new Client({
-	connectionString: "postgres://sxbnpzsyssdmju:35a6034e052b869017573731bc2d483826f1e1a02a658ddc315e3eb14412a940@ec2-54-80-123-146.compute-1.amazonaws.com:5432/djs1c759ff30m",
+	connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorized: false
 	}
