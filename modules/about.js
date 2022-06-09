@@ -56,7 +56,7 @@ module.exports={//ftsburl
 			"productId": "5ac21d59031a6752fb806d5d",
 			"emojiId": "192"//海邊椰子樹夕陽
 		},{
-			"index": 52,//在字串中的index
+			"index": 40,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "192"//海浪
 		}],
@@ -64,7 +64,7 @@ module.exports={//ftsburl
 	},
 	business:{
 		"type": "text",
-		"text": "查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊：\n店名、地址、電話、(以下可不提供)店家封面圖網址(比例接近16:9)、店家官網網址、email、line ID、IG網址、FB網址\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
+		"text": "查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊，\n店名：\n地址：\n電話：\n↓↓以下可不提供↓↓\n店家封面圖網址(比例接近16:9)：\n店家官網網址：\nemail：\nline ID：\nIG網址：\nFB網址：\n\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
@@ -74,7 +74,7 @@ module.exports={//ftsburl
 	},
 	uv:{
 		"type": "text",
-		"text": "查詢紫外線$請輸入：\n「U」",
+		"text": "查詢紫外線$請輸入：「U」",
 		"emojis": [{
 			"index": 5,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
@@ -84,9 +84,9 @@ module.exports={//ftsburl
 	},
 	radar:{
 		"type": "text",
-		"text": "查詢雷達回波（即時降雨）$請輸入：\n「R」",
+		"text": "查詢雷達回波（即時降雨$）請輸入：「R」",
 		"emojis": [{
-			"index": 12,//在字串中的index
+			"index": 11,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "229"//下雨
 		}],
