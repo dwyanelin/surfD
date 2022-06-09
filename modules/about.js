@@ -18,13 +18,13 @@
 module.exports={//ftsburl
 	forecast:{
 		"type": "text",
-		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」\nM+浪點+(可不填)「天數1~7」\nC+浪點\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」、「M翡翠3」、「C南灣」\n\n陸續增加全台浪點$",
+		"text": "查詢預報$的格式：\nW+浪點+(可不填)「A(All)或G(GFS)或I(ICON)」、\nM+浪點+(可不填)「天數1~7」、\nC+浪點\n\n例如：\n「W雙獅」、「W佳樂水A」、「M金樽」、「M翡翠3」、「C南灣」\n\n陸續增加全台浪點$",
 		"emojis": [{
 			"index": 4,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
 			"emojiId": "164"//outdoor太陽
 		},{
-			"index": 114,//在字串中的index
+			"index": 116,//在字串中的index
 			"productId": "5ac21184040ab15980c9b43a",
 			"emojiId": "192"//海浪
 		}],
@@ -64,9 +64,9 @@ module.exports={//ftsburl
 	},
 	business:{
 		"type": "text",
-		"text": "查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊，\n店名：\n地址：\n電話：\n↓↓以下可不提供↓↓\n（但建議提供）\nemail：\nline ID：\nIG網址：\nFB網址：\n店家官網網址：\n店家封面圖網址(比例建議16:9)：\n\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
+		"text": "輸入「BList」可看店家列表\n\n查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊，\n店名：\n地址：\n電話：\n↓↓以下可不提供↓↓\n（但建議提供）\nemail：\nline ID：\nIG網址：\nFB網址：\n店家官網網址：\n店家封面圖網址(比例建議16:9)：\n\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
 		"emojis": [{
-			"index": 4,//在字串中的index
+			"index": 21,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
 			"emojiId": "151"//outdoor衝浪
 		}],

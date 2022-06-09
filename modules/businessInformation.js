@@ -20,7 +20,7 @@ module.exports={
 		lineId:"@420msvqa",
 		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
-	},
+	}/*,
 	豆你丸:{
 		name:"豆你丸",
 		imageUrl:"https://i.imgur.com/YVrPbWm.jpg",
@@ -31,5 +31,5 @@ module.exports={
 		lineId:null,
 		instagramUrl:null,
 		facebookUrl:"https://www.facebook.com/DouNiWanZi"
-	}
+	}*/
 };

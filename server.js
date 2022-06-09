@@ -6,15 +6,19 @@ echo可以是單一個message object
 
 const help=require("./modules/help");
 const about=require("./modules/about");
+
+//ftsburl
 const windy=require("./modules/windy");
 const msw=require("./modules/msw");
 const cwb=require("./modules/cwb");
 const tide=require("./modules/tide");
-const live=require("./modules/live");
 const sun=require("./modules/sun");
 const business=require("./modules/business");
+const businessInformation=require("./businessInformation");
 const uv=require("./modules/uv");
 const radar=require("./modules/radar");
+const live=require("./modules/live");
+
 const tideDangerous=require("./modules/tideDangerous");
 const kfc=require("./modules/kfc");
 
@@ -99,7 +103,10 @@ async function handleEvent(event){
 		echo=help;
 	}
 	else if(event.message.text[0]==="/"){//ftsburl
-		if(event.message.text.toUpperCase()==="/F"){
+		if(event.message.text.toUpperCase()==="/A"){
+			echo=about.forecast;
+		}
+		else if(event.message.text.toUpperCase()==="/F"){
 			echo=about.forecast;
 		}
 		else if(event.message.text.toUpperCase()==="/T"){
@@ -157,9 +164,13 @@ async function handleEvent(event){
 	}
 	else if(event.message.text[0]==="店"||event.message.text[0].toUpperCase()==="B"){
 		//查店家店名、店圖、官網、地址、電話、email、line、IG、FB
-		////2.新增雙獅或想加的知名店家
-		////1.可列出店家列表（help, about）
-		echo=business(event.message.text);
+		////1.新增雙獅或想加的知名店家
+		if(event.message.text.includes("列表")||event.message.text.toUpperCase().includes("LIST")){
+			echo={"type": "text", "text": "店家列表："+Object.keys(businessInformation).join("、\n")};
+		}
+		else{
+			echo=business(event.message.text);
+		}
 	}
 	else if(event.message.text[0]==="紫"||event.message.text[0].toUpperCase()==="U"){//紫外線圖
 		echo=uv;
