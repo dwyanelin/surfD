@@ -16,6 +16,9 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("浪花舞")||keyword.toLowerCase().includes("wavedance")){
 		return businessFlexMessage(businessInformation.浪花舞);
 	}
+	else if(keyword.includes("吉鵝")||keyword.toLowerCase().includes("jill")){
+		return businessFlexMessage(businessInformation.吉鵝);
+	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
 	}*/

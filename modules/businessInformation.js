@@ -27,8 +27,21 @@ module.exports={
 		url:"https://www.wavedancelife.com/",
 		address:"宜蘭縣頭城鎮濱海路二段405號",
 		phone:"03 977 7671",
+		email:null,
+		lineId:null,
 		instagramUrl:"https://www.instagram.com/wavedancesurflife",
 		facebookUrl:"https://www.facebook.com/wavedancesurflife"
+	},
+	吉鵝:{
+		name:"吉鵝",
+		imageUrl:"https://i3.wp.com/asif-fashion.com/wp-content/uploads/2018/11/Jill3.jpg",
+		url:"https://www.instagram.com/jill_loves_yoga_surf/",
+		address:null,
+		phone:"https://www.instagram.com/jill_loves_yoga_surf/",
+		email:null,
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/jill_loves_yoga_surf/",
+		facebookUrl:null
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
