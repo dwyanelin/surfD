@@ -20,6 +20,15 @@ module.exports={
 		lineId:"@420msvqa",
 		instagramUrl:"https://www.instagram.com/namiarusurfstudio",
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
+	},
+	浪花舞:{
+		name:"浪花舞",
+		imageUrl:"https://www.wavedancelife.com/wp-content/uploads/2020/03/%E6%B5%AA%E8%8A%B1%E8%88%9E-BlackLogo.png",
+		url:"https://www.wavedancelife.com/",
+		address:"宜蘭縣頭城鎮濱海路二段405號",
+		phone:"03 977 7671",
+		instagramUrl:"https://www.instagram.com/wavedancesurflife",
+		facebookUrl:"https://www.facebook.com/wavedancesurflife"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
