@@ -53,6 +53,28 @@ module.exports={
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/waiao_bon_appetit/",
 		facebookUrl:"https://www.facebook.com/Waiao.bonappetit"
+	},
+	therefresh:{
+		name:"The Refresh",
+		imageUrl:"https://milkshake-production-user-images.imgix.net/dfd9e5c4-640f-461d-999e-fb7f86051d89?auto=format%2Ccompress&cs=tinysrgb&q=30&w=828",
+		url:"https://www.instagram.com/therefresh._/",
+		address:null,
+		contact:"https://www.instagram.com/therefresh._/",
+		email:null,
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/therefresh._/",
+		facebookUrl:null
+	},
+	jshoot:{
+		name:"j.shoot",
+		imageUrl:"https://milkshake-production-user-images.imgix.net/dfd9e5c4-640f-461d-999e-fb7f86051d89?auto=format%2Ccompress&cs=tinysrgb&q=30&w=828",
+		url:"https://www.instagram.com/j.shoot._/",
+		address:null,
+		contact:"https://www.instagram.com/j.shoot._/",
+		email:null,
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/j.shoot._/",
+		facebookUrl:null
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
