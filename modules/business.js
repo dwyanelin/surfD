@@ -23,10 +23,10 @@ module.exports=(keyword)=>{
 		return businessFlexMessage(businessInformation.外澳飯);
 	}
 	else if(keyword.toLowerCase().includes("therefresh")){
-		return businessFlexMessage(businessInformation.外澳飯);
+		return businessFlexMessage(businessInformation.therefresh);
 	}
 	else if(keyword.includes("j攝")||keyword.toLowerCase().includes("jshoot")){
-		return businessFlexMessage(businessInformation.外澳飯);
+		return businessFlexMessage(businessInformation.jshoot);
 	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
