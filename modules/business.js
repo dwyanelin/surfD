@@ -28,6 +28,15 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("j攝")||keyword.toLowerCase().includes("jshoot")){
 		return businessFlexMessage(businessInformation.jshoot);
 	}
+	else if(keyword.includes("衝浪小屋")||keyword.toLowerCase().includes("surferhouse")){
+		return businessFlexMessage(businessInformation.surferhouse);
+	}
+	else if(keyword.includes("好享")){
+		return businessFlexMessage(businessInformation.好享衝浪);
+	}
+	else if(keyword.toLowerCase().includes("ride")){
+		return businessFlexMessage(businessInformation.ridetoridesurf);
+	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
 	}*/

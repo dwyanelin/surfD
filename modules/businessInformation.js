@@ -75,6 +75,39 @@ module.exports={
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/j.shoot._/",
 		facebookUrl:null
+	},
+	surferhouse:{
+		name:"衝浪小屋",
+		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.6435-9/116698938_3420034738041190_8880794230428657153_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=MZhixY_Ku5IAX8qkyun&tn=vsNhBRRY47mmIElF&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT_rLMY4nXMQSRSoGmik7MnpzuiH1lOIUbGDyP0K80xQLQ&oe=62C7BA69",
+		url:"https://www.surfhouse.tw/",
+		address:"宜蘭縣頭城鎮濱海路二段376號",
+		contact:"03 977 4757",
+		email:"surferhousetw@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/surfhousetw/",
+		facebookUrl:"https://www.facebook.com/surfhouse2011"
+	},
+	好享衝浪:{
+		name:"好享衝浪",
+		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/230776941_1477859102551828_5598918892989814336_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kKd-cBIlo7oAX-ySp0z&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT8F0d7cBGWTmWosHjXuzQ3v5oa8_yKFVei5K0pcCLe7fg&oe=62A851A7",
+		url:"https://www.ovsstaiwan.com.tw/",
+		address:"宜蘭縣頭城鎮朝陽路89號",
+		contact:"0988-146781",
+		email:"oceanvibestaiwan@hotmail.com",
+		lineId:"@tcr2299z",
+		instagramUrl:"https://www.instagram.com/ovss_taiwan/",
+		facebookUrl:"https://www.facebook.com/OceanVibesSurf"
+	},
+	ridetoridesurf:{
+		name:"Ride to Ride Surf",
+		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.6435-9/33021329_2031442553762574_1590661178391003136_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=2aGyYVURq8kAX933Cjz&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT-Cs46Ag9nU5glUdo1ZUfYbCzUa5NohwledIDOoVzfT3Q&oe=62C9D695",
+		url:"https://www.instagram.com/ride_to_ride_surf/",
+		address:"宜蘭縣頭城鎮濱海路二段433號",
+		contact:"0911-915573",
+		email:"a916051499@hotmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/ride_to_ride_surf/",
+		facebookUrl:"https://www.facebook.com/ridetoridesurf"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
