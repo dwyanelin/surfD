@@ -33,7 +33,7 @@ module.exports={
 		facebookUrl:"https://www.facebook.com/wavedancesurflife"
 	},
 	吉鵝:{
-		name:"吉鵝",
+		name:"吉鵝的瑜浪情節",
 		imageUrl:"https://i3.wp.com/asif-fashion.com/wp-content/uploads/2018/11/Jill3.jpg",
 		url:"https://www.instagram.com/jill_loves_yoga_surf/",
 		address:null,
@@ -44,7 +44,7 @@ module.exports={
 		facebookUrl:null
 	},
 	外澳飯:{
-		name:"外澳飯",
+		name:"外澳飯裡有貓",
 		imageUrl:"https://pic.pimg.tw/fennyfenny/1597060275-3231545206-g_n.jpg",
 		url:"https://www.instagram.com/waiao_bon_appetit/",
 		address:null,
