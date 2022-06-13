@@ -28,7 +28,7 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("j攝")||keyword.toLowerCase().includes("jshoot")){
 		return businessFlexMessage(businessInformation.jshoot);
 	}
-	else if(keyword.includes("衝浪小屋")||keyword.toLowerCase().includes("surferhouse")){
+	else if(keyword==="衝浪小屋"||keyword.toLowerCase().includes("surferhouse")){
 		return businessFlexMessage(businessInformation.surferhouse);
 	}
 	else if(keyword.includes("好享")){
