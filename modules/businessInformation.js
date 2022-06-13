@@ -119,6 +119,28 @@ module.exports={
 		lineId:null,
 		instagramUrl:null,
 		facebookUrl:"https://www.facebook.com/%E8%A1%9D%E6%B5%AA%E5%AE%A2%E6%A3%A7-Surfer-Inn-120953131315887"
+	},
+	pirate:{
+		name:"海盜衝浪 Pirate Surf",
+		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.6435-9/124834361_2141382815995320_2470659225759900949_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=KBf3WmOjetQAX_RohS1&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT8iCQsL_1EJb8yTji8kgHKidu6z7zhZ3T_uNX-_BpmqKg&oe=62CD6A39",
+		url:"https://www.instagram.com/pirate_surf/",
+		address:"宜蘭縣頭城鎮烏石港路103-1號",
+		contact:"0926452143",
+		email:"eric.huang.au@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/pirate_surf/",
+		facebookUrl:"https://www.facebook.com/PirateSurf/"
+	},
+	surfernation:{
+		name:"衝浪國度 Surfer Nation",
+		imageUrl:"https://500.gov.tw/ROOT/images/b5ecb408-5a4e-4609-8780-cbe2eaa2a609/logo.jpg",
+		url:"https://surfernationtaiwan.wixsite.com/home",
+		address:"261宜蘭縣頭城鎮烏石港路102號",
+		contact:"0933495642",
+		email:"626900@yahoo.com.tw",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/surfernation_tw/",
+		facebookUrl:"https://www.facebook.com/surfernation/"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",

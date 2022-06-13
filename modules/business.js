@@ -40,6 +40,12 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("衝浪客棧")||keyword.toLowerCase().includes("surferinn")){
 		return businessFlexMessage(businessInformation.surferinn);
 	}
+	else if(keyword.includes("海盜")||keyword.toLowerCase().includes("pirate")){
+		return businessFlexMessage(businessInformation.pirate);
+	}
+	else if(keyword.includes("國度")||keyword.toLowerCase().includes("surfernation")){
+		return businessFlexMessage(businessInformation.surfernation);
+	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
 	}*/
