@@ -64,7 +64,7 @@ module.exports={//ftsburl
 	},
 	business:{
 		"type": "text",
-		"text": "輸入「BList」可看店家列表\n\n查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊，\n店名：\n地址：\n電話：\n↓↓以下可不提供↓↓\n（但建議提供）\nemail：\nline ID：\nIG網址：\nFB網址：\n店家官網網址：\n店家封面形象照網址(比例建議16:9)：\n\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
+		"text": "輸入「BList」可看店家列表\n\n查詢店家$的格式：\nB+店名\n\n例如：\n「Bnamiaru」\n\n如店家想在此新增您的店家資訊，請備妥以下資訊，\n店名：\n主要聯繫方式：\n↓↓以下可不提供↓↓\n（但建議提供）\n地址：\nemail：\nline ID：\nIG網址：\nFB網址：\n店家官網網址：\n店家封面形象照網址(比例建議16:9)：\n\n並email至：\nsurfgo666@gmail.com\n\n收到後將定期新增！",
 		"emojis": [{
 			"index": 21,//在字串中的index
 			"productId": "5ac21d59031a6752fb806d5d",
