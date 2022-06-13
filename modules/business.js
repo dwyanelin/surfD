@@ -52,6 +52,9 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("貝貝")||keyword.toLowerCase().includes("baybay")){
 		return businessFlexMessage(businessInformation.貝貝);
 	}
+	else if(keyword.includes("安東尼")||keyword.toLowerCase().includes("anthony")){
+		return businessFlexMessage(businessInformation.安東尼);
+	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
 	}*/
