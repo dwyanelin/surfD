@@ -174,6 +174,94 @@ module.exports={
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/anthony_beachhouse/",
 		facebookUrl:"https://www.facebook.com/pages/Anthony-Beach-House-%E5%AE%89%E6%9D%B1%E5%B0%BC%E6%B5%B7%E7%81%98%E5%B0%8F%E5%B1%8B/794398180919310"
+	},
+	狂衝浪:{
+		name:"狂衝浪 Brave Surf Taiwan",
+		imageUrl:"https://scontent.ftpe8-4.fna.fbcdn.net/v/t1.6435-9/67898136_2297712903680318_3196175758145880064_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=mThfDD5QZWcAX9xv4hH&_nc_ht=scontent.ftpe8-4.fna&oh=00_AT_tIKteR94H6EC_mQsU_GfX1SCRFEWJScpRWjJp5Ka5cA&oe=62CDFF60",
+		url:"https://www.taiwansurf.com.tw/",
+		address:"959台東縣東河鄉東河村南東河60號",
+		contact:"0965665993",
+		email:"surffella88@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/brave_surfshop/",
+		facebookUrl:"https://www.facebook.com/Surftaiwan.taitung/"
+	},
+	金樽衝浪小屋:{
+		name:"金樽衝浪小屋 Jinzun Surf House",
+		imageUrl:"https://static.wixstatic.com/media/62ba60_aa66eae024584dc6b47b71ba3c52d613~mv2_d_5000_3268_s_4_2.jpg/v1/fill/w_1903,h_748,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/62ba60_aa66eae024584dc6b47b71ba3c52d613~mv2_d_5000_3268_s_4_2.jpg",
+		url:"https://www.surfingtaitung.com/jinzun-surf-house-tw",
+		address:"台東縣東河鄉金樽17號",
+		contact:"0913185676",
+		email:"surfingtaitung@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/jinzunsurfhouse/",
+		facebookUrl:"https://www.facebook.com/Jinzunsurfhouse/"
+	},
+	summerpoint:{
+		name:"SummerPoint 夏日波影",
+		imageUrl:"https://v2cdn.sfec.cloud/eyJidWNrZXQiOiJzZi1lYy1zdGF0aWMiLCJrZXkiOiJzdW1tZXJwb2ludF8zYWUyNDM4My91cGxvYWRzL3NldHRpbmcvMDVlYjdhNDMxNmNmZWYyYzZhY2Q4MTI1MjNhOTYxZGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJmaXQiOiJpbnNpZGUiLCJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWV9fX0=",
+		url:"https://www.summerpoint.com.tw/",
+		address:"94742屏東縣滿州鄉茶山路252號",
+		contact:"0936416006",
+		email:"summerpoint2005@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/summerpoint2005/",
+		facebookUrl:"https://www.facebook.com/summerpoint2005/"
+	},
+	一舟浪館:{
+		name:"一舟浪館",
+		imageUrl:"https://cf.bstatic.com/xdata/images/hotel/max1280x900/81740627.jpg?k=34f60db6f8fe5e8519e69ff41a22bef6311d1430ac833dde473f15fe79d9248d&o=&hp=1",
+		url:"https://www.booking.com/hotel/tw/zhou-lang-guan-on-board-hostel.zh-tw.html",
+		address:"947屏東縣滿州鄉茶山路242巷22號",
+		contact:"0961016033",
+		email:null,
+		lineId:null,
+		instagramUrl:null,
+		facebookUrl:null
+	},
+	草分木:{
+		name:"墾丁民宿 l 草分木B&B",
+		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.6435-9/33464032_1662984100437887_2643449042364792832_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=M33HTgwu0TEAX9J2qpw&tn=vsNhBRRY47mmIElF&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT-lyi3YtXcnV47g7MzhjGNEw1iplTgTfcRa-g0qHHs-tg&oe=62CE50C9",
+		url:"https://www.facebook.com/yellowsbb/",
+		address:"946屏東縣恆春鎮南灣路242號",
+		contact:"0965816650",
+		email:"yellows.juice@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/yellowsbb/",
+		facebookUrl:"https://www.facebook.com/yellowsbb/"
+	},
+	小浪館:{
+		name:"小浪館 Knee High Wave",
+		imageUrl:"https://scontent.ftpe8-4.fna.fbcdn.net/v/t39.30808-6/218235573_108590301503402_1209017253136447357_n.png?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=C8R9EnyUI4sAX-Fta3o&_nc_ht=scontent.ftpe8-4.fna&oh=00_AT8cwvBthnoK76vwf7X9UMaa3gv8ZVn6n2FigmWtNQZFwg&oe=62ACDB1C",
+		url:"https://www.instagram.com/kneehighwave/",
+		address:"屏東縣恆春鎮光明路100號",
+		contact:"088880207",
+		email:"kneehighwave@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/kneehighwave/",
+		facebookUrl:"https://www.facebook.com/kneehighwave"
+	},
+	daya:{
+		name:"daya.surf.tw",
+		imageUrl:"https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/7000529/541282_731501.jpg",
+		url:"https://www.instagram.com/daya.surf.tw/",
+		address:"屏東縣恆春鎮光明路98號",
+		contact:"https://www.instagram.com/daya.surf.tw/",
+		email:"dayasurfshoptaiwan@gmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/daya.surf.tw/",
+		facebookUrl:null
+	},
+	pineapplesurfboardstaiwan:{
+		name:"台灣鳳梨手工衝浪板 pineapplesurfboardstaiwan",
+		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.18169-9/14462997_973464249445888_7732150656443537365_n.png?_nc_cat=101&ccb=1-7&_nc_sid=174925&_nc_ohc=S8gyEg8f4YIAX9TbMob&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT8P0-Ju6ZjBCZmO6zOWz7-tAXjwF3pcCl9mNDfY5ezvlw&oe=62CE5A7A",
+		url:"https://www.instagram.com/pineapplesurfboardstaiwan/",
+		address:null,
+		contact:"https://www.instagram.com/pineapplesurfboardstaiwan/",
+		email:null,
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/pineapplesurfboardstaiwan/",
+		facebookUrl:"https://www.facebook.com/pineapplesurf/"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",

@@ -55,6 +55,30 @@ module.exports=(keyword)=>{
 	else if(keyword.includes("安東尼")||keyword.toLowerCase().includes("anthony")){
 		return businessFlexMessage(businessInformation.安東尼);
 	}
+	else if(keyword.includes("狂衝浪")||keyword.toLowerCase().includes("bravesurf")){
+		return businessFlexMessage(businessInformation.狂衝浪);
+	}
+	else if(keyword.includes("金樽衝浪小屋")||keyword.toLowerCase().includes("jinzunsurf")){
+		return businessFlexMessage(businessInformation.金樽衝浪小屋);
+	}
+	else if(keyword.includes("夏日波影")||keyword.toLowerCase().includes("summerpoint")){
+		return businessFlexMessage(businessInformation.summerpoint);
+	}
+	else if(keyword.includes("一舟")){
+		return businessFlexMessage(businessInformation.一舟浪館);
+	}
+	else if(keyword.includes("草分木")||keyword.toLowerCase().includes("yellowsbb")){
+		return businessFlexMessage(businessInformation.草分木);
+	}
+	else if(keyword.includes("小浪館")||keyword.toLowerCase().includes("kneehigh")){
+		return businessFlexMessage(businessInformation.小浪館);
+	}
+	else if(keyword.toLowerCase().includes("daya")){
+		return businessFlexMessage(businessInformation.daya);
+	}
+	else if(keyword.includes("鳳梨")||keyword.toLowerCase().includes("pineapple")){
+		return businessFlexMessage(businessInformation.pineapplesurfboardstaiwan);
+	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
 	}*/
