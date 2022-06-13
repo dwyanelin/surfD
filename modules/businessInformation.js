@@ -141,6 +141,39 @@ module.exports={
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/surfernation_tw/",
 		facebookUrl:"https://www.facebook.com/surfernation/"
+	},
+	地球人:{
+		name:"福隆地球人衝浪學校 Fulong BEING SURF School",
+		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.18169-9/1381728_638709162840099_2085590085_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8k3Ey8U6hrcAX9bFRng&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT8ADO05nQMvi7FxGyzAST0KbFn_CT5Hh721hBTDBUzplg&oe=62CB4C3D",
+		url:"http://www.dollar-fulong.com.tw/",
+		address:"228新北市貢寮區福隆街16號",
+		contact:"0919575372",
+		email:"being0125@gmail.com",
+		lineId:null,
+		instagramUrl:null,
+		facebookUrl:"https://www.facebook.com/fulongbeingsurf/"
+	},
+	貝貝:{
+		name:"貝貝 / Baybay Niu",
+		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.6435-9/117654969_4810497438990857_893754943306661456_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9267fe&_nc_ohc=N_ZS_zK6wPIAX-vAt8m&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT-PRuEGFARYW4kXG-VcD1Hiy4BHcdhHlBmWIXTy-0e2kQ&oe=62CD43BD",
+		url:"https://www.facebook.com/%E8%B2%9D%E8%B2%9D-Baybay-Niu-143565935684054",
+		address:null,
+		contact:"https://www.facebook.com/%E8%B2%9D%E8%B2%9D-Baybay-Niu-143565935684054",
+		email:"bonnieniu@hotmail.com",
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/baybay_niu/",
+		facebookUrl:"https://www.facebook.com/%E8%B2%9D%E8%B2%9D-Baybay-Niu-143565935684054"
+	},
+	安東尼:{
+		name:"Anthony beach house",
+		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.6435-9/53229547_2181230315266576_3451715312846635008_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=d57657&_nc_ohc=9y5k1bFm2x8AX84iY4Z&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT8NNo_MPWbN7V7W6rn5kwOi-jHBNset6-qx0qDWNVZwvw&oe=62CCAB83",
+		url:"https://www.instagram.com/anthony_beachhouse/",
+		address:null,
+		contact:"https://www.instagram.com/anthony_beachhouse/",
+		email:null,
+		lineId:null,
+		instagramUrl:"https://www.instagram.com/anthony_beachhouse/",
+		facebookUrl:"https://www.facebook.com/pages/Anthony-Beach-House-%E5%AE%89%E6%9D%B1%E5%B0%BC%E6%B5%B7%E7%81%98%E5%B0%8F%E5%B1%8B/794398180919310"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
