@@ -108,6 +108,17 @@ module.exports={
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/ride_to_ride_surf/",
 		facebookUrl:"https://www.facebook.com/ridetoridesurf"
+	},
+	surferinn:{
+		name:"Surfer Inn衝浪客棧",
+		imageUrl:"https://www.surferinn.com.tw/_surf/wp-content/uploads/2015/12/surfer-inn-logo-mix-png-e1449036091896.png",
+		url:"https://www.surferinn.com.tw/",
+		address:"宜蘭縣頭城鎮烏石港路103-20號",
+		contact:"03 978 9492",
+		email:"order@surferinn.com.tw",
+		lineId:null,
+		instagramUrl:null,
+		facebookUrl:"https://www.facebook.com/%E8%A1%9D%E6%B5%AA%E5%AE%A2%E6%A3%A7-Surfer-Inn-120953131315887"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",
