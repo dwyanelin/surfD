@@ -244,7 +244,7 @@ module.exports={
 	daya:{
 		name:"daya.surf.tw",
 		imageUrl:"https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/7000529/541282_731501.jpg",
-		url:"https://www.instagram.com/daya.surf.tw/",
+		url:"https://ch.dayataiwan.com/",
 		address:"屏東縣恆春鎮光明路98號",
 		contact:"https://www.instagram.com/daya.surf.tw/",
 		email:"dayasurfshoptaiwan@gmail.com",
