@@ -1,6 +1,6 @@
 module.exports={
-	namiarusurfstudio:{
-		name:"namiarusurfstudio",
+	NamiaruSurfStudio:{
+		name:"Namiarusurfstudio•有浪嗎海浪衝浪工作室",
 		imageUrl:"https://namiaru.yibnb.com/images/bg.jpg",
 		url:"https://namiaru.yibnb.com",
 		address:"宜蘭縣頭城鎮環鎮東路二段668巷8號",
@@ -11,7 +11,7 @@ module.exports={
 		facebookUrl:"https://www.facebook.com/808387692583232"
 	},
 	一間衝浪店:{
-		name:"一間衝浪店",
+		name:"SURF SHOP 一間衝浪店",
 		imageUrl:"https://i.imgur.com/bHMjsw1.jpg",
 		url:"https://www.facebook.com/aloha.hisurf",
 		address:"宜蘭縣頭城鎮濱海路二段332巷29-1號",
@@ -22,7 +22,7 @@ module.exports={
 		facebookUrl:"https://www.facebook.com/aloha.hisurf"
 	},
 	浪花舞:{
-		name:"浪花舞",
+		name:"浪花舞往海邊藝文聚落",
 		imageUrl:"https://www.wavedancelife.com/wp-content/uploads/2020/03/%E6%B5%AA%E8%8A%B1%E8%88%9E-BlackLogo.png",
 		url:"https://www.wavedancelife.com/",
 		address:"宜蘭縣頭城鎮濱海路二段405號",
@@ -32,7 +32,7 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/wavedancesurflife",
 		facebookUrl:"https://www.facebook.com/wavedancesurflife"
 	},
-	吉鵝:{
+	吉鵝的瑜浪情節:{
 		name:"吉鵝的瑜浪情節",
 		imageUrl:"https://i3.wp.com/asif-fashion.com/wp-content/uploads/2018/11/Jill3.jpg",
 		url:"https://www.instagram.com/jill_loves_yoga_surf/",
@@ -44,7 +44,7 @@ module.exports={
 		facebookUrl:null
 	},
 	外澳飯:{
-		name:"外澳飯裡有貓",
+		name:"外澳飯裡有貓Waiao Bon Appetit",
 		imageUrl:"https://pic.pimg.tw/fennyfenny/1597060275-3231545206-g_n.jpg",
 		url:"https://www.instagram.com/waiao_bon_appetit/",
 		address:null,
@@ -54,8 +54,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/waiao_bon_appetit/",
 		facebookUrl:"https://www.facebook.com/Waiao.bonappetit"
 	},
-	therefresh:{
-		name:"The Refresh",
+	TheRefresh:{
+		name:"The Refresh 海邊計畫 共享空間",
 		imageUrl:"https://milkshake-production-user-images.imgix.net/dfd9e5c4-640f-461d-999e-fb7f86051d89?auto=format%2Ccompress&cs=tinysrgb&q=30&w=828",
 		url:"https://www.instagram.com/therefresh._/",
 		address:null,
@@ -65,8 +65,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/therefresh._/",
 		facebookUrl:null
 	},
-	jshoot:{
-		name:"j.shoot",
+	"J.Shoot":{
+		name:"J.Shoot J. 攝",
 		imageUrl:"https://milkshake-production-user-images.imgix.net/dfd9e5c4-640f-461d-999e-fb7f86051d89?auto=format%2Ccompress&cs=tinysrgb&q=30&w=828",
 		url:"https://www.instagram.com/j.shoot._/",
 		address:null,
@@ -76,8 +76,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/j.shoot._/",
 		facebookUrl:null
 	},
-	surferhouse:{
-		name:"衝浪小屋",
+	衝浪小屋:{
+		name:"Surf & House 衝浪小屋",
 		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.6435-9/116698938_3420034738041190_8880794230428657153_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=MZhixY_Ku5IAX8qkyun&tn=vsNhBRRY47mmIElF&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT_rLMY4nXMQSRSoGmik7MnpzuiH1lOIUbGDyP0K80xQLQ&oe=62C7BA69",
 		url:"https://www.surfhouse.tw/",
 		address:"宜蘭縣頭城鎮濱海路二段376號",
@@ -88,7 +88,7 @@ module.exports={
 		facebookUrl:"https://www.facebook.com/surfhouse2011"
 	},
 	好享衝浪:{
-		name:"好享衝浪",
+		name:"好享衝浪 Ocean Vibes Surf Shop",
 		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t39.30808-6/230776941_1477859102551828_5598918892989814336_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kKd-cBIlo7oAX-ySp0z&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT8F0d7cBGWTmWosHjXuzQ3v5oa8_yKFVei5K0pcCLe7fg&oe=62A851A7",
 		url:"https://www.ovsstaiwan.com.tw/",
 		address:"宜蘭縣頭城鎮朝陽路89號",
@@ -98,7 +98,7 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/ovss_taiwan/",
 		facebookUrl:"https://www.facebook.com/OceanVibesSurf"
 	},
-	ridetoridesurf:{
+	RideToRideSurf:{
 		name:"Ride to Ride Surf",
 		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.6435-9/33021329_2031442553762574_1590661178391003136_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=2aGyYVURq8kAX933Cjz&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT-Cs46Ag9nU5glUdo1ZUfYbCzUa5NohwledIDOoVzfT3Q&oe=62C9D695",
 		url:"https://www.instagram.com/ride_to_ride_surf/",
@@ -109,8 +109,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/ride_to_ride_surf/",
 		facebookUrl:"https://www.facebook.com/ridetoridesurf"
 	},
-	surferinn:{
-		name:"Surfer Inn衝浪客棧",
+	SurferInn:{
+		name:"衝浪客棧 Surfer Inn",
 		imageUrl:"https://www.surferinn.com.tw/_surf/wp-content/uploads/2015/12/surfer-inn-logo-mix-png-e1449036091896.png",
 		url:"https://www.surferinn.com.tw/",
 		address:"宜蘭縣頭城鎮烏石港路103-20號",
@@ -120,7 +120,7 @@ module.exports={
 		instagramUrl:null,
 		facebookUrl:"https://www.facebook.com/%E8%A1%9D%E6%B5%AA%E5%AE%A2%E6%A3%A7-Surfer-Inn-120953131315887"
 	},
-	pirate:{
+	海盜衝浪:{
 		name:"海盜衝浪 Pirate Surf",
 		imageUrl:"https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.6435-9/124834361_2141382815995320_2470659225759900949_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=KBf3WmOjetQAX_RohS1&_nc_ht=scontent.ftpe8-1.fna&oh=00_AT8iCQsL_1EJb8yTji8kgHKidu6z7zhZ3T_uNX-_BpmqKg&oe=62CD6A39",
 		url:"https://www.instagram.com/pirate_surf/",
@@ -131,8 +131,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/pirate_surf/",
 		facebookUrl:"https://www.facebook.com/PirateSurf/"
 	},
-	surfernation:{
-		name:"衝浪國度 Surfer Nation",
+	衝浪國度:{
+		name:"衝浪國度 SurferNation Surf Shop",
 		imageUrl:"https://500.gov.tw/ROOT/images/b5ecb408-5a4e-4609-8780-cbe2eaa2a609/logo.jpg",
 		url:"https://surfernationtaiwan.wixsite.com/home",
 		address:"261宜蘭縣頭城鎮烏石港路102號",
@@ -142,7 +142,7 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/surfernation_tw/",
 		facebookUrl:"https://www.facebook.com/surfernation/"
 	},
-	地球人:{
+	地球人衝浪:{
 		name:"福隆地球人衝浪學校 Fulong BEING SURF School",
 		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.18169-9/1381728_638709162840099_2085590085_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8k3Ey8U6hrcAX9bFRng&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT8ADO05nQMvi7FxGyzAST0KbFn_CT5Hh721hBTDBUzplg&oe=62CB4C3D",
 		url:"http://www.dollar-fulong.com.tw/",
@@ -164,8 +164,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/baybay_niu/",
 		facebookUrl:"https://www.facebook.com/%E8%B2%9D%E8%B2%9D-Baybay-Niu-143565935684054"
 	},
-	安東尼:{
-		name:"Anthony beach house",
+	安東尼海灘小屋:{
+		name:"安東尼海灘小屋 Anthony beach house",
 		imageUrl:"https://scontent.ftpe8-3.fna.fbcdn.net/v/t1.6435-9/53229547_2181230315266576_3451715312846635008_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=d57657&_nc_ohc=9y5k1bFm2x8AX84iY4Z&_nc_ht=scontent.ftpe8-3.fna&oh=00_AT8NNo_MPWbN7V7W6rn5kwOi-jHBNset6-qx0qDWNVZwvw&oe=62CCAB83",
 		url:"https://www.instagram.com/anthony_beachhouse/",
 		address:null,
@@ -197,8 +197,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/jinzunsurfhouse/",
 		facebookUrl:"https://www.facebook.com/Jinzunsurfhouse/"
 	},
-	summerpoint:{
-		name:"SummerPoint 夏日波影",
+	Summerpoint:{
+		name:"Summerpoint 夏日波影",
 		imageUrl:"https://v2cdn.sfec.cloud/eyJidWNrZXQiOiJzZi1lYy1zdGF0aWMiLCJrZXkiOiJzdW1tZXJwb2ludF8zYWUyNDM4My91cGxvYWRzL3NldHRpbmcvMDVlYjdhNDMxNmNmZWYyYzZhY2Q4MTI1MjNhOTYxZGIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJmaXQiOiJpbnNpZGUiLCJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWV9fX0=",
 		url:"https://www.summerpoint.com.tw/",
 		address:"94742屏東縣滿州鄉茶山路252號",
@@ -210,16 +210,16 @@ module.exports={
 	},
 	一舟浪館:{
 		name:"一舟浪館",
-		imageUrl:"https://cf.bstatic.com/xdata/images/hotel/max1280x900/81740627.jpg?k=34f60db6f8fe5e8519e69ff41a22bef6311d1430ac833dde473f15fe79d9248d&o=&hp=1",
-		url:"https://www.booking.com/hotel/tw/zhou-lang-guan-on-board-hostel.zh-tw.html",
+		imageUrl:"https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.30808-6/277792029_3307219719562032_5152543904932073469_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=p0YATwnT5YYAX8TnwkX&_nc_ht=scontent.ftpe7-2.fna&oh=00_AT9n2eSWp0z9M-A23qpssSmxKN0LQJKh8u9I_rZtvP76og&oe=62AC6E27",
+		url:"https://www.facebook.com/ONBOARD.HOSTEL.TAIWAN/",
 		address:"947屏東縣滿州鄉茶山路242巷22號",
 		contact:"0961016033",
-		email:null,
+		email:"onboard.hostel@gmail.com",
 		lineId:null,
 		instagramUrl:null,
-		facebookUrl:null
+		facebookUrl:"https://www.facebook.com/ONBOARD.HOSTEL.TAIWAN/"
 	},
-	草分木:{
+	"草分木B&B":{
 		name:"墾丁民宿 l 草分木B&B",
 		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.6435-9/33464032_1662984100437887_2643449042364792832_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=M33HTgwu0TEAX9J2qpw&tn=vsNhBRRY47mmIElF&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT-lyi3YtXcnV47g7MzhjGNEw1iplTgTfcRa-g0qHHs-tg&oe=62CE50C9",
 		url:"https://www.facebook.com/yellowsbb/",
@@ -241,8 +241,8 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/kneehighwave/",
 		facebookUrl:"https://www.facebook.com/kneehighwave"
 	},
-	daya:{
-		name:"daya.surf.tw",
+	DAYA:{
+		name:"DAYA SURF TAIWAN",
 		imageUrl:"https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_1500,w_2000,f_auto,q_auto/7000529/541282_731501.jpg",
 		url:"https://ch.dayataiwan.com/",
 		address:"屏東縣恆春鎮光明路98號",
@@ -252,16 +252,27 @@ module.exports={
 		instagramUrl:"https://www.instagram.com/daya.surf.tw/",
 		facebookUrl:null
 	},
-	pineapplesurfboardstaiwan:{
-		name:"台灣鳳梨手工衝浪板 pineapplesurfboardstaiwan",
+	PineappleSurfboardsTaiwan:{
+		name:"PineappleSurfboardsTaiwan 台灣鳳梨手工衝浪板",
 		imageUrl:"https://scontent.ftpe8-2.fna.fbcdn.net/v/t1.18169-9/14462997_973464249445888_7732150656443537365_n.png?_nc_cat=101&ccb=1-7&_nc_sid=174925&_nc_ohc=S8gyEg8f4YIAX9TbMob&_nc_ht=scontent.ftpe8-2.fna&oh=00_AT8P0-Ju6ZjBCZmO6zOWz7-tAXjwF3pcCl9mNDfY5ezvlw&oe=62CE5A7A",
 		url:"https://www.instagram.com/pineapplesurfboardstaiwan/",
 		address:null,
-		contact:"https://www.instagram.com/pineapplesurfboardstaiwan/",
-		email:null,
+		contact:"0987 449 666",
+		email:"kevin_869028@yahoo.com.tw",
 		lineId:null,
 		instagramUrl:"https://www.instagram.com/pineapplesurfboardstaiwan/",
 		facebookUrl:"https://www.facebook.com/pineapplesurf/"
+	},
+	浪點衝浪民宿:{
+		name:"浪點衝浪民宿",
+		imageUrl:"https://scontent.ftpe7-4.fna.fbcdn.net/v/t1.18169-9/13510989_650279641790400_2026368884595189500_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=F1Rge-3O9AMAX-ovkGB&_nc_ht=scontent.ftpe7-4.fna&oh=00_AT9tw-bfPc48KotKDtJ-bECUZIhd9-dgA1EJVxll37PbWQ&oe=62CFE309",
+		url:"https://www.facebook.com/surfspot.tw",
+		address:"946屏東縣恆春鎮福城街60號",
+		contact:"088883769",
+		email:"kevin_869028@yahoo.com.tw",
+		lineId:null,
+		instagramUrl:null,
+		facebookUrl:"https://www.facebook.com/surfspot.tw"
 	}/*,
 	豆你丸:{
 		name:"豆你丸",

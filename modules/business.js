@@ -7,77 +7,80 @@ module.exports=(keyword)=>{
 
 	////google評分class="Aq14fc"
 	////評分改google搜尋？
-	if(keyword.toLowerCase().includes("namiaru")){
-		return businessFlexMessage(businessInformation.namiarusurfstudio);
+	if(/namiaru|有浪/i.test(keyword)){
+		return businessFlexMessage(businessInformation.NamiaruSurfStudio);
 	}
-	else if(keyword.includes("一間")||keyword.includes("有間")){
+	else if(/一間|有間|surfshop/i.test(keyword)){
 		return businessFlexMessage(businessInformation.一間衝浪店);
 	}
-	else if(keyword.includes("浪花舞")||keyword.toLowerCase().includes("wavedance")){
+	else if(/浪花舞|wavedance/i.test(keyword)){
 		return businessFlexMessage(businessInformation.浪花舞);
 	}
-	else if(keyword.includes("吉鵝")||keyword.toLowerCase().includes("jill")){
-		return businessFlexMessage(businessInformation.吉鵝);
+	else if(/吉鵝|jill/i.test(keyword)){
+		return businessFlexMessage(businessInformation.吉鵝的瑜浪情節);
 	}
-	else if(keyword.includes("外澳飯")||keyword.toLowerCase().includes("waiao")){
+	else if(/外澳飯|waiao/i.test(keyword)){
 		return businessFlexMessage(businessInformation.外澳飯);
 	}
-	else if(keyword.toLowerCase().includes("therefresh")){
-		return businessFlexMessage(businessInformation.therefresh);
+	else if(/refresh|海邊計畫/i.test(keyword)){
+		return businessFlexMessage(businessInformation.TheRefresh);
 	}
-	else if(keyword.includes("j攝")||keyword.toLowerCase().includes("jshoot")){
-		return businessFlexMessage(businessInformation.jshoot);
+	else if(/j\.shoot|jshoot|j\.攝|j攝/i.test(keyword)){
+		return businessFlexMessage(businessInformation["J.Shoot"]);
 	}
-	else if(keyword==="衝浪小屋"||keyword.toLowerCase().includes("surferhouse")){
-		return businessFlexMessage(businessInformation.surferhouse);
+	else if(/(?<!金樽)衝浪小屋|surferhouse/i.test(keyword)){
+		return businessFlexMessage(businessInformation.衝浪小屋);
 	}
-	else if(keyword.includes("好享")){
+	else if(/好享|oceanvibes/i.test(keyword)){
 		return businessFlexMessage(businessInformation.好享衝浪);
 	}
-	else if(keyword.toLowerCase().includes("ride")){
-		return businessFlexMessage(businessInformation.ridetoridesurf);
+	else if(/ride/i.test(keyword)){
+		return businessFlexMessage(businessInformation.RideToRideSurf);
 	}
-	else if(keyword.includes("衝浪客棧")||keyword.toLowerCase().includes("surferinn")){
-		return businessFlexMessage(businessInformation.surferinn);
+	else if(/衝浪客棧|surferinn/i.test(keyword)){
+		return businessFlexMessage(businessInformation.SurferInn);
 	}
-	else if(keyword.includes("海盜")||keyword.toLowerCase().includes("pirate")){
-		return businessFlexMessage(businessInformation.pirate);
+	else if(/海盜|pirate/i.test(keyword)){
+		return businessFlexMessage(businessInformation.海盜衝浪);
 	}
-	else if(keyword.includes("國度")||keyword.toLowerCase().includes("surfernation")){
-		return businessFlexMessage(businessInformation.surfernation);
+	else if(/國度|surfernation/i.test(keyword)){
+		return businessFlexMessage(businessInformation.衝浪國度);
 	}
-	else if(keyword.includes("地球人")){
-		return businessFlexMessage(businessInformation.地球人);
+	else if(/地球人|beingsurf/i.test(keyword)){
+		return businessFlexMessage(businessInformation.地球人衝浪);
 	}
-	else if(keyword.includes("貝貝")||keyword.toLowerCase().includes("baybay")){
+	else if(/貝貝|baybay/i.test(keyword)){
 		return businessFlexMessage(businessInformation.貝貝);
 	}
-	else if(keyword.includes("安東尼")||keyword.toLowerCase().includes("anthony")){
-		return businessFlexMessage(businessInformation.安東尼);
+	else if(/安東尼|anthony/i.test(keyword)){
+		return businessFlexMessage(businessInformation.安東尼海灘小屋);
 	}
-	else if(keyword.includes("狂衝浪")||keyword.toLowerCase().includes("bravesurf")){
+	else if(/狂衝浪|bravesurf/i.test(keyword)){
 		return businessFlexMessage(businessInformation.狂衝浪);
 	}
-	else if(keyword.includes("金樽衝浪小屋")||keyword.toLowerCase().includes("jinzunsurf")){
+	else if(/金樽衝浪小屋|jinzunsurf/i.test(keyword)){
 		return businessFlexMessage(businessInformation.金樽衝浪小屋);
 	}
-	else if(keyword.includes("夏日波影")||keyword.toLowerCase().includes("summerpoint")){
-		return businessFlexMessage(businessInformation.summerpoint);
+	else if(/夏日波影|summerpoint/i.test(keyword)){
+		return businessFlexMessage(businessInformation.Summerpoint);
 	}
-	else if(keyword.includes("一舟")){
+	else if(/一舟|onboard/i.test(keyword)){
 		return businessFlexMessage(businessInformation.一舟浪館);
 	}
-	else if(keyword.includes("草分木")||keyword.toLowerCase().includes("yellowsbb")){
-		return businessFlexMessage(businessInformation.草分木);
+	else if(/草分木|yellows/i.test(keyword)){
+		return businessFlexMessage(businessInformation["草分木B&B"]);
 	}
-	else if(keyword.includes("小浪館")||keyword.toLowerCase().includes("kneehigh")){
+	else if(/小浪館|kneehigh/i.test(keyword)){
 		return businessFlexMessage(businessInformation.小浪館);
 	}
-	else if(keyword.toLowerCase().includes("daya")){
-		return businessFlexMessage(businessInformation.daya);
+	else if(/daya/i.test(keyword)){
+		return businessFlexMessage(businessInformation.DAYA);
 	}
-	else if(keyword.includes("鳳梨")||keyword.toLowerCase().includes("pineapple")){
-		return businessFlexMessage(businessInformation.pineapplesurfboardstaiwan);
+	else if(/鳳梨|pineapple/i.test(keyword)){
+		return businessFlexMessage(businessInformation.PineappleSurfboardsTaiwan);
+	}
+	else if(/浪點衝浪|surfspot/i.test(keyword)){
+		return businessFlexMessage(businessInformation.浪點衝浪民宿);
 	}
 	/*else if(keyword.includes("豆你丸")||keyword.includes("逗你丸")||keyword.includes("豆你玩")||keyword.includes("逗你玩")){
 		return businessFlexMessage(businessInformation.豆你丸);
